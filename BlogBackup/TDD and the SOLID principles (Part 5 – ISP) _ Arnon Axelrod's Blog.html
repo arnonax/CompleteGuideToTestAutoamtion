@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<!-- saved from url=(0087)http://blogs.microsoft.co.il/arnona/2011/10/01/tdd-and-the-solid-principles-part-5-isp/ -->
+<html lang="en-US"><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="initial-scale=1.0, width=device-width">
+<title>TDD and the SOLID principles (Part 5 – ISP) | Arnon Axelrod's Blog</title>
+<link rel="profile" href="http://gmpg.org/xfn/11">
+<link rel="pingback" href="http://blogs.microsoft.co.il/arnona/xmlrpc.php">
+
+
+<!--[if lt IE 9]>
+           <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+           <script>window.html5 || document.write('<script src="http://blogs.microsoft.co.il/arnona/wp-content/themes/MS_englishjs/vendor/html5shiv.js"><\/script>')</script>
+    <![endif]-->
+			 
+ <script src="./TDD and the SOLID principles (Part 5 – ISP) _ Arnon Axelrod&#39;s Blog_files/track.js.download"></script><script src="./TDD and the SOLID principles (Part 5 – ISP) _ Arnon Axelrod&#39;s Blog_files/all.js.download" async="" crossorigin="anonymous"></script><script id="twitter-wjs" src="./TDD and the SOLID principles (Part 5 – ISP) _ Arnon Axelrod&#39;s Blog_files/widgets.js.download"></script><script id="facebook-jssdk" src="./TDD and the SOLID principles (Part 5 – ISP) _ Arnon Axelrod&#39;s Blog_files/all.js(1).download"></script><script src="./TDD and the SOLID principles (Part 5 – ISP) _ Arnon Axelrod&#39;s Blog_files/jquery.min.js.download"></script>
+ <script src="./TDD and the SOLID principles (Part 5 – ISP) _ Arnon Axelrod&#39;s Blog_files/app.js.download"></script>
+<link rel="dns-prefetch" href="http://s.w.org/">
+<link rel="alternate" type="application/rss+xml" title="Arnon Axelrod&#39;s Blog » Feed" href="http://blogs.microsoft.co.il/arnona/feed/">
+<link rel="alternate" type="application/rss+xml" title="Arnon Axelrod&#39;s Blog » Comments Feed" href="http://blogs.microsoft.co.il/arnona/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="Arnon Axelrod&#39;s Blog » TDD and the SOLID principles (Part 5 – ISP) Comments Feed" href="http://blogs.microsoft.co.il/arnona/2011/10/01/tdd-and-the-solid-principles-part-5-isp/feed/">
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/11\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/11\/svg\/","svgExt":".svg","source":{"concatemoji":"http:\/\/blogs.microsoft.co.il\/arnona\/wp-includes\/js\/wp-emoji-release.min.js?ver=5.0.2"}};
+			!function(a,b,c){function d(a,b){var c=String.fromCharCode;l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,a),0,0);var d=k.toDataURL();l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,b),0,0);var e=k.toDataURL();return d===e}function e(a){var b;if(!l||!l.fillText)return!1;switch(l.textBaseline="top",l.font="600 32px Arial",a){case"flag":return!(b=d([55356,56826,55356,56819],[55356,56826,8203,55356,56819]))&&(b=d([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]),!b);case"emoji":return b=d([55358,56760,9792,65039],[55358,56760,8203,9792,65039]),!b}return!1}function f(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var g,h,i,j,k=b.createElement("canvas"),l=k.getContext&&k.getContext("2d");for(j=Array("flag","emoji"),c.supports={everything:!0,everythingExceptFlag:!0},i=0;i<j.length;i++)c.supports[j[i]]=e(j[i]),c.supports.everything=c.supports.everything&&c.supports[j[i]],"flag"!==j[i]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[j[i]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(h=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",h,!1),a.addEventListener("load",h,!1)):(a.attachEvent("onload",h),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),g=c.source||{},g.concatemoji?f(g.concatemoji):g.wpemoji&&g.twemoji&&(f(g.twemoji),f(g.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script><script src="./TDD and the SOLID principles (Part 5 – ISP) _ Arnon Axelrod&#39;s Blog_files/wp-emoji-release.min.js.download" type="text/javascript" defer=""></script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel="stylesheet" id="wp-block-library-css" href="./TDD and the SOLID principles (Part 5 – ISP) _ Arnon Axelrod&#39;s Blog_files/style.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="microsoft-hebrew-normalize-css" href="./TDD and the SOLID principles (Part 5 – ISP) _ Arnon Axelrod&#39;s Blog_files/normalize.css" type="text/css" media="all">
+<link rel="stylesheet" id="MS_english-style-css" href="./TDD and the SOLID principles (Part 5 – ISP) _ Arnon Axelrod&#39;s Blog_files/style.css" type="text/css" media="all">
+<link rel="stylesheet" id="ms_global_search_css_style-css" href="./TDD and the SOLID principles (Part 5 – ISP) _ Arnon Axelrod&#39;s Blog_files/style(1).css" type="text/css" media="all">
+<link rel="https://api.w.org/" href="http://blogs.microsoft.co.il/arnona/wp-json/">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://blogs.microsoft.co.il/arnona/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://blogs.microsoft.co.il/arnona/wp-includes/wlwmanifest.xml"> 
+<link rel="prev" title="TDD and the SOLID principles (Part 4 – LSP)" href="http://blogs.microsoft.co.il/arnona/2011/09/22/tdd-and-the-solid-principles-part-4-lsp/">
+<link rel="next" title="TDD and the SOLID principles (Part 6 – DIP)" href="http://blogs.microsoft.co.il/arnona/2011/11/01/tdd-and-the-solid-principles-part-6-dip/">
+<meta name="generator" content="WordPress 5.0.2">
+<link rel="canonical" href="http://blogs.microsoft.co.il/arnona/2011/10/01/tdd-and-the-solid-principles-part-5-isp/">
+<link rel="shortlink" href="http://blogs.microsoft.co.il/arnona/?p=909312">
+<link rel="alternate" type="application/json+oembed" href="http://blogs.microsoft.co.il/arnona/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fblogs.microsoft.co.il%2Farnona%2F2011%2F10%2F01%2Ftdd-and-the-solid-principles-part-5-isp%2F">
+<link rel="alternate" type="text/xml+oembed" href="http://blogs.microsoft.co.il/arnona/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fblogs.microsoft.co.il%2Farnona%2F2011%2F10%2F01%2Ftdd-and-the-solid-principles-part-5-isp%2F&amp;format=xml">
+
+<!-- ADD TO HEADER - START -->
+
+<!-- ADD TO HEADER - END -->
+		<style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style>
+		<style type="text/css" id="syntaxhighlighteranchor"></style>
+<meta data-pso-pv="1.2.1" data-pso-pt="singlePost" data-pso-th="91ad9b44edb2998a2b2273710387f6a2">
+<!--Wise pixel Microsoft Blogs-->
+<script language="JavaScript1.1" src="./TDD and the SOLID principles (Part 5 – ISP) _ Arnon Axelrod&#39;s Blog_files/js"></script><iframe src="./TDD and the SOLID principles (Part 5 – ISP) _ Arnon Axelrod&#39;s Blog_files/iframe.html" id="mm_sync_back_ground" style="visibility: hidden; display: none;"></iframe>
+
+<style type="text/css">.fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_reposition{overflow:hidden;position:relative}.fb_invisible{display:none}.fb_reset{background:none;border:0;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:"lucida grande", tahoma, verdana, arial, sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:right;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}@keyframes fb_transform{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}.fb_animate{animation:fb_transform .3s forwards}
+.fb_dialog{background:rgba(82, 82, 82, .7);position:absolute;top:-10000px;z-index:10001}.fb_dialog_advanced{border-radius:8px;padding:10px}.fb_dialog_content{background:#fff;color:#373737}.fb_dialog_close_icon{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;cursor:pointer;display:block;height:15px;position:absolute;left:18px;top:17px;width:15px}.fb_dialog_mobile .fb_dialog_close_icon{right:5px;left:auto;top:5px}.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}.fb_dialog_close_icon:hover{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent}.fb_dialog_close_icon:active{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent}.fb_dialog_iframe{line-height:0}.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #365899;color:#fff;font-size:14px;font-weight:bold;margin:0}.fb_dialog_content .dialog_title>span{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yd/r/Cou7n-nqK52.gif) no-repeat 5px 50%;float:right;padding:5px 26px 7px 0}body.fb_hidden{height:100%;right:0;margin:0;overflow:visible;position:absolute;top:-10000px;transform:none;width:100%}.fb_dialog.fb_dialog_mobile.loading{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/ya/r/3rhSv5V8j3o.gif) white no-repeat 50% 50%;min-height:100%;min-width:100%;overflow:hidden;position:absolute;top:0;z-index:10001}.fb_dialog.fb_dialog_mobile.loading.centered{background:none;height:auto;min-height:initial;min-width:initial;width:auto}.fb_dialog.fb_dialog_mobile.loading.centered #fb_dialog_loader_spinner{width:100%}.fb_dialog.fb_dialog_mobile.loading.centered .fb_dialog_content{background:none}.loading.centered #fb_dialog_loader_close{clear:both;color:#fff;display:block;font-size:18px;padding-top:20px}#fb-root #fb_dialog_ipad_overlay{background:rgba(0, 0, 0, .4);bottom:0;right:0;min-height:100%;position:absolute;left:0;top:0;width:100%;z-index:10000}#fb-root #fb_dialog_ipad_overlay.hidden{display:none}.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}.fb_dialog_mobile .fb_dialog_iframe{position:sticky;top:0}.fb_dialog_content .dialog_header{background:linear-gradient(from(#738aba), to(#2c4987));border-bottom:1px solid;border-color:#043b87;box-shadow:white 0 1px 1px -1px inset;color:#fff;font:bold 14px Helvetica, sans-serif;text-overflow:ellipsis;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0;vertical-align:middle;white-space:nowrap}.fb_dialog_content .dialog_header table{height:43px;width:100%}.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-right:5px;vertical-align:middle;width:60px}.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-left:5px;vertical-align:middle;width:60px}.fb_dialog_content .touchable_button{background:linear-gradient(from(#4267B2), to(#2a4887));background-clip:padding-box;border:1px solid #29487d;border-radius:3px;display:inline-block;line-height:18px;margin-top:3px;max-width:85px;padding:4px 12px;position:relative}.fb_dialog_content .dialog_header .touchable_button input{background:none;border:none;color:#fff;font:bold 12px Helvetica, sans-serif;margin:2px -12px;padding:2px 6px 3px 6px;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:bold;line-height:18px;text-align:center;vertical-align:middle}.fb_dialog_content .dialog_content{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/y9/r/jKEcVPZFk-2.gif) no-repeat 50% 50%;border:1px solid #4a4a4a;border-bottom:0;border-top:0;height:150px}.fb_dialog_content .dialog_footer{background:#f5f6f7;border:1px solid #4a4a4a;border-top-color:#ccc;height:40px}#fb_dialog_loader_close{float:right}.fb_dialog.fb_dialog_mobile .fb_dialog_close_button{text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}#fb_dialog_loader_spinner{animation:rotateSpinner 1.2s linear infinite;background-color:transparent;background-image:url(https://static.xx.fbcdn.net/rsrc.php/v3/yD/r/t-wz8gw1xG1.png);background-position:50% 50%;background-repeat:no-repeat;height:24px;width:24px}@keyframes rotateSpinner{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+.fb_iframe_widget{display:inline-block;position:relative}.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}.fb_iframe_widget iframe{position:absolute}.fb_iframe_widget_fluid_desktop,.fb_iframe_widget_fluid_desktop span,.fb_iframe_widget_fluid_desktop iframe{max-width:100%}.fb_iframe_widget_fluid_desktop iframe{min-width:220px;position:relative}.fb_iframe_widget_lift{z-index:1}.fb_iframe_widget_fluid{display:inline}.fb_iframe_widget_fluid span{width:100%}</style></head>
+<body class="post-template-default single single-post postid-909312 single-format-standard single-author " style="">
+<div id="fb-root" class=" fb_reset"><div style="position: absolute; top: -10000px; width: 0px; height: 0px;"><div><iframe name="fb_xdm_frame_https" id="fb_xdm_frame_https" aria-hidden="true" title="Facebook Cross Domain Communication Frame" tabindex="-1" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" allow="encrypted-media" src="./TDD and the SOLID principles (Part 5 – ISP) _ Arnon Axelrod&#39;s Blog_files/xd_arbiter.html" style="border: none;"></iframe></div><div></div></div></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/he_IL/all.js#xfbml=1&appId=171021386433126";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+	
+
+<div id="top-bar" class="wrapper clearfix">
+        <a href="http://blogs.microsoft.co.il/" id="blogs-logo" class="ir">Israel Blogging Community</a>
+        <div id="user-options">
+                            
+            <a href="http://blogs.microsoft.co.il/arnona/wp-admin">Sign in</a>
+                      </div>
+</div>
+  <header>
+      
+		
+        <div id="header-banner" style="background-image: url(http://blogs.microsoft.co.il/arnona/wp-content/uploads/sites/1346/2015/01/cropped-04621.jpg)">
+            <div class="wrapper">
+                <h1 id="blog-title">
+                     
+                    <span class="sub-title">Arnon Axelrod's Blog</span>
+                </h1>
+                            </div>
+        </div>
+        <div id="header-nav" class="clearfix">
+            <div class="wrapper">
+                <div id="user-avatar">
+                    <img src="./TDD and the SOLID principles (Part 5 – ISP) _ Arnon Axelrod&#39;s Blog_files/d3548b43b3f07144c336ab8378da3ecd.jpeg" alt="">
+                </div>
+                <div id="header-nav-box">
+                    <a href="http://blogs.microsoft.co.il/arnona/2011/10/01/tdd-and-the-solid-principles-part-5-isp/#" class="ir" id="m-nav">menu</a>
+                    <nav id="heder-nav-warpper">
+                        <a href="http://blogs.microsoft.co.il/arnona">Home page</a>
+
+                                        </nav>
+                    <div id="header-nav-icons">
+                                                                        <a href="https://www.linkedin.com/in/arnonaxelrod" target="_blank" class="ir icon-in">linkedin</a>
+                                                <a href="http://blogs.microsoft.co.il/arnona/rss2" target="_blank" class="ir icon-rss">RSS</a>
+                    </div>
+                </div>
+                <script>
+                    (function (window) {
+                        if (!document.addEventListener)
+                            return;
+
+                        var navBtn = document.getElementById("m-nav");
+                        var nav = document.getElementById("heder-nav-warpper");
+
+                        navBtn.addEventListener('click', function (e) {
+                            e.preventDefault();
+                            var display = window.getComputedStyle(nav, null).getPropertyValue("display");
+                            if (display === 'none')
+                                nav.style.display = 'block';
+                            else
+                                nav.style.display = 'none';
+
+                        }, false);
+
+                        window.addEventListener('resize', function () {
+                            nav.style.display = "";
+                        }, false);
+
+                    })(window);
+                </script>
+            </div>
+        </div>
+
+    </header>
+<!-- #masthead -->
+ <div id="main" role="main" class="clearfix">
+	<div id="primary_blog" class="wrapper clearfix">
+        <section id="blog_post_info" style="min-height: 2848px;">			
+			<script>
+jQuery(document).ready(function(){
+jQuery('.bp-add-comment').click(function(event){
+event.preventDefault();
+jQuery('#respond').show();
+});
+});
+</script>
+	<article id="post-909312" class="bp clearfix post-909312 post type-post status-publish format-standard hentry tag-bob-martin tag-clean-code tag-dependency-inversion-principle tag-dev tag-dip tag-interface-segregation-principle tag-isp tag-lsp tag-object-oriented tag-ocp tag-open-close-principle tag-single-responsibility-principle tag-solid tag-srp tag-tdd tag-unit-tests">
+		         
+			            <h2 class="bp-title">
+                <a href="http://blogs.microsoft.co.il/arnona/2011/10/01/tdd-and-the-solid-principles-part-5-isp/">TDD and the SOLID principles (Part 5 – ISP)</a>
+            </h2>
+            <h3 class="bp-date">October 1, 2011</h3>
+            <div class="clearfix">
+            <div class="bp-thumb clearfix">
+                                                <div class="bp-social_i">
+                            <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blogs.microsoft.co.il/arnona/2011/10/01/tdd-and-the-solid-principles-part-5-isp/" class="ir icon-fb">facebook</a>
+                            <a target="_blank" href="http://www.linkedin.com/shareArticle?mini=true&amp;url=http://blogs.microsoft.co.il/arnona/2011/10/01/tdd-and-the-solid-principles-part-5-isp/&amp;title=TDD%20and%20the%20SOLID%20principles%20(Part%205%20%E2%80%93%20ISP)&amp;summary=%3Cp%3EThis%20is%20the%205th%20post%20in%20the%20series%20about%20TDD%20and%20its%20relationships%20with%20the%20SOLID%20principles.%20Here%20are%20the%20links%20to%20the%20previous%20parts:%20Pat%201%20%E2%80%93%20introduction%20Part%202%20%E2%80%93%20SRP%20Part%203%20%E2%80%93%20OCP%20Part%204%20%E2%80%93%20LSP%20Part%205%20%E2%80%93%20ISP%20(this%20post)%20Part%206%20%E2%80%93%20DIP%20Part%207%20%E2%80%93%20Conclusion%20[%E2%80%A6]%3C/p%3E" class="ir icon-in">linkedin</a>
+                            <a target="_blank" href="https://twitter.com/share" class="tweet ir icon-twitter" data-lang="he">twitter</a>
+                            <a href="mailto:?subject=TDD%20and%20the%20SOLID%20principles%20(Part%205%20%E2%80%93%20ISP)&amp;body=Check%20out%20this%20post%20http://blogs.microsoft.co.il/arnona/2011/10/01/tdd-and-the-solid-principles-part-5-isp/" class="ir icon-email">email</a>
+                        </div>
+              </div>
+             </div>
+	
+				<div class="clearfix">
+			        <div class="tagsx">tags:   <a href="http://blogs.microsoft.co.il/arnona/tag/bob-martin/" rel="tag">Bob Martin</a>, <a href="http://blogs.microsoft.co.il/arnona/tag/clean-code/" rel="tag">Clean Code</a>, <a href="http://blogs.microsoft.co.il/arnona/tag/dependency-inversion-principle/" rel="tag">Dependency Inversion Principle</a>, <a href="http://blogs.microsoft.co.il/arnona/tag/dev/" rel="tag">DEV</a>, <a href="http://blogs.microsoft.co.il/arnona/tag/dip/" rel="tag">DIP</a>, <a href="http://blogs.microsoft.co.il/arnona/tag/interface-segregation-principle/" rel="tag">Interface Segregation Principle</a>, <a href="http://blogs.microsoft.co.il/arnona/tag/isp/" rel="tag">ISP</a>, <a href="http://blogs.microsoft.co.il/arnona/tag/lsp/" rel="tag">LSP</a>, <a href="http://blogs.microsoft.co.il/arnona/tag/object-oriented/" rel="tag">Object Oriented</a>, <a href="http://blogs.microsoft.co.il/arnona/tag/ocp/" rel="tag">OCP</a>, <a href="http://blogs.microsoft.co.il/arnona/tag/open-close-principle/" rel="tag">Open-Close Principle</a>, <a href="http://blogs.microsoft.co.il/arnona/tag/single-responsibility-principle/" rel="tag">Single Responsibility Principle</a>, <a href="http://blogs.microsoft.co.il/arnona/tag/solid/" rel="tag">SOLID</a>, <a href="http://blogs.microsoft.co.il/arnona/tag/srp/" rel="tag">SRP</a>, <a href="http://blogs.microsoft.co.il/arnona/tag/tdd/" rel="tag">TDD</a>, <a href="http://blogs.microsoft.co.il/arnona/tag/unit-tests/" rel="tag">Unit Tests</a></div>
+				    <div class="cmts"> no comments </div>
+			    </div>
+		
+						
+		<!-- .entry-header -->
+
+				<div class="contx entry-content clearfix">
+			<p>This is the 5<sup>th</sup> post in the series about TDD and its relationships with the SOLID principles. Here are the links to the previous parts:</p>
+<p><a href="http://blogs.microsoft.co.il/blogs/arnona/archive/2011/08/26/tdd-and-the-solid-principles-part-1-introduction.aspx">Pat 1 – introduction</a></p>
+<p><a href="http://blogs.microsoft.co.il/blogs/arnona/archive/2011/08/26/tdd-and-the-solid-principles-part-2-srp.aspx">Part 2 – SRP</a></p>
+<p><a href="http://blogs.microsoft.co.il/blogs/arnona/archive/2011/09/07/tdd-and-the-solid-principles-part-3-ocp.aspx">Part 3 – OCP</a></p>
+<p><a href="http://blogs.microsoft.co.il/blogs/arnona/archive/2011/09/22/tdd-and-the-solid-principles-part-4-lsp.aspx">Part 4 – LSP</a></p>
+<p>Part 5 – ISP (this post)</p>
+<p><a href="http://blogs.microsoft.co.il/blogs/arnona/archive/2011/11/01/tdd-and-the-solid-principles-part-6-dip.aspx">Part 6 – DIP</a></p>
+<p><a href="http://blogs.microsoft.co.il/blogs/arnona/archive/2011/11/20/tdd-and-the-solid-principles-part-7-conclusion.aspx">Part 7 – Conclusion</a></p>
+<h4>ISP – Interface Segregation Principle</h4>
+<p><b><i>“Make fine grained interfaces that are client specific”</i></b></p>
+<p>This principle speaks for itself… but anyway I’ll “translate” it… <img style="border-bottom-style: none; border-right-style: none; border-top-style: none; border-left-style: none" class="wlEmoticon wlEmoticon-smile" alt="Smile" src="./TDD and the SOLID principles (Part 5 – ISP) _ Arnon Axelrod&#39;s Blog_files/wlEmoticon-smile_378E4203.png">:</p>
+<p align="justify">It is better to create many small interfaces than few big ones. Each interface should have very specific purpose. When some clients of your class need to access only part of what you supply, and another set of clients uses another part, then these sets of clients need different interfaces. This also makes it possible to split the class into few other single-responsibility classes in the future, if so needed.</p>
+<p align="justify">Take for example a Pipe (or a message queue). Some clients only need to send stuff through it while others only need to receive. These clients need different interfaces.</p>
+<p align="justify">In addition, when you add functionality to your class (or better, create a derived class), that only part of your clients need, then the new functionality should be exposed through a <i>new</i> interface (that possibly extends the old one), rather than adding it directly to the old interface. This way, clients that are already working correctly with the old interface doesn’t have to change or recompile.</p>
+<h4>ISP and TDD</h4>
+<p align="justify">This principle is one that comes very nicely with TDD: When you write a test for a client of your class that needs only one aspect of its functionality, you’ll need to mock only the interface that interests you and not a big interface that has many things that are not of interest to your test. Unfortunately, this is not exactly the case when you’re using a mocking framework (like <a href="http://research.microsoft.com/en-us/projects/moles/">Moles</a>, <a href="http://code.google.com/p/moq/">Moq</a>, <a href="http://hibernatingrhinos.com/open-source/rhino-mocks">RhinoMocks</a>, etc), because the mocking framework saves you the redundant work, and so it makes it less obvious that you’re doing something wrong. This is why I advise people that are new to TDD, to try not to use a mocking framework in the beginning, and only use it once they feel confident enough with TDD, so that they are able to notice these smells even through the mocking framework “deodorizer”…</p>
+<p>TDD also makes you think from the client perspective, making the different clients needs more obvious, which also leads you to use simpler, more client focused interfaces. </p>
+			<iframe src="./TDD and the SOLID principles (Part 5 – ISP) _ Arnon Axelrod&#39;s Blog_files/like.html" scrolling="no" frameborder="0" style="border:none; overflow:hidden; height:80px;" allowtransparency="true"></iframe>
+
+							  <div class="clearfix entry-options">
+                        <a href="javascript:void(0)" class="bp-add-comment">Add comment</a>
+                        <div class="bp-social_i">
+                           <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blogs.microsoft.co.il/arnona/2011/10/01/tdd-and-the-solid-principles-part-5-isp/" class="ir icon-fb">facebook</a>
+                            <a target="_blank" href="http://www.linkedin.com/shareArticle?mini=true&amp;url=http://blogs.microsoft.co.il/arnona/2011/10/01/tdd-and-the-solid-principles-part-5-isp/&amp;title=TDD%20and%20the%20SOLID%20principles%20(Part%205%20%E2%80%93%20ISP)&amp;summary=%3Cp%3EThis%20is%20the%205th%20post%20in%20the%20series%20about%20TDD%20and%20its%20relationships%20with%20the%20SOLID%20principles.%20Here%20are%20the%20links%20to%20the%20previous%20parts:%20Pat%201%20%E2%80%93%20introduction%20Part%202%20%E2%80%93%20SRP%20Part%203%20%E2%80%93%20OCP%20Part%204%20%E2%80%93%20LSP%20Part%205%20%E2%80%93%20ISP%20(this%20post)%20Part%206%20%E2%80%93%20DIP%20Part%207%20%E2%80%93%20Conclusion%20[%E2%80%A6]%3C/p%3E" class="ir icon-in">linkedin</a>
+                            <a target="_blank" href="https://twitter.com/share" class="tweet ir icon-twitter" data-lang="he">twitter</a>
+                            <a href="mailto:?subject=TDD%20and%20the%20SOLID%20principles%20(Part%205%20%E2%80%93%20ISP)&amp;body=Check%20out%20this%20post%20http://blogs.microsoft.co.il/arnona/2011/10/01/tdd-and-the-solid-principles-part-5-isp/" class="ir icon-email">email</a>
+                            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+                        </div>
+                    </div>
+
+				
+		</div><!-- .entry-content -->
+		
+
+        
+<div id="comments" class="comments-area">
+	<div id="respond" class="comment-respond">
+		<h3 id="reply-title" class="comment-reply-title">Leave a Reply <small><a rel="nofollow" id="cancel-comment-reply-link" href="http://blogs.microsoft.co.il/arnona/2011/10/01/tdd-and-the-solid-principles-part-5-isp/#respond" style="display:none;">Cancel Reply</a></small></h3>			<form action="http://blogs.microsoft.co.il/arnona/wp-comments-post.php" method="post" id="commentform" class="comment-form">
+				<p class="comment-notes">Your email address will not be published.</p><p class="comment-form-comment"><label for="comment">Comment</label><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true"></textarea></p><p class="form-allowed-tags">You may use these <abbr title="HyperText Markup Language">HTML</abbr> tags and attributes:  <code>&lt;a href="" title=""&gt; &lt;abbr title=""&gt; &lt;acronym title=""&gt; &lt;b&gt; &lt;blockquote cite=""&gt; &lt;cite&gt; &lt;code&gt; &lt;del datetime=""&gt; &lt;em&gt; &lt;i&gt; &lt;q cite=""&gt; &lt;s&gt; &lt;strike&gt; &lt;strong&gt; </code></p><p class="comment-form-author"><label for="author">Name</label> <span class="required">*</span><input id="author" name="author" type="text" value="" size="30"></p>
+<p class="comment-form-email"><label for="email">Email</label> <span class="required">*</span><input id="email" name="email" type="text" value="" size="30"></p>
+<p class="comment-form-url"><label for="url">Website</label><input id="url" name="url" type="text" value="" size="30"></p>
+<p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Post Comment"> <input type="hidden" name="comment_post_ID" value="909312" id="comment_post_ID">
+<input type="hidden" name="comment_parent" id="comment_parent" value="0">
+</p><p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="cfefb99e86"></p><script type="text/javascript">var RecaptchaOptions = {theme : "blackglass"};</script><script type="text/javascript" src="./TDD and the SOLID principles (Part 5 – ISP) _ Arnon Axelrod&#39;s Blog_files/challenge"></script>
+
+	<noscript>
+  		<iframe src="http://www.google.com/recaptcha/api/noscript?k=6Ld4OuwSAAAAAC2pOGX1-HLYusMoy9UuR5_I91Eo" height="300" width="500" frameborder="0"></iframe><br/>
+  		<textarea name="recaptcha_challenge_field" rows="3" cols="40"></textarea>
+  		<input type="hidden" name="recaptcha_response_field" value="manual_challenge"/>
+	</noscript><!-- AVH First Defense Against Spam - WPMU DEV Version version 2.3.2  --><input type="hidden" id="_avh_first_defense_against_spam" name="_avh_first_defense_against_spam" value="4620a46bb8"><p style="display: none;"></p>			<input type="hidden" id="ak_js" name="ak_js" value="1574167532834"></form>
+			</div><!-- #respond -->
+	<div class="clearfix"></div>
+	
+	
+	
+
+</div><!-- #comments .comments-area -->
+	<!--<div class="fb-comments" data-href="http://guideme.co.il/comments" data-colorscheme="The color scheme used in the plugin" data-numposts="5" data-width="The pixel width of the plugin"></div>-->
+
+				
+	
+	</article><!-- #post -->
+				
+				
+						
+	
+
+</section>
+		
+			<div id="secondary" class="widget-area" role="complementary">
+			<aside id="search-2" class="widget widget_search"><form role="search" method="get" id="searchform" class="searchform" action="http://blogs.microsoft.co.il/arnona/">
+				<div>
+					<label class="screen-reader-text" for="s">Search for:</label>
+					<input type="text" value="" name="s" id="s">
+					<input type="submit" id="searchsubmit" value="Search">
+				</div>
+			</form></aside>		<aside id="recent-posts-2" class="widget widget_recent_entries">		<h3 class="widget-title">Recent Posts</h3>		<ul>
+											<li>
+					<a href="http://blogs.microsoft.co.il/arnona/2018/09/27/continuing-my-blog-on-medium-com/">Continuing my blog on Medium.com</a>
+									</li>
+											<li>
+					<a href="http://blogs.microsoft.co.il/arnona/2018/09/26/best-practices-for-choosing-locators-for-selenium/">Best Practices for Choosing Locators for Selenium</a>
+									</li>
+											<li>
+					<a href="http://blogs.microsoft.co.il/arnona/2018/07/10/my-book-complete-guide-to-test-automation-is-due-in-september/">My book "Complete Guide to Test Automation" is due in September</a>
+									</li>
+											<li>
+					<a href="http://blogs.microsoft.co.il/arnona/2017/03/06/selenium-in-depth-the-demos/">Selenium in Depth – the demos</a>
+									</li>
+											<li>
+					<a href="http://blogs.microsoft.co.il/arnona/2016/11/09/writing-maintainable-automated-test-and-infrastructure-with-live-video-recording/">Writing maintainable automated test and infrastructure – With live video recording!</a>
+									</li>
+					</ul>
+		</aside><aside id="recent-comments-2" class="widget widget_recent_comments"><h3 class="widget-title">Recent Comments</h3><ul id="recentcomments"><li class="recentcomments"><span class="comment-author-link">Nishant Shah</span> on <a href="http://blogs.microsoft.co.il/arnona/2016/01/03/keeping-an-active-desktop-session/#comment-2829242">Keeping an active desktop session</a></li><li class="recentcomments"><span class="comment-author-link">Nishant Shah</span> on <a href="http://blogs.microsoft.co.il/arnona/2016/01/03/keeping-an-active-desktop-session/#comment-2829241">Keeping an active desktop session</a></li><li class="recentcomments"><span class="comment-author-link">Milan Zeleznik</span> on <a href="http://blogs.microsoft.co.il/arnona/2016/01/03/keeping-an-active-desktop-session/#comment-2829240">Keeping an active desktop session</a></li><li class="recentcomments"><span class="comment-author-link">warren</span> on <a href="http://blogs.microsoft.co.il/arnona/2016/01/03/keeping-an-active-desktop-session/#comment-2829239">Keeping an active desktop session</a></li><li class="recentcomments"><span class="comment-author-link">Arnon Axelrod</span> on <a href="http://blogs.microsoft.co.il/arnona/2016/01/03/keeping-an-active-desktop-session/#comment-2829237">Keeping an active desktop session</a></li></ul></aside><aside id="archives-2" class="widget widget_archive"><h3 class="widget-title">Archives</h3>		<ul>
+			<li><a href="http://blogs.microsoft.co.il/arnona/2018/09/">September 2018</a></li>
+	<li><a href="http://blogs.microsoft.co.il/arnona/2018/07/">July 2018</a></li>
+	<li><a href="http://blogs.microsoft.co.il/arnona/2017/03/">March 2017</a></li>
+	<li><a href="http://blogs.microsoft.co.il/arnona/2016/11/">November 2016</a></li>
+	<li><a href="http://blogs.microsoft.co.il/arnona/2016/07/">July 2016</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2016/04/">April 2016</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2016/03/">March 2016</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2016/01/">January 2016</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2015/10/">October 2015</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2015/08/">August 2015</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2015/04/">April 2015</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2015/01/">January 2015</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2014/09/">September 2014</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2013/12/">December 2013</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2013/05/">May 2013</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2013/02/">February 2013</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2012/12/">December 2012</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2012/09/">September 2012</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2012/07/">July 2012</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2012/05/">May 2012</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2012/04/">April 2012</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2012/03/">March 2012</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2012/02/">February 2012</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2011/12/">December 2011</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2011/11/">November 2011</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2011/10/">October 2011</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2011/09/">September 2011</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2011/08/">August 2011</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2011/07/">July 2011</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2011/06/">June 2011</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2011/03/">March 2011</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2011/02/">February 2011</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2011/01/">January 2011</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2010/12/">December 2010</a></li>
+		<li><a class="a-txt" href="javascript:void(0)">Full Arcive</a></li></ul>
+		</aside><aside id="categories-2" class="widget widget_categories"><h3 class="widget-title">Categories</h3>		<ul>
+	<li class="cat-item cat-item-21027"><a href="http://blogs.microsoft.co.il/arnona/category/continuous-improvement/">Continuous Improvement</a>
+</li>
+	<li class="cat-item cat-item-21026"><a href="http://blogs.microsoft.co.il/arnona/category/test-automation/">Test Automation</a>
+</li>
+		</ul>
+</aside><aside id="meta-2" class="widget widget_meta"><h3 class="widget-title">Meta</h3>			<ul>
+			<li><a href="https://blogs.microsoft.co.il/arnona/wp-login.php?action=register">Register</a></li>			<li><a href="https://blogs.microsoft.co.il/arnona/wp-login.php">Log in</a></li>
+			<li><a href="http://blogs.microsoft.co.il/arnona/feed/">Entries <abbr title="Really Simple Syndication">RSS</abbr></a></li>
+			<li><a href="http://blogs.microsoft.co.il/arnona/comments/feed/">Comments <abbr title="Really Simple Syndication">RSS</abbr></a></li>
+			<li><a href="https://wordpress.org/" title="Powered by WordPress, state-of-the-art semantic personal publishing platform.">WordPress.org</a></li>			</ul>
+			</aside>			<aside class="widget mrg">
+		
+			<div class="moposts">
+			<h3 class="widget-title"> Additional Posts </h3>
+								  <a href="http://blogs.microsoft.co.il/arnona/2018/09/27/continuing-my-blog-on-medium-com/" class="latest_art">
+					<div class="la-date">September 27, 2018</div>
+					<h4>Continuing my blog on Medium.com</h4>
+		
+                    <p>An era has come to an end. It’s time to move on to a new and modern blogging website. My next blog posts will be published on&nbsp;https://medium.com/@arnonaxelrod Happy reading!</p>
+			      </a>
+								  <a href="http://blogs.microsoft.co.il/arnona/2018/09/26/best-practices-for-choosing-locators-for-selenium/" class="latest_art">
+					<div class="la-date">September 26, 2018</div>
+					<h4>Best Practices for Choosing Locators for Selenium</h4>
+		
+                    <p>A question that comes often, especially by folks that are new to Selenium, is what are the best practices to use when choosing a locator for an element. In other cases, people just have bad habits and don’t even think to ask this question, but they encounter instabilities or maintenance problems, without knowing that they […]</p>
+			      </a>
+								  <a href="http://blogs.microsoft.co.il/arnona/2018/07/10/my-book-complete-guide-to-test-automation-is-due-in-september/" class="latest_art">
+					<div class="la-date">July 10, 2018</div>
+					<h4>My book "Complete Guide to Test Automation" is due in September</h4>
+		
+                    <p>Update: The book is available at Amazon, or directly through Apress. According to the last time I’ve checked, Amazon had a better price a hard copy, but had no option for a soft copy, while through Apress you can order either a hard copy or a soft copy. I’m very proud to let you know […]</p>
+			      </a>
+								</div>
+				
+				</aside>
+		</div><!-- #secondary -->
+	</div>
+	</div>
+
+	<footer class="footer_main clearfix">
+	<section class="wrapper clearfix">
+		<article id="first_fl" class="footer_list">
+		<h3>משאבים לקהילת המפתחים</h3>
+			<div class="menu-footer1-container">
+				<ul id="menu-footer-menu-2">
+				<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://blogs.microsoft.co.il/msdn" title="MSDN בלוג" target="_blank">בלוג MSDN</a></li>
+				<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://www.microsoft.com/israel/msdn/pulse/" title="ניוזלטר  MSDN" target="_blank">ניוזלטר  MSDN</a></li>
+				<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="https://www.facebook.com/msdnisrael" title="MSDN בפייסבוק" target="_blank">בפייסבוק MSDN</a></li>
+				<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://www.youtube.com/channel/UCp6wuFkya3jOETs_nM7z3Fw?feature=watch" target="_blank">יוטיוב  MSDN</a></li>
+				<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://www.microsoftvirtualacademy.com/" target="_blank">האקדמיה הוירטואלית</a></li>
+				<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://msdn.microsoft.com/en-us/evalcenter/default" target="_blank">התנסות חינם</a></li>
+				<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://www.microsoft.com/israel/4steps/" target="_blank">אתר פיתוח אפליקציות</a></li>
+				</ul>
+			</div>
+		</article>
+			<article id="sec_fl" class="footer_list">
+		<h3>משאבים לקהילת IT</h3>
+				<ul id="menu-footer-menu-2">
+				<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://blogs.microsoft.co.il/technet" title="TechNet בלוג" target="_blank">בלוג TechNet </a></li>
+				<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://www.microsoft.com/israel/technetflash/Prev_vers/index.htm" target="_blank">ניוזלטר  TechNet </a></li>
+				<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="https://www.facebook.com/technetil" title="TechNet בפייסבוק" target="_blank">בפייסבוק TechNet</a></li>
+				<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://www.youtube.com/user/TechNetIsrael/videos" target="_blank">יוטיוב  TechNet</a></li>
+								<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://www.microsoftvirtualacademy.com/" target="_blank">האקדמיה הוירטואלית</a></li>
+				<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://technet.microsoft.com/en-us/evalcenter/default" target="_blank">התנסות חינם</a></li>
+				</ul>
+			</article>
+			<article id="thrd_fl" class="footer_list">
+		<h3>משאבים כללים </h3>
+					<ul id="menu-footer-menu-2">
+						<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://www.microsoft.com/he-il/default.aspx" target="_blank" title="אתר מיקרוסופט ישראל">אתר מיקרוסופט ישראל</a></li>
+						<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://www.facebook.com/microsoftisrael" target="_blank" title="מיקרוסופט ישראל בפייסבוק">מיקרוסופט ישראל בפייסבוק</a></li>
+						<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://social.msdn.microsoft.com/Forums/he-il/categories" target="_blank" title="&gt;אתר הפורומים">אתר הפורומים</a></li>
+						<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://www.microsoft.com/israel/communities/usergroups/default.aspx" target="_blank" title="&gt;קבוצות משתמשים">קבוצות משתמשים</a></li>
+						<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://www.microsoft.com/israel/traincert/" target="_blank" title="הדרכות והסמכות מיקרוסופט">הדרכות והסמכות מיקרוסופט</a></li>
+						<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="https://msevents.microsoft.com/CUI/default.aspx?culture=he-IL" target="_blank">אירועים </a></li>
+					
+					<!--
+					<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://blogs.microsoft.co.il/סימנים-מסחריים/" title=" סימנים מסחריים"> סימנים מסחריים</a></li>
+				<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://blogs.microsoft.co.il/תנאי-שימוש/" title="תנאי שימוש">תנאי שימוש</a></li>
+-->
+				</ul>	</article>
+		</section>
+		<section class="sfooter">
+                <div class="content">
+                    <div class="footer-bottom">                        
+                        <ul class="legal">
+                            <li><a href="http://choice.microsoft.com/">אודות הפרסומות שלנו</a></li>
+                            <li><a href="http://www.microsoft.com/About/Legal/EN/US/IntellectualProperty/Trademarks/EN-US.aspx">סימנים מסחריים</a></li>
+                            <li><a href="http://www.microsoft.com/en-us/legal/intellectualproperty/copyright/default.aspx">תנאי השימוש</a></li>
+                            <li><a href="http://go.microsoft.com/fwlink/?LinkId=248681">הצהרת פרטיות</a></li>
+                        </ul>
+                        <div class="footer-copyright">
+                            <a href="http://www.microsoft.com/">
+                                <img alt="Microsoft" src="./TDD and the SOLID principles (Part 5 – ISP) _ Arnon Axelrod&#39;s Blog_files/microsoft-logo-heb.png">
+                            </a><span>© 2014 Microsoft</span>
+                        </div>
+                    </div>
+                </div>
+</section>
+	</footer><!-- #colophon -->
+    <script>
+        (function (window) {
+            var rSide = document.getElementById("blog_post_info");
+            var lSide = document.getElementById("secondary");
+			
+			setTimeout(function(){
+				rSide = document.getElementById("blog_post_info");
+				lSide = document.getElementById("secondary");
+				if (lSide.offsetHeight > rSide.offsetHeight) {
+					rSide.style.minHeight = lSide.offsetHeight + "px";
+				}
+			},1000);
+
+            window.onresize = function () {
+                if (lSide.offsetHeight > rSide.offsetHeight) {
+                    rSide.style.minHeight = lSide.offsetHeight + "px";
+                }
+            }
+        })(window);
+
+
+    </script>
+	
+<!-- Do Not Remove - Turn Tracking Beacon Code - Do Not Remove -->
+<!-- Advertiser Name : microsoft -->
+<!-- Beacon Name : Microsoft_ blogs general -->
+<!-- START OF WEDCS TAG -->
+<script type="text/javascript">
+    var varSegmentation = 0;
+    var varClickTracking = 1;
+    var varCustomerTracking = 1;
+    var varAutoFirePV = 1;
+    var Route = "LE020";
+    document.write("<script type='text/javascript' src='" +
+    (window.location.protocol) + "//c.microsoft.com/ms.js'" + "'><\/script>");
+</script><script type="text/javascript" src="http://c.microsoft.com/ms.js" '=""></script>
+<noscript>
+    <img alt="" width="1" height="1" src="http://c.microsoft.com/trans_pixel.aspx" />
+</noscript>
+<!-- END OF WEDCS TAG -->
+
+
+
+
+
+<!-- If Beacon is placed on a Transaction or Lead Generation based page, please populate the turn_client_track_id with your order/confirmation ID -->
+<script type="text/javascript">
+  turn_client_track_id = "";
+</script>
+<script type="text/javascript" src="./TDD and the SOLID principles (Part 5 – ISP) _ Arnon Axelrod&#39;s Blog_files/beacon_call.js.download">
+</script><img height="1" width="1" border="0" src="./TDD and the SOLID principles (Part 5 – ISP) _ Arnon Axelrod&#39;s Blog_files/beacon">
+<noscript>
+  <img border="0" src="http://r.turn.com/r/beacon?b2=PGyOFcFmMNXjqLZWhsqf0IYBbGja1CD2b3Qxz0EXcZ4jZElP3T1utc_BawhZaoxwRafeYDFgKVEXkxLRf3dk_A&cid=">
+</noscript>
+<!-- End Turn Tracking Beacon Code Do Not Remove -->
+
+<script>
+(function() { // Redistats, track version 1.0
+	var global_id = 147;
+	var property_id = 1346;
+	var url = encodeURIComponent(window.location.href.split('#')[0]);
+	var referrer = encodeURIComponent(document.referrer);
+	var x = document.createElement('script'), s = document.getElementsByTagName('script')[0];
+	x.src = '//redistats.com/track.js?gid='+global_id+'&pid='+property_id+'&url='+url+'&referrer='+referrer;
+	s.parentNode.insertBefore(x, s);
+})();
+</script><script type="text/javascript" src="./TDD and the SOLID principles (Part 5 – ISP) _ Arnon Axelrod&#39;s Blog_files/comment-reply.min.js.download"></script>
+<script type="text/javascript" src="./TDD and the SOLID principles (Part 5 – ISP) _ Arnon Axelrod&#39;s Blog_files/wp-embed.min.js.download"></script>
+<script async="async" type="text/javascript" src="./TDD and the SOLID principles (Part 5 – ISP) _ Arnon Axelrod&#39;s Blog_files/form.js.download"></script>
+
+<iframe scrolling="no" frameborder="0" allowtransparency="true" src="./TDD and the SOLID principles (Part 5 – ISP) _ Arnon Axelrod&#39;s Blog_files/widget_iframe.d942dbac55d395b6a752976f272a24f6.html" title="Twitter settings iframe" style="display: none;"></iframe></body></html>

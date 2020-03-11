@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<!-- saved from url=(0087)http://blogs.microsoft.co.il/arnona/2011/11/01/tdd-and-the-solid-principles-part-6-dip/ -->
+<html lang="en-US"><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="initial-scale=1.0, width=device-width">
+<title>TDD and the SOLID principles (Part 6 – DIP) | Arnon Axelrod's Blog</title>
+<link rel="profile" href="http://gmpg.org/xfn/11">
+<link rel="pingback" href="http://blogs.microsoft.co.il/arnona/xmlrpc.php">
+
+
+<!--[if lt IE 9]>
+           <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+           <script>window.html5 || document.write('<script src="http://blogs.microsoft.co.il/arnona/wp-content/themes/MS_englishjs/vendor/html5shiv.js"><\/script>')</script>
+    <![endif]-->
+			 
+ <script src="./TDD and the SOLID principles (Part 6 – DIP) _ Arnon Axelrod&#39;s Blog_files/track.js.download"></script><script src="./TDD and the SOLID principles (Part 6 – DIP) _ Arnon Axelrod&#39;s Blog_files/all.js.download" async="" crossorigin="anonymous"></script><script id="twitter-wjs" src="./TDD and the SOLID principles (Part 6 – DIP) _ Arnon Axelrod&#39;s Blog_files/widgets.js.download"></script><script id="facebook-jssdk" src="./TDD and the SOLID principles (Part 6 – DIP) _ Arnon Axelrod&#39;s Blog_files/all.js(1).download"></script><script src="./TDD and the SOLID principles (Part 6 – DIP) _ Arnon Axelrod&#39;s Blog_files/jquery.min.js.download"></script>
+ <script src="./TDD and the SOLID principles (Part 6 – DIP) _ Arnon Axelrod&#39;s Blog_files/app.js.download"></script>
+<link rel="dns-prefetch" href="http://s.w.org/">
+<link rel="alternate" type="application/rss+xml" title="Arnon Axelrod&#39;s Blog » Feed" href="http://blogs.microsoft.co.il/arnona/feed/">
+<link rel="alternate" type="application/rss+xml" title="Arnon Axelrod&#39;s Blog » Comments Feed" href="http://blogs.microsoft.co.il/arnona/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="Arnon Axelrod&#39;s Blog » TDD and the SOLID principles (Part 6 – DIP) Comments Feed" href="http://blogs.microsoft.co.il/arnona/2011/11/01/tdd-and-the-solid-principles-part-6-dip/feed/">
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/11\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/11\/svg\/","svgExt":".svg","source":{"concatemoji":"http:\/\/blogs.microsoft.co.il\/arnona\/wp-includes\/js\/wp-emoji-release.min.js?ver=5.0.2"}};
+			!function(a,b,c){function d(a,b){var c=String.fromCharCode;l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,a),0,0);var d=k.toDataURL();l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,b),0,0);var e=k.toDataURL();return d===e}function e(a){var b;if(!l||!l.fillText)return!1;switch(l.textBaseline="top",l.font="600 32px Arial",a){case"flag":return!(b=d([55356,56826,55356,56819],[55356,56826,8203,55356,56819]))&&(b=d([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]),!b);case"emoji":return b=d([55358,56760,9792,65039],[55358,56760,8203,9792,65039]),!b}return!1}function f(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var g,h,i,j,k=b.createElement("canvas"),l=k.getContext&&k.getContext("2d");for(j=Array("flag","emoji"),c.supports={everything:!0,everythingExceptFlag:!0},i=0;i<j.length;i++)c.supports[j[i]]=e(j[i]),c.supports.everything=c.supports.everything&&c.supports[j[i]],"flag"!==j[i]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[j[i]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(h=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",h,!1),a.addEventListener("load",h,!1)):(a.attachEvent("onload",h),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),g=c.source||{},g.concatemoji?f(g.concatemoji):g.wpemoji&&g.twemoji&&(f(g.twemoji),f(g.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script><script src="./TDD and the SOLID principles (Part 6 – DIP) _ Arnon Axelrod&#39;s Blog_files/wp-emoji-release.min.js.download" type="text/javascript" defer=""></script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel="stylesheet" id="wp-block-library-css" href="./TDD and the SOLID principles (Part 6 – DIP) _ Arnon Axelrod&#39;s Blog_files/style.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="microsoft-hebrew-normalize-css" href="./TDD and the SOLID principles (Part 6 – DIP) _ Arnon Axelrod&#39;s Blog_files/normalize.css" type="text/css" media="all">
+<link rel="stylesheet" id="MS_english-style-css" href="./TDD and the SOLID principles (Part 6 – DIP) _ Arnon Axelrod&#39;s Blog_files/style.css" type="text/css" media="all">
+<link rel="stylesheet" id="ms_global_search_css_style-css" href="./TDD and the SOLID principles (Part 6 – DIP) _ Arnon Axelrod&#39;s Blog_files/style(1).css" type="text/css" media="all">
+<link rel="https://api.w.org/" href="http://blogs.microsoft.co.il/arnona/wp-json/">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://blogs.microsoft.co.il/arnona/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://blogs.microsoft.co.il/arnona/wp-includes/wlwmanifest.xml"> 
+<link rel="prev" title="TDD and the SOLID principles (Part 5 – ISP)" href="http://blogs.microsoft.co.il/arnona/2011/10/01/tdd-and-the-solid-principles-part-5-isp/">
+<link rel="next" title="TDD and the SOLID principles (Part 7 – Conclusion)" href="http://blogs.microsoft.co.il/arnona/2011/11/20/tdd-and-the-solid-principles-part-7-conclusion/">
+<meta name="generator" content="WordPress 5.0.2">
+<link rel="canonical" href="http://blogs.microsoft.co.il/arnona/2011/11/01/tdd-and-the-solid-principles-part-6-dip/">
+<link rel="shortlink" href="http://blogs.microsoft.co.il/arnona/?p=924102">
+<link rel="alternate" type="application/json+oembed" href="http://blogs.microsoft.co.il/arnona/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fblogs.microsoft.co.il%2Farnona%2F2011%2F11%2F01%2Ftdd-and-the-solid-principles-part-6-dip%2F">
+<link rel="alternate" type="text/xml+oembed" href="http://blogs.microsoft.co.il/arnona/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fblogs.microsoft.co.il%2Farnona%2F2011%2F11%2F01%2Ftdd-and-the-solid-principles-part-6-dip%2F&amp;format=xml">
+
+<!-- ADD TO HEADER - START -->
+
+<!-- ADD TO HEADER - END -->
+		<style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style>
+		<style type="text/css" id="syntaxhighlighteranchor"></style>
+<meta data-pso-pv="1.2.1" data-pso-pt="singlePost" data-pso-th="91ad9b44edb2998a2b2273710387f6a2">
+<!--Wise pixel Microsoft Blogs-->
+<script language="JavaScript1.1" src="./TDD and the SOLID principles (Part 6 – DIP) _ Arnon Axelrod&#39;s Blog_files/js"></script><iframe src="./TDD and the SOLID principles (Part 6 – DIP) _ Arnon Axelrod&#39;s Blog_files/iframe.html" id="mm_sync_back_ground" style="visibility: hidden; display: none;"></iframe>
+
+<style type="text/css">.fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_reposition{overflow:hidden;position:relative}.fb_invisible{display:none}.fb_reset{background:none;border:0;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:"lucida grande", tahoma, verdana, arial, sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:right;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}@keyframes fb_transform{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}.fb_animate{animation:fb_transform .3s forwards}
+.fb_dialog{background:rgba(82, 82, 82, .7);position:absolute;top:-10000px;z-index:10001}.fb_dialog_advanced{border-radius:8px;padding:10px}.fb_dialog_content{background:#fff;color:#373737}.fb_dialog_close_icon{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;cursor:pointer;display:block;height:15px;position:absolute;left:18px;top:17px;width:15px}.fb_dialog_mobile .fb_dialog_close_icon{right:5px;left:auto;top:5px}.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}.fb_dialog_close_icon:hover{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent}.fb_dialog_close_icon:active{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent}.fb_dialog_iframe{line-height:0}.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #365899;color:#fff;font-size:14px;font-weight:bold;margin:0}.fb_dialog_content .dialog_title>span{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yd/r/Cou7n-nqK52.gif) no-repeat 5px 50%;float:right;padding:5px 26px 7px 0}body.fb_hidden{height:100%;right:0;margin:0;overflow:visible;position:absolute;top:-10000px;transform:none;width:100%}.fb_dialog.fb_dialog_mobile.loading{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/ya/r/3rhSv5V8j3o.gif) white no-repeat 50% 50%;min-height:100%;min-width:100%;overflow:hidden;position:absolute;top:0;z-index:10001}.fb_dialog.fb_dialog_mobile.loading.centered{background:none;height:auto;min-height:initial;min-width:initial;width:auto}.fb_dialog.fb_dialog_mobile.loading.centered #fb_dialog_loader_spinner{width:100%}.fb_dialog.fb_dialog_mobile.loading.centered .fb_dialog_content{background:none}.loading.centered #fb_dialog_loader_close{clear:both;color:#fff;display:block;font-size:18px;padding-top:20px}#fb-root #fb_dialog_ipad_overlay{background:rgba(0, 0, 0, .4);bottom:0;right:0;min-height:100%;position:absolute;left:0;top:0;width:100%;z-index:10000}#fb-root #fb_dialog_ipad_overlay.hidden{display:none}.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}.fb_dialog_mobile .fb_dialog_iframe{position:sticky;top:0}.fb_dialog_content .dialog_header{background:linear-gradient(from(#738aba), to(#2c4987));border-bottom:1px solid;border-color:#043b87;box-shadow:white 0 1px 1px -1px inset;color:#fff;font:bold 14px Helvetica, sans-serif;text-overflow:ellipsis;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0;vertical-align:middle;white-space:nowrap}.fb_dialog_content .dialog_header table{height:43px;width:100%}.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-right:5px;vertical-align:middle;width:60px}.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-left:5px;vertical-align:middle;width:60px}.fb_dialog_content .touchable_button{background:linear-gradient(from(#4267B2), to(#2a4887));background-clip:padding-box;border:1px solid #29487d;border-radius:3px;display:inline-block;line-height:18px;margin-top:3px;max-width:85px;padding:4px 12px;position:relative}.fb_dialog_content .dialog_header .touchable_button input{background:none;border:none;color:#fff;font:bold 12px Helvetica, sans-serif;margin:2px -12px;padding:2px 6px 3px 6px;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:bold;line-height:18px;text-align:center;vertical-align:middle}.fb_dialog_content .dialog_content{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/y9/r/jKEcVPZFk-2.gif) no-repeat 50% 50%;border:1px solid #4a4a4a;border-bottom:0;border-top:0;height:150px}.fb_dialog_content .dialog_footer{background:#f5f6f7;border:1px solid #4a4a4a;border-top-color:#ccc;height:40px}#fb_dialog_loader_close{float:right}.fb_dialog.fb_dialog_mobile .fb_dialog_close_button{text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}#fb_dialog_loader_spinner{animation:rotateSpinner 1.2s linear infinite;background-color:transparent;background-image:url(https://static.xx.fbcdn.net/rsrc.php/v3/yD/r/t-wz8gw1xG1.png);background-position:50% 50%;background-repeat:no-repeat;height:24px;width:24px}@keyframes rotateSpinner{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+.fb_iframe_widget{display:inline-block;position:relative}.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}.fb_iframe_widget iframe{position:absolute}.fb_iframe_widget_fluid_desktop,.fb_iframe_widget_fluid_desktop span,.fb_iframe_widget_fluid_desktop iframe{max-width:100%}.fb_iframe_widget_fluid_desktop iframe{min-width:220px;position:relative}.fb_iframe_widget_lift{z-index:1}.fb_iframe_widget_fluid{display:inline}.fb_iframe_widget_fluid span{width:100%}</style></head>
+<body class="post-template-default single single-post postid-924102 single-format-standard single-author " style="">
+<div id="fb-root" class=" fb_reset"><div style="position: absolute; top: -10000px; width: 0px; height: 0px;"><div><iframe name="fb_xdm_frame_https" id="fb_xdm_frame_https" aria-hidden="true" title="Facebook Cross Domain Communication Frame" tabindex="-1" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" allow="encrypted-media" src="./TDD and the SOLID principles (Part 6 – DIP) _ Arnon Axelrod&#39;s Blog_files/xd_arbiter.html" style="border: none;"></iframe></div><div></div></div></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/he_IL/all.js#xfbml=1&appId=171021386433126";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+	
+
+<div id="top-bar" class="wrapper clearfix">
+        <a href="http://blogs.microsoft.co.il/" id="blogs-logo" class="ir">Israel Blogging Community</a>
+        <div id="user-options">
+                            
+            <a href="http://blogs.microsoft.co.il/arnona/wp-admin">Sign in</a>
+                      </div>
+</div>
+  <header>
+      
+		
+        <div id="header-banner" style="background-image: url(http://blogs.microsoft.co.il/arnona/wp-content/uploads/sites/1346/2015/01/cropped-04621.jpg)">
+            <div class="wrapper">
+                <h1 id="blog-title">
+                     
+                    <span class="sub-title">Arnon Axelrod's Blog</span>
+                </h1>
+                            </div>
+        </div>
+        <div id="header-nav" class="clearfix">
+            <div class="wrapper">
+                <div id="user-avatar">
+                    <img src="./TDD and the SOLID principles (Part 6 – DIP) _ Arnon Axelrod&#39;s Blog_files/d3548b43b3f07144c336ab8378da3ecd.jpeg" alt="">
+                </div>
+                <div id="header-nav-box">
+                    <a href="http://blogs.microsoft.co.il/arnona/2011/11/01/tdd-and-the-solid-principles-part-6-dip/#" class="ir" id="m-nav">menu</a>
+                    <nav id="heder-nav-warpper">
+                        <a href="http://blogs.microsoft.co.il/arnona">Home page</a>
+
+                                        </nav>
+                    <div id="header-nav-icons">
+                                                                        <a href="https://www.linkedin.com/in/arnonaxelrod" target="_blank" class="ir icon-in">linkedin</a>
+                                                <a href="http://blogs.microsoft.co.il/arnona/rss2" target="_blank" class="ir icon-rss">RSS</a>
+                    </div>
+                </div>
+                <script>
+                    (function (window) {
+                        if (!document.addEventListener)
+                            return;
+
+                        var navBtn = document.getElementById("m-nav");
+                        var nav = document.getElementById("heder-nav-warpper");
+
+                        navBtn.addEventListener('click', function (e) {
+                            e.preventDefault();
+                            var display = window.getComputedStyle(nav, null).getPropertyValue("display");
+                            if (display === 'none')
+                                nav.style.display = 'block';
+                            else
+                                nav.style.display = 'none';
+
+                        }, false);
+
+                        window.addEventListener('resize', function () {
+                            nav.style.display = "";
+                        }, false);
+
+                    })(window);
+                </script>
+            </div>
+        </div>
+
+    </header>
+<!-- #masthead -->
+ <div id="main" role="main" class="clearfix">
+	<div id="primary_blog" class="wrapper clearfix">
+        <section id="blog_post_info">			
+			<script>
+jQuery(document).ready(function(){
+jQuery('.bp-add-comment').click(function(event){
+event.preventDefault();
+jQuery('#respond').show();
+});
+});
+</script>
+	<article id="post-924102" class="bp clearfix post-924102 post type-post status-publish format-standard hentry tag-bob-martin tag-clean-code tag-dependency-inversion-principle tag-dev tag-dip tag-interface-segregation-principle tag-ioc-containers tag-isp tag-lsp tag-mef tag-object-oriented tag-ocp tag-open-close-principle tag-separation-of-concerns tag-single-responsibility-principle tag-solid tag-srp tag-tdd tag-unit-tests">
+		         
+			            <h2 class="bp-title">
+                <a href="http://blogs.microsoft.co.il/arnona/2011/11/01/tdd-and-the-solid-principles-part-6-dip/">TDD and the SOLID principles (Part 6 – DIP)</a>
+            </h2>
+            <h3 class="bp-date">November 1, 2011</h3>
+            <div class="clearfix">
+            <div class="bp-thumb clearfix">
+                                                <div class="bp-social_i">
+                            <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blogs.microsoft.co.il/arnona/2011/11/01/tdd-and-the-solid-principles-part-6-dip/" class="ir icon-fb">facebook</a>
+                            <a target="_blank" href="http://www.linkedin.com/shareArticle?mini=true&amp;url=http://blogs.microsoft.co.il/arnona/2011/11/01/tdd-and-the-solid-principles-part-6-dip/&amp;title=TDD%20and%20the%20SOLID%20principles%20(Part%206%20%E2%80%93%20DIP)&amp;summary=%3Cp%3EThis%20is%20the%206th%20post%20in%20the%20series%20about%20TDD%20and%20its%20relationships%20with%20the%20SOLID%20principles.%20Here%E2%80%99s%20the%20table%20of%20content%20for%20the%20series:%20Pat%201%20%E2%80%93%20introduction%20Part%202%20%E2%80%93%20SRP%20Part%203%20%E2%80%93%20OCP%20Part%204%20%E2%80%93%20LSP%20Part%205%20%E2%80%93%20ISP%20Part%206%20%E2%80%93%20DIP%20(this%20post)%20Part%207%20%E2%80%93%20Conclusion%20[%E2%80%A6]%3C/p%3E" class="ir icon-in">linkedin</a>
+                            <a target="_blank" href="https://twitter.com/share" class="tweet ir icon-twitter" data-lang="he">twitter</a>
+                            <a href="mailto:?subject=TDD%20and%20the%20SOLID%20principles%20(Part%206%20%E2%80%93%20DIP)&amp;body=Check%20out%20this%20post%20http://blogs.microsoft.co.il/arnona/2011/11/01/tdd-and-the-solid-principles-part-6-dip/" class="ir icon-email">email</a>
+                        </div>
+              </div>
+             </div>
+	
+				<div class="clearfix">
+			        <div class="tagsx">tags:   <a href="http://blogs.microsoft.co.il/arnona/tag/bob-martin/" rel="tag">Bob Martin</a>, <a href="http://blogs.microsoft.co.il/arnona/tag/clean-code/" rel="tag">Clean Code</a>, <a href="http://blogs.microsoft.co.il/arnona/tag/dependency-inversion-principle/" rel="tag">Dependency Inversion Principle</a>, <a href="http://blogs.microsoft.co.il/arnona/tag/dev/" rel="tag">DEV</a>, <a href="http://blogs.microsoft.co.il/arnona/tag/dip/" rel="tag">DIP</a>, <a href="http://blogs.microsoft.co.il/arnona/tag/interface-segregation-principle/" rel="tag">Interface Segregation Principle</a>, <a href="http://blogs.microsoft.co.il/arnona/tag/ioc-containers/" rel="tag">IoC Containers</a>, <a href="http://blogs.microsoft.co.il/arnona/tag/isp/" rel="tag">ISP</a>, <a href="http://blogs.microsoft.co.il/arnona/tag/lsp/" rel="tag">LSP</a>, <a href="http://blogs.microsoft.co.il/arnona/tag/mef/" rel="tag">MEF</a>, <a href="http://blogs.microsoft.co.il/arnona/tag/object-oriented/" rel="tag">Object Oriented</a>, <a href="http://blogs.microsoft.co.il/arnona/tag/ocp/" rel="tag">OCP</a>, <a href="http://blogs.microsoft.co.il/arnona/tag/open-close-principle/" rel="tag">Open-Close Principle</a>, <a href="http://blogs.microsoft.co.il/arnona/tag/separation-of-concerns/" rel="tag">Separation of Concerns</a>, <a href="http://blogs.microsoft.co.il/arnona/tag/single-responsibility-principle/" rel="tag">Single Responsibility Principle</a>, <a href="http://blogs.microsoft.co.il/arnona/tag/solid/" rel="tag">SOLID</a>, <a href="http://blogs.microsoft.co.il/arnona/tag/srp/" rel="tag">SRP</a>, <a href="http://blogs.microsoft.co.il/arnona/tag/tdd/" rel="tag">TDD</a>, <a href="http://blogs.microsoft.co.il/arnona/tag/unit-tests/" rel="tag">Unit Tests</a></div>
+				    <div class="cmts"> no comments </div>
+			    </div>
+		
+						
+		<!-- .entry-header -->
+
+				<div class="contx entry-content clearfix">
+			<p>This is the 6<sup>th</sup> post in the series about TDD and its relationships with the SOLID principles. Here’s the table of content for the series:</p>
+<p><a href="http://blogs.microsoft.co.il/blogs/arnona/archive/2011/08/26/tdd-and-the-solid-principles-part-1-introduction.aspx">Pat 1 – introduction</a></p>
+<p><a href="http://blogs.microsoft.co.il/blogs/arnona/archive/2011/08/26/tdd-and-the-solid-principles-part-2-srp.aspx">Part 2 – SRP</a></p>
+<p><a href="http://blogs.microsoft.co.il/blogs/arnona/archive/2011/09/07/tdd-and-the-solid-principles-part-3-ocp.aspx">Part 3 – OCP</a></p>
+<p><a href="http://blogs.microsoft.co.il/blogs/arnona/archive/2011/09/22/tdd-and-the-solid-principles-part-4-lsp.aspx">Part 4 – LSP</a></p>
+<p><a href="http://blogs.microsoft.co.il/blogs/arnona/archive/2011/10/01/tdd-and-the-solid-principles-part-4-isp.aspx">Part 5 – ISP</a></p>
+<p>Part 6 – DIP (this post)</p>
+<p><a href="http://blogs.microsoft.co.il/blogs/arnona/archive/2011/11/20/tdd-and-the-solid-principles-part-7-conclusion.aspx">Part 7 – Conclusion</a></p>
+<h2>DIP – Dependency Inversion Principle</h2>
+<p><i>Depend on abstractions, not on concretions.</i></p>
+<p>This principle states that:</p>
+<p align="center"><b><i>A. </i></b><b><i>H</i></b><b><i>IGH LEVEL MODULES SHOULD NOT DEPEND UPON LOW LEVEL MODULES</i></b><b><i>. B</i></b><b><i>OTH SHOULD DEPEND UPON ABSTRACTIONS</i></b><b><i>. </i></b></p>
+<p align="center"><b><i>B. </i></b><b><i>A</i></b><b><i>BSTRACTIONS SHOULD NOT DEPEND UPON DETAILS</i></b><b><i>. D</i></b><b><i>ETAILS SHOULD DEPEND UPON ABSTRACTIONS</i></b><b><i>.</i></b></p>
+<p align="justify">This principle is perhaps the most important principle when doing TDD, and the one that greatly improves the design of code written that way. Obviously you can adhere to this principle without doing TDD, but TDD really makes it straight-forward. Without TDD (or at least high unit-test coverage) this principle is often neglected because it’s a bit awkward and counter-intuitive to write your code this way.</p>
+<p align="justify">What this principle means is that in most cases, your classes (and interfaces) shouldn’t depend upon other classes, but only (or mainly) on interfaces. The great benefit of this is that your entire application becomes modular and loosely-coupled, and every class can be easily reused in different contexts.</p>
+<p align="justify">The reason that this principle is crucial to TDD is that if you don’t use abstractions, the tests become more of an end-to-end tests rather than unit tests. For example, if you’re writing a Business Logic method that also saves some state to the database, you must use a real database in order to tests it. This makes the tests much more fragile (less maintainable) and also slow.</p>
+<p align="justify">On the other hand, when doing TDD, it is easier to pass mocks instead of the real dependencies to the tested object. In order to be able to pass a mock at the test and a real object at run-time, the object must access it though an interface.</p>
+<h4>Let’s look at an example:</h4>
+<p align="justify">Suppose we need a class that imports customer’s data from an XML file and saves the data to the database. Let’s assume also that we already have a DTO* for the Customer, an XML parser that can read the Customer XML and return the Customer object, and even the CustomerDAO that can take a Customer object and save it to the database. Given all that, our work is pretty easy, and we can implement it like this:</p>
+<p align="justify"><i>* The term DTO stands for Data Transfer Object, and is used to describe a class that is used to describe data (that can be easily transferred) without any logic. DTO classes typically consist only of bunch of properties without methods. In TDD it’s usually considered OK not to test these classes because the only “logic” that can be tested about them is that each property returns what it was set (which if you’re using C# automatic properties you get for free)</i></p>
+<div id="codeSnippetWrapper">
+<div style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: #f4f4f4; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px" id="codeSnippet">
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: white; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum1">   1:</span>&nbsp; </pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: #f4f4f4; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum2">   2:</span> <span style="color: #0000ff">class</span> CustomerImporter</pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: white; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum3">   3:</span> {</pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: #f4f4f4; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum4">   4:</span>     <span style="color: #0000ff">private</span> <span style="color: #0000ff">readonly</span> <span style="color: #0000ff">string</span> _connectionString;</pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: white; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum5">   5:</span>     <span style="color: #0000ff">public</span> CustomerImporter(<span style="color: #0000ff">string</span> connectionString)</pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: #f4f4f4; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum6">   6:</span>     {</pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: white; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum7">   7:</span>         _connectionString = connectionString;</pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: #f4f4f4; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum8">   8:</span>     }</pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: white; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum9">   9:</span>     </pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: #f4f4f4; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum10">  10:</span>     <span style="color: #0000ff">public</span> <span style="color: #0000ff">void</span> Import(<span style="color: #0000ff">string</span> xmlFileName)</pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: white; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum11">  11:</span>     {</pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: #f4f4f4; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum12">  12:</span>         var customerXmlParser = <span style="color: #0000ff">new</span> CustomerXmlParser();</pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: white; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum13">  13:</span>         var customer = customerXmlParser.ParseFromFile(xmlFileName);</pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: #f4f4f4; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum14">  14:</span>         <span style="color: #0000ff">using</span>(var customerDAL = <span style="color: #0000ff">new</span> CustomerDAL(_connectionString))</pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: white; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum15">  15:</span>         {</pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: #f4f4f4; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum16">  16:</span>             customerDB.Save(customer);</pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: white; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum17">  17:</span>         }</pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: #f4f4f4; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum18">  18:</span>     }</pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: white; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum19">  19:</span> }</pre>
+<p><!--CRLF--></p></div>
+</div>
+<p align="justify">Looks ok, isn’t it? Well, it’s ok as long as we don’t need to change anything. However, how reusable is this class? Let’s say that later we’re asked to provide the same functionality in a light-weight version of the same application, which uses files instead of a full-blown database. In this case we’ll need to change the method and replace all references to CustomerDAL to references to CustomerFile.</p>
+<p align="justify">How things would have looked if we were doing TDD?</p>
+<p align="justify">Obviously it’s not a good idea to use a real database and even read from a disk file from a unit-test. So we need to mock both the CustomerDAL and the CustomerXmlParser. Our test would probably look something like this:</p>
+<div id="codeSnippetWrapper">
+<div style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: #f4f4f4; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px" id="codeSnippet">
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: white; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum1">   1:</span> [TestMethod]</pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: #f4f4f4; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum2">   2:</span> <span style="color: #0000ff">public</span> <span style="color: #0000ff">void</span> CustomerImporterShouldImportACustomerFromXmlIntoTheDatabase()</pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: white; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum3">   3:</span> {</pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: #f4f4f4; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum4">   4:</span>     var customerDummy = <span style="color: #0000ff">new</span> Customer { Name = “Arnon”, Email=arnona@e4d.co.il };</pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: white; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum5">   5:</span>     var xmlFile = CreateXmlFileMockFromCustomer(customerDummy);</pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: #f4f4f4; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum6">   6:</span>     var customerDALMock = <span style="color: #0000ff">new</span> CustomerDALMock();</pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: white; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum7">   7:</span>     </pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: #f4f4f4; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum8">   8:</span>     var importer = <span style="color: #0000ff">new</span> CustomerImporter(customerDALMock);</pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: white; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum9">   9:</span>     importer.Import(xmlFile);</pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: #f4f4f4; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum10">  10:</span>     </pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: white; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum11">  11:</span>     var savedCustomers = customerDALMock.GetSavedCustomers();</pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: #f4f4f4; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum12">  12:</span>     Assert.AreEqual(1, savedCustomers.Count());</pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: white; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum13">  13:</span>     Assert.AreEqual(customerDummy, savedCustomers.Single());</pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: #f4f4f4; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum14">  14:</span> }</pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: white; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum15">  15:</span>&nbsp; </pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: #f4f4f4; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum16">  16:</span> <span style="color: #0000ff">private</span> ICustomerFile CreateXmlFileMockFromCustomer(Customer customer)</pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: white; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum17">  17:</span> {</pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: #f4f4f4; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum18">  18:</span>     <span style="color: #0000ff">return</span> <span style="color: #0000ff">new</span> CustomerFileMock(customer);</pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: white; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum19">  19:</span> }</pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: #f4f4f4; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum20">  20:</span>&nbsp; </pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: white; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum21">  21:</span> <span style="color: #0000ff">private</span> <span style="color: #0000ff">class</span> CustomerFileMock : ICustomerFile</pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: #f4f4f4; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum22">  22:</span> {</pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: white; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum23">  23:</span>     <span style="color: #0000ff">private</span> Customer _customer;</pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: #f4f4f4; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum24">  24:</span>&nbsp; </pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: white; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum25">  25:</span>     <span style="color: #0000ff">public</span> CustomerFileMock(Customer customer)</pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: #f4f4f4; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum26">  26:</span>     {</pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: white; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum27">  27:</span>         _customer = customer;</pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: #f4f4f4; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum28">  28:</span>     }</pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: white; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum29">  29:</span> }</pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: #f4f4f4; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum30">  30:</span>&nbsp; </pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: white; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum31">  31:</span> <span style="color: #0000ff">private</span> <span style="color: #0000ff">class</span> CustomerDALMock : ICustomerDAL</pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: #f4f4f4; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum32">  32:</span> {</pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: white; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum33">  33:</span>     <span style="color: #0000ff">public</span> IEnumerable&lt;Customer&gt; GetSavedCustomers</pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: #f4f4f4; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum34">  34:</span>     {</pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: white; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum35">  35:</span>         get { <span style="color: #0000ff">throw</span> <span style="color: #0000ff">new</span> NotImplementedException(); }</pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: #f4f4f4; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum36">  36:</span>     }</pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: white; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum37">  37:</span> }</pre>
+<p><!--CRLF--></p></div>
+</div>
+<p align="justify">Note: if you use some sort of mocking framework (e.g. MS Moles, Moq, RihnoMocks, etc.) This code would be much shorter.</p>
+<p align="justify">Now that we have all the test code in place, let’s add the production code to make it compile:</p>
+<div id="codeSnippetWrapper">
+<div style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: #f4f4f4; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px" id="codeSnippet">
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: white; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum1">   1:</span> <span style="color: #0000ff">public</span> <span style="color: #0000ff">interface</span> ICustomerFile { }</pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: #f4f4f4; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum2">   2:</span>&nbsp; </pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: white; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum3">   3:</span> <span style="color: #0000ff">public</span> <span style="color: #0000ff">interface</span> ICustomerDAL { }</pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: #f4f4f4; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum4">   4:</span>&nbsp; </pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: white; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum5">   5:</span> <span style="color: #0000ff">class</span> CustomerImporter</pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: #f4f4f4; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum6">   6:</span> {</pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: white; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum7">   7:</span>     <span style="color: #0000ff">public</span> CustomerImporter(ICustomerDAL customerDAL)</pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: #f4f4f4; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum8">   8:</span>     {</pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: white; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum9">   9:</span>     }</pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: #f4f4f4; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum10">  10:</span>&nbsp; </pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: white; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum11">  11:</span>     <span style="color: #0000ff">public</span> <span style="color: #0000ff">void</span> Import(ICustomerFile customerFile)</pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: #f4f4f4; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum12">  12:</span>     {</pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: white; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum13">  13:</span>     }</pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: #f4f4f4; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum14">  14:</span> }</pre>
+<p><!--CRLF--></p></div>
+</div>
+<p align="justify">Now the code should compile but the test fails. So let’s fill in the code to make it pass:</p>
+<div id="codeSnippetWrapper">
+<div style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: #f4f4f4; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px" id="codeSnippet">
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: white; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum1">   1:</span> <span style="color: #0000ff">class</span> CustomerImporter</pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: #f4f4f4; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum2">   2:</span> {</pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: white; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum3">   3:</span>     <span style="color: #0000ff">private</span> <span style="color: #0000ff">readonly</span> ICustomerDAL _customerDAL;</pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: #f4f4f4; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum4">   4:</span>&nbsp; </pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: white; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum5">   5:</span>     <span style="color: #0000ff">public</span> CustomerImporter(ICustomerDAL customerDAL)</pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: #f4f4f4; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum6">   6:</span>     {</pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: white; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum7">   7:</span>         _customerDAL = customerDAL;</pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: #f4f4f4; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum8">   8:</span>     }</pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: white; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum9">   9:</span>&nbsp; </pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: #f4f4f4; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum10">  10:</span>     <span style="color: #0000ff">public</span> <span style="color: #0000ff">void</span> Import(ICustomerFile customerFile)</pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: white; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum11">  11:</span>     {</pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: #f4f4f4; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum12">  12:</span>         var customer = customerFile.Read();</pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: white; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum13">  13:</span>         _customerDAL.Save(customer);</pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: #f4f4f4; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum14">  14:</span>     }</pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: white; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum15">  15:</span> }</pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: #f4f4f4; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum16">  16:</span>&nbsp; </pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: white; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum17">  17:</span> <span style="color: #0000ff">public</span> <span style="color: #0000ff">interface</span> ICustomerFile </pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: #f4f4f4; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum18">  18:</span> {</pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: white; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum19">  19:</span>     Customer Read();</pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: #f4f4f4; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum20">  20:</span> }</pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: white; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum21">  21:</span>&nbsp; </pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: #f4f4f4; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum22">  22:</span> <span style="color: #0000ff">public</span> <span style="color: #0000ff">interface</span> ICustomerDAL </pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: white; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum23">  23:</span> {</pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: #f4f4f4; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum24">  24:</span>     <span style="color: #0000ff">void</span> Save(Customer customer);</pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: white; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum25">  25:</span> }</pre>
+<p><!--CRLF--></p></div>
+</div>
+<p align="justify">Now we need to implement the new members in the mocks:</p>
+<div id="codeSnippetWrapper">
+<div style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: #f4f4f4; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px" id="codeSnippet">
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: white; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum1">   1:</span> <span style="color: #0000ff">private</span> <span style="color: #0000ff">class</span> CustomerFileMock : ICustomerFile</pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: #f4f4f4; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum2">   2:</span> {</pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: white; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum3">   3:</span>     <span style="color: #0000ff">private</span> Customer _customer;</pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: #f4f4f4; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum4">   4:</span>&nbsp; </pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: white; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum5">   5:</span>     <span style="color: #0000ff">public</span> CustomerFileMock(Customer customer)</pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: #f4f4f4; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum6">   6:</span>     {</pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: white; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum7">   7:</span>         _customer = customer;</pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: #f4f4f4; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum8">   8:</span>     }</pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: white; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum9">   9:</span>&nbsp; </pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: #f4f4f4; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum10">  10:</span>     <span style="color: #0000ff">public</span> Customer Read()</pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: white; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum11">  11:</span>     {</pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: #f4f4f4; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum12">  12:</span>         <span style="color: #0000ff">return</span> _customer;</pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: white; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum13">  13:</span>     }</pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: #f4f4f4; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum14">  14:</span> }</pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: white; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum15">  15:</span>&nbsp; </pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: #f4f4f4; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum16">  16:</span> <span style="color: #0000ff">private</span> <span style="color: #0000ff">class</span> CustomerDALMock : ICustomerDAL</pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: white; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum17">  17:</span> {</pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: #f4f4f4; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum18">  18:</span>     <span style="color: #0000ff">private</span> List&lt;Customer&gt; _customers = <span style="color: #0000ff">new</span> List&lt;Customer&gt;();</pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: white; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum19">  19:</span>&nbsp; </pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: #f4f4f4; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum20">  20:</span>     <span style="color: #0000ff">public</span> IEnumerable&lt;Customer&gt; GetSavedCustomers</pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: white; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum21">  21:</span>     {</pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: #f4f4f4; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum22">  22:</span>         get { <span style="color: #0000ff">return</span> _customers; }</pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: white; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum23">  23:</span>     }</pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: #f4f4f4; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum24">  24:</span>&nbsp; </pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: white; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum25">  25:</span>     Public Save(Customer customer)</pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: #f4f4f4; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum26">  26:</span>     {</pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: white; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum27">  27:</span>         _customers.Add(customer);</pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: #f4f4f4; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum28">  28:</span>     }</pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: white; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum29">  29:</span> }</pre>
+<p><!--CRLF--></p></div>
+</div>
+<h3><font style="background-color: #00ff00">Test Passes!</font></h3>
+<p align="justify">Note how simpler CustomerImporter is now. But more importantly, it doesn’t depend on any concrete class, only on interfaces! (except of Customer which is a DTO).</p>
+<p align="justify">Ok, but it only works with mocks and not with the real classes! So let’s go and develop these classes. Assuming that the CustomerDAL and CustomerXMLParser are given to us without tests, and without the source code, we need to wrap them with another class that implements our interfaces. If you’re using a mocking framework that allows to mock non-virtual members (like Moles does) then you should add tests for these wrappers and validate that they call the relevant methods in the legacy classes. If not, then you don’t have much option to test them. Sometimes it worth writing a simple “smoke” test for these wrappers to validate that they’re doing “something”, or just leave them untested. Anyway, these classes should be very small and straight-forward, that a simple code review and a manual test of the application every now and then is good enough.</p>
+<div id="codeSnippetWrapper">
+<div style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: #f4f4f4; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px" id="codeSnippet">
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: white; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum1">   1:</span> <span style="color: #0000ff">public</span> <span style="color: #0000ff">class</span> CustomerXMLFile : ICustomerFile</pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: #f4f4f4; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum2">   2:</span> {</pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: white; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum3">   3:</span>     <span style="color: #0000ff">private</span> _filename;</pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: #f4f4f4; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum4">   4:</span>&nbsp; </pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: white; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum5">   5:</span>     <span style="color: #0000ff">public</span> CustomerXMLFile(<span style="color: #0000ff">string</span> filename)</pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: #f4f4f4; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum6">   6:</span>     {</pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: white; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum7">   7:</span>         _filename = filename;</pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: #f4f4f4; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum8">   8:</span>     }</pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: white; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum9">   9:</span>&nbsp; </pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: #f4f4f4; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum10">  10:</span>     <span style="color: #0000ff">public</span> Customer Read()</pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: white; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum11">  11:</span>     {</pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: #f4f4f4; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum12">  12:</span>         returns <span style="color: #0000ff">new</span> CustomerXmlParser(_filename).Parse();</pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: white; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum13">  13:</span>     }</pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: #f4f4f4; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum14">  14:</span> }</pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: white; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum15">  15:</span>&nbsp; </pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: #f4f4f4; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum16">  16:</span> <span style="color: #0000ff">public</span> <span style="color: #0000ff">class</span> CustomerDALWrapper : ICustomerDAL</pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: white; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum17">  17:</span> {</pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: #f4f4f4; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum18">  18:</span>     <span style="color: #0000ff">private</span> <span style="color: #0000ff">string</span> _connectionString;</pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: white; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum19">  19:</span>     </pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: #f4f4f4; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum20">  20:</span>     <span style="color: #0000ff">public</span> CustomerDALWrapper(<span style="color: #0000ff">string</span> connectionString)</pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: white; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum21">  21:</span>     {</pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: #f4f4f4; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum22">  22:</span>         _connectionString = connectionString;</pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: white; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum23">  23:</span>     }</pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: #f4f4f4; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum24">  24:</span>     </pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: white; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum25">  25:</span>     <span style="color: #0000ff">public</span> <span style="color: #0000ff">void</span> Save(Customer customer)</pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: #f4f4f4; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum26">  26:</span>     {</pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: white; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum27">  27:</span>         <span style="color: #0000ff">using</span>(var dal = <span style="color: #0000ff">new</span> CustomerDAL(_connectionString))</pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: #f4f4f4; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum28">  28:</span>         {</pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: white; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum29">  29:</span>             dal.Save(customer);</pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: #f4f4f4; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum30">  30:</span>         }</pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: white; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum31">  31:</span>     }</pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: #f4f4f4; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum32">  32:</span> }</pre>
+<p><!--CRLF--></p></div>
+</div>
+<p>In order to use our new CustomerImporter in our application we need to do it like this:</p>
+<div id="codeSnippetWrapper">
+<div style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: #f4f4f4; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px" id="codeSnippet">
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: white; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum1">   1:</span> var customerDAL = <span style="color: #0000ff">new</span> CustomerDALWrapper(_connectionString);</pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: #f4f4f4; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum2">   2:</span> var importer = <span style="color: #0000ff">new</span> CustomerImporter(customerDAL);</pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: white; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum3">   3:</span> var customerXmlFile = <span style="color: #0000ff">new</span> CustomerXmlFile(filename);</pre>
+<p><!--CRLF--></p>
+<pre style="border-bottom-style: none; text-align: left; padding-bottom: 0px; line-height: 12pt; border-right-style: none; background-color: #f4f4f4; margin: 0em; padding-left: 0px; width: 100%; padding-right: 0px; font-family: &#39;Courier New&#39;, courier, monospace; direction: ltr; border-top-style: none; color: black; font-size: 8pt; border-left-style: none; overflow: visible; padding-top: 0px"><span style="color: #606060" id="lnum4">   4:</span> importer.Import(customerXmlFile);</pre>
+<p><!--CRLF--></p></div>
+</div>
+<p align="justify">Clearly we can extract these 4 lines into a method that receives only the filename, or if we need to reuse it in other places then we can create a new class just for that (writing a test first, of course).Anyway, now we can use CustomerImporter in our light-weight version of the application without changing it at all! Just create a new class that implements ICustomerDAL and implements Save(Customer) by writing it to a file. Moreover, if we’ll be asked to be able to import files in different formats and not only XML, or even get the data from a different source (not a file), then we’ll be able to do so easily too: just create a new class that implements ICustomerFile and we’re set.</p>
+<h3>Factories and IOC containers </h3>
+<p align="justify">I wrote the above non-TDD version before I wrote the TDD version, so I didn’t anticipated how the code written using TDD will look like. In fact, I thought the final code will look pretty much the same, except that instead of using new to create objects, I would use factories that will be passed as interfaces to the constructor. As you can see, TDD really drives the design in ways you don’t expect…</p>
+<p align="justify">Anyway, it is often the case that you have to create new instances of an object at run-time. The problem is that in order to adhere to the DIP principle, we can’t specify the class, and there’s no way to instantiate an interface… The solution is to use factory classes. Factory classes do use the new operator and so they don’t adhere to the DIP principle by themselves. But as long as this is their only responsibility, and only the factory classes depend on concrete classes, that’s ok (and even unavoidable). However, even though the factory classes rely on concrete classes, they shouldn’t expose any of these on its public interface.</p>
+<p align="justify">Moreover, when you’re writing the test first, you’d probably want to abstract the generated object and not the factory itself. But in order to do so, you must also abstract the factory using an interface. Otherwise the real factory will create a real object that you can’t mock.</p>
+<p align="justify">In order to avoid having to create a factory for each object and still use interfaces to abstract concrete classes, there are several tools out there that fall into a category called “IoC containers”. IoC stands for Inversion of Control, and IOC containers provide means to instantiate objects automatically without having to write factory for all classes. <a href="http://www.hanselman.com/blog/ListOfNETDependencyInjectionContainersIOC.aspx">Here</a> you can find a list of popuplar IoC containers. In addition, <a href="http://mef.codeplex.com/">MEF</a> can also be used as an IoC container, even though its main focus is to manage extensions and plug-ins.</p>
+<p align="justify">IoC containers are invaluable tools when working in TDD, but are beyond the scope of this series.</p>
+			<iframe src="./TDD and the SOLID principles (Part 6 – DIP) _ Arnon Axelrod&#39;s Blog_files/like.html" scrolling="no" frameborder="0" style="border:none; overflow:hidden; height:80px;" allowtransparency="true"></iframe>
+
+							  <div class="clearfix entry-options">
+                        <a href="javascript:void(0)" class="bp-add-comment">Add comment</a>
+                        <div class="bp-social_i">
+                           <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blogs.microsoft.co.il/arnona/2011/11/01/tdd-and-the-solid-principles-part-6-dip/" class="ir icon-fb">facebook</a>
+                            <a target="_blank" href="http://www.linkedin.com/shareArticle?mini=true&amp;url=http://blogs.microsoft.co.il/arnona/2011/11/01/tdd-and-the-solid-principles-part-6-dip/&amp;title=TDD%20and%20the%20SOLID%20principles%20(Part%206%20%E2%80%93%20DIP)&amp;summary=%3Cp%3EThis%20is%20the%206th%20post%20in%20the%20series%20about%20TDD%20and%20its%20relationships%20with%20the%20SOLID%20principles.%20Here%E2%80%99s%20the%20table%20of%20content%20for%20the%20series:%20Pat%201%20%E2%80%93%20introduction%20Part%202%20%E2%80%93%20SRP%20Part%203%20%E2%80%93%20OCP%20Part%204%20%E2%80%93%20LSP%20Part%205%20%E2%80%93%20ISP%20Part%206%20%E2%80%93%20DIP%20(this%20post)%20Part%207%20%E2%80%93%20Conclusion%20[%E2%80%A6]%3C/p%3E" class="ir icon-in">linkedin</a>
+                            <a target="_blank" href="https://twitter.com/share" class="tweet ir icon-twitter" data-lang="he">twitter</a>
+                            <a href="mailto:?subject=TDD%20and%20the%20SOLID%20principles%20(Part%206%20%E2%80%93%20DIP)&amp;body=Check%20out%20this%20post%20http://blogs.microsoft.co.il/arnona/2011/11/01/tdd-and-the-solid-principles-part-6-dip/" class="ir icon-email">email</a>
+                            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+                        </div>
+                    </div>
+
+				
+		</div><!-- .entry-content -->
+		
+
+        
+<div id="comments" class="comments-area">
+	<div id="respond" class="comment-respond">
+		<h3 id="reply-title" class="comment-reply-title">Leave a Reply <small><a rel="nofollow" id="cancel-comment-reply-link" href="http://blogs.microsoft.co.il/arnona/2011/11/01/tdd-and-the-solid-principles-part-6-dip/#respond" style="display:none;">Cancel Reply</a></small></h3>			<form action="http://blogs.microsoft.co.il/arnona/wp-comments-post.php" method="post" id="commentform" class="comment-form">
+				<p class="comment-notes">Your email address will not be published.</p><p class="comment-form-comment"><label for="comment">Comment</label><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true"></textarea></p><p class="form-allowed-tags">You may use these <abbr title="HyperText Markup Language">HTML</abbr> tags and attributes:  <code>&lt;a href="" title=""&gt; &lt;abbr title=""&gt; &lt;acronym title=""&gt; &lt;b&gt; &lt;blockquote cite=""&gt; &lt;cite&gt; &lt;code&gt; &lt;del datetime=""&gt; &lt;em&gt; &lt;i&gt; &lt;q cite=""&gt; &lt;s&gt; &lt;strike&gt; &lt;strong&gt; </code></p><p class="comment-form-author"><label for="author">Name</label> <span class="required">*</span><input id="author" name="author" type="text" value="" size="30"></p>
+<p class="comment-form-email"><label for="email">Email</label> <span class="required">*</span><input id="email" name="email" type="text" value="" size="30"></p>
+<p class="comment-form-url"><label for="url">Website</label><input id="url" name="url" type="text" value="" size="30"></p>
+<p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Post Comment"> <input type="hidden" name="comment_post_ID" value="924102" id="comment_post_ID">
+<input type="hidden" name="comment_parent" id="comment_parent" value="0">
+</p><p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="22d283c0b9"></p><script type="text/javascript">var RecaptchaOptions = {theme : "blackglass"};</script><script type="text/javascript" src="./TDD and the SOLID principles (Part 6 – DIP) _ Arnon Axelrod&#39;s Blog_files/challenge"></script>
+
+	<noscript>
+  		<iframe src="http://www.google.com/recaptcha/api/noscript?k=6Ld4OuwSAAAAAC2pOGX1-HLYusMoy9UuR5_I91Eo" height="300" width="500" frameborder="0"></iframe><br/>
+  		<textarea name="recaptcha_challenge_field" rows="3" cols="40"></textarea>
+  		<input type="hidden" name="recaptcha_response_field" value="manual_challenge"/>
+	</noscript><!-- AVH First Defense Against Spam - WPMU DEV Version version 2.3.2  --><input type="hidden" id="_avh_first_defense_against_spam" name="_avh_first_defense_against_spam" value="a04b5c5288"><p style="display: none;"></p>			<input type="hidden" id="ak_js" name="ak_js" value="1574167524428"></form>
+			</div><!-- #respond -->
+	<div class="clearfix"></div>
+	
+	
+	
+
+</div><!-- #comments .comments-area -->
+	<!--<div class="fb-comments" data-href="http://guideme.co.il/comments" data-colorscheme="The color scheme used in the plugin" data-numposts="5" data-width="The pixel width of the plugin"></div>-->
+
+				
+	
+	</article><!-- #post -->
+				
+				
+						
+	
+
+</section>
+		
+			<div id="secondary" class="widget-area" role="complementary">
+			<aside id="search-2" class="widget widget_search"><form role="search" method="get" id="searchform" class="searchform" action="http://blogs.microsoft.co.il/arnona/">
+				<div>
+					<label class="screen-reader-text" for="s">Search for:</label>
+					<input type="text" value="" name="s" id="s">
+					<input type="submit" id="searchsubmit" value="Search">
+				</div>
+			</form></aside>		<aside id="recent-posts-2" class="widget widget_recent_entries">		<h3 class="widget-title">Recent Posts</h3>		<ul>
+											<li>
+					<a href="http://blogs.microsoft.co.il/arnona/2018/09/27/continuing-my-blog-on-medium-com/">Continuing my blog on Medium.com</a>
+									</li>
+											<li>
+					<a href="http://blogs.microsoft.co.il/arnona/2018/09/26/best-practices-for-choosing-locators-for-selenium/">Best Practices for Choosing Locators for Selenium</a>
+									</li>
+											<li>
+					<a href="http://blogs.microsoft.co.il/arnona/2018/07/10/my-book-complete-guide-to-test-automation-is-due-in-september/">My book "Complete Guide to Test Automation" is due in September</a>
+									</li>
+											<li>
+					<a href="http://blogs.microsoft.co.il/arnona/2017/03/06/selenium-in-depth-the-demos/">Selenium in Depth – the demos</a>
+									</li>
+											<li>
+					<a href="http://blogs.microsoft.co.il/arnona/2016/11/09/writing-maintainable-automated-test-and-infrastructure-with-live-video-recording/">Writing maintainable automated test and infrastructure – With live video recording!</a>
+									</li>
+					</ul>
+		</aside><aside id="recent-comments-2" class="widget widget_recent_comments"><h3 class="widget-title">Recent Comments</h3><ul id="recentcomments"><li class="recentcomments"><span class="comment-author-link">Nishant Shah</span> on <a href="http://blogs.microsoft.co.il/arnona/2016/01/03/keeping-an-active-desktop-session/#comment-2829242">Keeping an active desktop session</a></li><li class="recentcomments"><span class="comment-author-link">Nishant Shah</span> on <a href="http://blogs.microsoft.co.il/arnona/2016/01/03/keeping-an-active-desktop-session/#comment-2829241">Keeping an active desktop session</a></li><li class="recentcomments"><span class="comment-author-link">Milan Zeleznik</span> on <a href="http://blogs.microsoft.co.il/arnona/2016/01/03/keeping-an-active-desktop-session/#comment-2829240">Keeping an active desktop session</a></li><li class="recentcomments"><span class="comment-author-link">warren</span> on <a href="http://blogs.microsoft.co.il/arnona/2016/01/03/keeping-an-active-desktop-session/#comment-2829239">Keeping an active desktop session</a></li><li class="recentcomments"><span class="comment-author-link">Arnon Axelrod</span> on <a href="http://blogs.microsoft.co.il/arnona/2016/01/03/keeping-an-active-desktop-session/#comment-2829237">Keeping an active desktop session</a></li></ul></aside><aside id="archives-2" class="widget widget_archive"><h3 class="widget-title">Archives</h3>		<ul>
+			<li><a href="http://blogs.microsoft.co.il/arnona/2018/09/">September 2018</a></li>
+	<li><a href="http://blogs.microsoft.co.il/arnona/2018/07/">July 2018</a></li>
+	<li><a href="http://blogs.microsoft.co.il/arnona/2017/03/">March 2017</a></li>
+	<li><a href="http://blogs.microsoft.co.il/arnona/2016/11/">November 2016</a></li>
+	<li><a href="http://blogs.microsoft.co.il/arnona/2016/07/">July 2016</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2016/04/">April 2016</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2016/03/">March 2016</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2016/01/">January 2016</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2015/10/">October 2015</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2015/08/">August 2015</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2015/04/">April 2015</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2015/01/">January 2015</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2014/09/">September 2014</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2013/12/">December 2013</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2013/05/">May 2013</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2013/02/">February 2013</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2012/12/">December 2012</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2012/09/">September 2012</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2012/07/">July 2012</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2012/05/">May 2012</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2012/04/">April 2012</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2012/03/">March 2012</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2012/02/">February 2012</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2011/12/">December 2011</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2011/11/">November 2011</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2011/10/">October 2011</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2011/09/">September 2011</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2011/08/">August 2011</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2011/07/">July 2011</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2011/06/">June 2011</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2011/03/">March 2011</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2011/02/">February 2011</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2011/01/">January 2011</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2010/12/">December 2010</a></li>
+		<li><a class="a-txt" href="javascript:void(0)">Full Arcive</a></li></ul>
+		</aside><aside id="categories-2" class="widget widget_categories"><h3 class="widget-title">Categories</h3>		<ul>
+	<li class="cat-item cat-item-21027"><a href="http://blogs.microsoft.co.il/arnona/category/continuous-improvement/">Continuous Improvement</a>
+</li>
+	<li class="cat-item cat-item-21026"><a href="http://blogs.microsoft.co.il/arnona/category/test-automation/">Test Automation</a>
+</li>
+		</ul>
+</aside><aside id="meta-2" class="widget widget_meta"><h3 class="widget-title">Meta</h3>			<ul>
+			<li><a href="https://blogs.microsoft.co.il/arnona/wp-login.php?action=register">Register</a></li>			<li><a href="https://blogs.microsoft.co.il/arnona/wp-login.php">Log in</a></li>
+			<li><a href="http://blogs.microsoft.co.il/arnona/feed/">Entries <abbr title="Really Simple Syndication">RSS</abbr></a></li>
+			<li><a href="http://blogs.microsoft.co.il/arnona/comments/feed/">Comments <abbr title="Really Simple Syndication">RSS</abbr></a></li>
+			<li><a href="https://wordpress.org/" title="Powered by WordPress, state-of-the-art semantic personal publishing platform.">WordPress.org</a></li>			</ul>
+			</aside>			<aside class="widget mrg">
+		
+			<div class="moposts">
+			<h3 class="widget-title"> Additional Posts </h3>
+								  <a href="http://blogs.microsoft.co.il/arnona/2018/09/27/continuing-my-blog-on-medium-com/" class="latest_art">
+					<div class="la-date">September 27, 2018</div>
+					<h4>Continuing my blog on Medium.com</h4>
+		
+                    <p>An era has come to an end. It’s time to move on to a new and modern blogging website. My next blog posts will be published on&nbsp;https://medium.com/@arnonaxelrod Happy reading!</p>
+			      </a>
+								  <a href="http://blogs.microsoft.co.il/arnona/2018/09/26/best-practices-for-choosing-locators-for-selenium/" class="latest_art">
+					<div class="la-date">September 26, 2018</div>
+					<h4>Best Practices for Choosing Locators for Selenium</h4>
+		
+                    <p>A question that comes often, especially by folks that are new to Selenium, is what are the best practices to use when choosing a locator for an element. In other cases, people just have bad habits and don’t even think to ask this question, but they encounter instabilities or maintenance problems, without knowing that they […]</p>
+			      </a>
+								  <a href="http://blogs.microsoft.co.il/arnona/2018/07/10/my-book-complete-guide-to-test-automation-is-due-in-september/" class="latest_art">
+					<div class="la-date">July 10, 2018</div>
+					<h4>My book "Complete Guide to Test Automation" is due in September</h4>
+		
+                    <p>Update: The book is available at Amazon, or directly through Apress. According to the last time I’ve checked, Amazon had a better price a hard copy, but had no option for a soft copy, while through Apress you can order either a hard copy or a soft copy. I’m very proud to let you know […]</p>
+			      </a>
+								</div>
+				
+				</aside>
+		</div><!-- #secondary -->
+	</div>
+	</div>
+
+	<footer class="footer_main clearfix">
+	<section class="wrapper clearfix">
+		<article id="first_fl" class="footer_list">
+		<h3>משאבים לקהילת המפתחים</h3>
+			<div class="menu-footer1-container">
+				<ul id="menu-footer-menu-2">
+				<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://blogs.microsoft.co.il/msdn" title="MSDN בלוג" target="_blank">בלוג MSDN</a></li>
+				<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://www.microsoft.com/israel/msdn/pulse/" title="ניוזלטר  MSDN" target="_blank">ניוזלטר  MSDN</a></li>
+				<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="https://www.facebook.com/msdnisrael" title="MSDN בפייסבוק" target="_blank">בפייסבוק MSDN</a></li>
+				<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://www.youtube.com/channel/UCp6wuFkya3jOETs_nM7z3Fw?feature=watch" target="_blank">יוטיוב  MSDN</a></li>
+				<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://www.microsoftvirtualacademy.com/" target="_blank">האקדמיה הוירטואלית</a></li>
+				<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://msdn.microsoft.com/en-us/evalcenter/default" target="_blank">התנסות חינם</a></li>
+				<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://www.microsoft.com/israel/4steps/" target="_blank">אתר פיתוח אפליקציות</a></li>
+				</ul>
+			</div>
+		</article>
+			<article id="sec_fl" class="footer_list">
+		<h3>משאבים לקהילת IT</h3>
+				<ul id="menu-footer-menu-2">
+				<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://blogs.microsoft.co.il/technet" title="TechNet בלוג" target="_blank">בלוג TechNet </a></li>
+				<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://www.microsoft.com/israel/technetflash/Prev_vers/index.htm" target="_blank">ניוזלטר  TechNet </a></li>
+				<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="https://www.facebook.com/technetil" title="TechNet בפייסבוק" target="_blank">בפייסבוק TechNet</a></li>
+				<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://www.youtube.com/user/TechNetIsrael/videos" target="_blank">יוטיוב  TechNet</a></li>
+								<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://www.microsoftvirtualacademy.com/" target="_blank">האקדמיה הוירטואלית</a></li>
+				<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://technet.microsoft.com/en-us/evalcenter/default" target="_blank">התנסות חינם</a></li>
+				</ul>
+			</article>
+			<article id="thrd_fl" class="footer_list">
+		<h3>משאבים כללים </h3>
+					<ul id="menu-footer-menu-2">
+						<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://www.microsoft.com/he-il/default.aspx" target="_blank" title="אתר מיקרוסופט ישראל">אתר מיקרוסופט ישראל</a></li>
+						<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://www.facebook.com/microsoftisrael" target="_blank" title="מיקרוסופט ישראל בפייסבוק">מיקרוסופט ישראל בפייסבוק</a></li>
+						<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://social.msdn.microsoft.com/Forums/he-il/categories" target="_blank" title="&gt;אתר הפורומים">אתר הפורומים</a></li>
+						<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://www.microsoft.com/israel/communities/usergroups/default.aspx" target="_blank" title="&gt;קבוצות משתמשים">קבוצות משתמשים</a></li>
+						<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://www.microsoft.com/israel/traincert/" target="_blank" title="הדרכות והסמכות מיקרוסופט">הדרכות והסמכות מיקרוסופט</a></li>
+						<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="https://msevents.microsoft.com/CUI/default.aspx?culture=he-IL" target="_blank">אירועים </a></li>
+					
+					<!--
+					<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://blogs.microsoft.co.il/סימנים-מסחריים/" title=" סימנים מסחריים"> סימנים מסחריים</a></li>
+				<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://blogs.microsoft.co.il/תנאי-שימוש/" title="תנאי שימוש">תנאי שימוש</a></li>
+-->
+				</ul>	</article>
+		</section>
+		<section class="sfooter">
+                <div class="content">
+                    <div class="footer-bottom">                        
+                        <ul class="legal">
+                            <li><a href="http://choice.microsoft.com/">אודות הפרסומות שלנו</a></li>
+                            <li><a href="http://www.microsoft.com/About/Legal/EN/US/IntellectualProperty/Trademarks/EN-US.aspx">סימנים מסחריים</a></li>
+                            <li><a href="http://www.microsoft.com/en-us/legal/intellectualproperty/copyright/default.aspx">תנאי השימוש</a></li>
+                            <li><a href="http://go.microsoft.com/fwlink/?LinkId=248681">הצהרת פרטיות</a></li>
+                        </ul>
+                        <div class="footer-copyright">
+                            <a href="http://www.microsoft.com/">
+                                <img alt="Microsoft" src="./TDD and the SOLID principles (Part 6 – DIP) _ Arnon Axelrod&#39;s Blog_files/microsoft-logo-heb.png">
+                            </a><span>© 2014 Microsoft</span>
+                        </div>
+                    </div>
+                </div>
+</section>
+	</footer><!-- #colophon -->
+    <script>
+        (function (window) {
+            var rSide = document.getElementById("blog_post_info");
+            var lSide = document.getElementById("secondary");
+			
+			setTimeout(function(){
+				rSide = document.getElementById("blog_post_info");
+				lSide = document.getElementById("secondary");
+				if (lSide.offsetHeight > rSide.offsetHeight) {
+					rSide.style.minHeight = lSide.offsetHeight + "px";
+				}
+			},1000);
+
+            window.onresize = function () {
+                if (lSide.offsetHeight > rSide.offsetHeight) {
+                    rSide.style.minHeight = lSide.offsetHeight + "px";
+                }
+            }
+        })(window);
+
+
+    </script>
+	
+<!-- Do Not Remove - Turn Tracking Beacon Code - Do Not Remove -->
+<!-- Advertiser Name : microsoft -->
+<!-- Beacon Name : Microsoft_ blogs general -->
+<!-- START OF WEDCS TAG -->
+<script type="text/javascript">
+    var varSegmentation = 0;
+    var varClickTracking = 1;
+    var varCustomerTracking = 1;
+    var varAutoFirePV = 1;
+    var Route = "LE020";
+    document.write("<script type='text/javascript' src='" +
+    (window.location.protocol) + "//c.microsoft.com/ms.js'" + "'><\/script>");
+</script><script type="text/javascript" src="http://c.microsoft.com/ms.js" '=""></script>
+<noscript>
+    <img alt="" width="1" height="1" src="http://c.microsoft.com/trans_pixel.aspx" />
+</noscript>
+<!-- END OF WEDCS TAG -->
+
+
+
+
+
+<!-- If Beacon is placed on a Transaction or Lead Generation based page, please populate the turn_client_track_id with your order/confirmation ID -->
+<script type="text/javascript">
+  turn_client_track_id = "";
+</script>
+<script type="text/javascript" src="./TDD and the SOLID principles (Part 6 – DIP) _ Arnon Axelrod&#39;s Blog_files/beacon_call.js.download">
+</script><img height="1" width="1" border="0" src="./TDD and the SOLID principles (Part 6 – DIP) _ Arnon Axelrod&#39;s Blog_files/beacon">
+<noscript>
+  <img border="0" src="http://r.turn.com/r/beacon?b2=PGyOFcFmMNXjqLZWhsqf0IYBbGja1CD2b3Qxz0EXcZ4jZElP3T1utc_BawhZaoxwRafeYDFgKVEXkxLRf3dk_A&cid=">
+</noscript>
+<!-- End Turn Tracking Beacon Code Do Not Remove -->
+
+<script>
+(function() { // Redistats, track version 1.0
+	var global_id = 147;
+	var property_id = 1346;
+	var url = encodeURIComponent(window.location.href.split('#')[0]);
+	var referrer = encodeURIComponent(document.referrer);
+	var x = document.createElement('script'), s = document.getElementsByTagName('script')[0];
+	x.src = '//redistats.com/track.js?gid='+global_id+'&pid='+property_id+'&url='+url+'&referrer='+referrer;
+	s.parentNode.insertBefore(x, s);
+})();
+</script><script type="text/javascript" src="./TDD and the SOLID principles (Part 6 – DIP) _ Arnon Axelrod&#39;s Blog_files/comment-reply.min.js.download"></script>
+<script type="text/javascript" src="./TDD and the SOLID principles (Part 6 – DIP) _ Arnon Axelrod&#39;s Blog_files/wp-embed.min.js.download"></script>
+<script async="async" type="text/javascript" src="./TDD and the SOLID principles (Part 6 – DIP) _ Arnon Axelrod&#39;s Blog_files/form.js.download"></script>
+
+<iframe scrolling="no" frameborder="0" allowtransparency="true" src="./TDD and the SOLID principles (Part 6 – DIP) _ Arnon Axelrod&#39;s Blog_files/widget_iframe.d942dbac55d395b6a752976f272a24f6.html" title="Twitter settings iframe" style="display: none;"></iframe></body></html>

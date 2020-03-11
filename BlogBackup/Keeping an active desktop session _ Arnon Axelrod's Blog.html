@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+<!-- saved from url=(0081)http://blogs.microsoft.co.il/arnona/2016/01/03/keeping-an-active-desktop-session/ -->
+<html lang="en-US"><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="initial-scale=1.0, width=device-width">
+<title>Keeping an active desktop session | Arnon Axelrod's Blog</title>
+<link rel="profile" href="http://gmpg.org/xfn/11">
+<link rel="pingback" href="http://blogs.microsoft.co.il/arnona/xmlrpc.php">
+
+
+<!--[if lt IE 9]>
+           <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+           <script>window.html5 || document.write('<script src="http://blogs.microsoft.co.il/arnona/wp-content/themes/MS_englishjs/vendor/html5shiv.js"><\/script>')</script>
+    <![endif]-->
+			 
+ <script src="./Keeping an active desktop session _ Arnon Axelrod&#39;s Blog_files/track.js.download"></script><script src="./Keeping an active desktop session _ Arnon Axelrod&#39;s Blog_files/all.js.download" async="" crossorigin="anonymous"></script><script id="twitter-wjs" src="./Keeping an active desktop session _ Arnon Axelrod&#39;s Blog_files/widgets.js.download"></script><script id="facebook-jssdk" src="./Keeping an active desktop session _ Arnon Axelrod&#39;s Blog_files/all.js(1).download"></script><script src="./Keeping an active desktop session _ Arnon Axelrod&#39;s Blog_files/jquery.min.js.download"></script>
+ <script src="./Keeping an active desktop session _ Arnon Axelrod&#39;s Blog_files/app.js.download"></script>
+<link rel="dns-prefetch" href="http://s.w.org/">
+<link rel="alternate" type="application/rss+xml" title="Arnon Axelrod&#39;s Blog » Feed" href="http://blogs.microsoft.co.il/arnona/feed/">
+<link rel="alternate" type="application/rss+xml" title="Arnon Axelrod&#39;s Blog » Comments Feed" href="http://blogs.microsoft.co.il/arnona/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="Arnon Axelrod&#39;s Blog » Keeping an active desktop session Comments Feed" href="http://blogs.microsoft.co.il/arnona/2016/01/03/keeping-an-active-desktop-session/feed/">
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/11\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/11\/svg\/","svgExt":".svg","source":{"concatemoji":"http:\/\/blogs.microsoft.co.il\/arnona\/wp-includes\/js\/wp-emoji-release.min.js?ver=5.0.2"}};
+			!function(a,b,c){function d(a,b){var c=String.fromCharCode;l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,a),0,0);var d=k.toDataURL();l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,b),0,0);var e=k.toDataURL();return d===e}function e(a){var b;if(!l||!l.fillText)return!1;switch(l.textBaseline="top",l.font="600 32px Arial",a){case"flag":return!(b=d([55356,56826,55356,56819],[55356,56826,8203,55356,56819]))&&(b=d([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]),!b);case"emoji":return b=d([55358,56760,9792,65039],[55358,56760,8203,9792,65039]),!b}return!1}function f(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var g,h,i,j,k=b.createElement("canvas"),l=k.getContext&&k.getContext("2d");for(j=Array("flag","emoji"),c.supports={everything:!0,everythingExceptFlag:!0},i=0;i<j.length;i++)c.supports[j[i]]=e(j[i]),c.supports.everything=c.supports.everything&&c.supports[j[i]],"flag"!==j[i]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[j[i]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(h=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",h,!1),a.addEventListener("load",h,!1)):(a.attachEvent("onload",h),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),g=c.source||{},g.concatemoji?f(g.concatemoji):g.wpemoji&&g.twemoji&&(f(g.twemoji),f(g.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script><script src="./Keeping an active desktop session _ Arnon Axelrod&#39;s Blog_files/wp-emoji-release.min.js.download" type="text/javascript" defer=""></script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel="stylesheet" id="wp-block-library-css" href="./Keeping an active desktop session _ Arnon Axelrod&#39;s Blog_files/style.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="microsoft-hebrew-normalize-css" href="./Keeping an active desktop session _ Arnon Axelrod&#39;s Blog_files/normalize.css" type="text/css" media="all">
+<link rel="stylesheet" id="MS_english-style-css" href="./Keeping an active desktop session _ Arnon Axelrod&#39;s Blog_files/style.css" type="text/css" media="all">
+<link rel="stylesheet" id="ms_global_search_css_style-css" href="./Keeping an active desktop session _ Arnon Axelrod&#39;s Blog_files/style(1).css" type="text/css" media="all">
+<link rel="https://api.w.org/" href="http://blogs.microsoft.co.il/arnona/wp-json/">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://blogs.microsoft.co.il/arnona/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://blogs.microsoft.co.il/arnona/wp-includes/wlwmanifest.xml"> 
+<link rel="prev" title="Israel Test Automation Meetup" href="http://blogs.microsoft.co.il/arnona/2015/10/14/israel-test-automation-meetup/">
+<link rel="next" title="I’m on .Net Rocks!!!" href="http://blogs.microsoft.co.il/arnona/2016/01/14/im-on-net-rocks/">
+<meta name="generator" content="WordPress 5.0.2">
+<link rel="canonical" href="http://blogs.microsoft.co.il/arnona/2016/01/03/keeping-an-active-desktop-session/">
+<link rel="shortlink" href="http://blogs.microsoft.co.il/arnona/?p=2085784">
+<link rel="alternate" type="application/json+oembed" href="http://blogs.microsoft.co.il/arnona/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fblogs.microsoft.co.il%2Farnona%2F2016%2F01%2F03%2Fkeeping-an-active-desktop-session%2F">
+<link rel="alternate" type="text/xml+oembed" href="http://blogs.microsoft.co.il/arnona/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fblogs.microsoft.co.il%2Farnona%2F2016%2F01%2F03%2Fkeeping-an-active-desktop-session%2F&amp;format=xml">
+
+<!-- ADD TO HEADER - START -->
+
+<!-- ADD TO HEADER - END -->
+		<style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style>
+		<link rel="stylesheet" type="text/css" href="./Keeping an active desktop session _ Arnon Axelrod&#39;s Blog_files/shCore.css"><link rel="stylesheet" type="text/css" href="./Keeping an active desktop session _ Arnon Axelrod&#39;s Blog_files/shThemeDefault.css"><style type="text/css" id="syntaxhighlighteranchor"></style>
+<meta data-pso-pv="1.2.1" data-pso-pt="singlePost" data-pso-th="91ad9b44edb2998a2b2273710387f6a2">
+<!--Wise pixel Microsoft Blogs-->
+<script language="JavaScript1.1" src="./Keeping an active desktop session _ Arnon Axelrod&#39;s Blog_files/js"></script><iframe src="./Keeping an active desktop session _ Arnon Axelrod&#39;s Blog_files/iframe.html" id="mm_sync_back_ground" style="visibility: hidden; display: none;"></iframe>
+
+<style type="text/css">.fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_reposition{overflow:hidden;position:relative}.fb_invisible{display:none}.fb_reset{background:none;border:0;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:"lucida grande", tahoma, verdana, arial, sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:right;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}@keyframes fb_transform{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}.fb_animate{animation:fb_transform .3s forwards}
+.fb_dialog{background:rgba(82, 82, 82, .7);position:absolute;top:-10000px;z-index:10001}.fb_dialog_advanced{border-radius:8px;padding:10px}.fb_dialog_content{background:#fff;color:#373737}.fb_dialog_close_icon{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;cursor:pointer;display:block;height:15px;position:absolute;left:18px;top:17px;width:15px}.fb_dialog_mobile .fb_dialog_close_icon{right:5px;left:auto;top:5px}.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}.fb_dialog_close_icon:hover{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent}.fb_dialog_close_icon:active{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent}.fb_dialog_iframe{line-height:0}.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #365899;color:#fff;font-size:14px;font-weight:bold;margin:0}.fb_dialog_content .dialog_title>span{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yd/r/Cou7n-nqK52.gif) no-repeat 5px 50%;float:right;padding:5px 26px 7px 0}body.fb_hidden{height:100%;right:0;margin:0;overflow:visible;position:absolute;top:-10000px;transform:none;width:100%}.fb_dialog.fb_dialog_mobile.loading{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/ya/r/3rhSv5V8j3o.gif) white no-repeat 50% 50%;min-height:100%;min-width:100%;overflow:hidden;position:absolute;top:0;z-index:10001}.fb_dialog.fb_dialog_mobile.loading.centered{background:none;height:auto;min-height:initial;min-width:initial;width:auto}.fb_dialog.fb_dialog_mobile.loading.centered #fb_dialog_loader_spinner{width:100%}.fb_dialog.fb_dialog_mobile.loading.centered .fb_dialog_content{background:none}.loading.centered #fb_dialog_loader_close{clear:both;color:#fff;display:block;font-size:18px;padding-top:20px}#fb-root #fb_dialog_ipad_overlay{background:rgba(0, 0, 0, .4);bottom:0;right:0;min-height:100%;position:absolute;left:0;top:0;width:100%;z-index:10000}#fb-root #fb_dialog_ipad_overlay.hidden{display:none}.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}.fb_dialog_mobile .fb_dialog_iframe{position:sticky;top:0}.fb_dialog_content .dialog_header{background:linear-gradient(from(#738aba), to(#2c4987));border-bottom:1px solid;border-color:#043b87;box-shadow:white 0 1px 1px -1px inset;color:#fff;font:bold 14px Helvetica, sans-serif;text-overflow:ellipsis;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0;vertical-align:middle;white-space:nowrap}.fb_dialog_content .dialog_header table{height:43px;width:100%}.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-right:5px;vertical-align:middle;width:60px}.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-left:5px;vertical-align:middle;width:60px}.fb_dialog_content .touchable_button{background:linear-gradient(from(#4267B2), to(#2a4887));background-clip:padding-box;border:1px solid #29487d;border-radius:3px;display:inline-block;line-height:18px;margin-top:3px;max-width:85px;padding:4px 12px;position:relative}.fb_dialog_content .dialog_header .touchable_button input{background:none;border:none;color:#fff;font:bold 12px Helvetica, sans-serif;margin:2px -12px;padding:2px 6px 3px 6px;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:bold;line-height:18px;text-align:center;vertical-align:middle}.fb_dialog_content .dialog_content{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/y9/r/jKEcVPZFk-2.gif) no-repeat 50% 50%;border:1px solid #4a4a4a;border-bottom:0;border-top:0;height:150px}.fb_dialog_content .dialog_footer{background:#f5f6f7;border:1px solid #4a4a4a;border-top-color:#ccc;height:40px}#fb_dialog_loader_close{float:right}.fb_dialog.fb_dialog_mobile .fb_dialog_close_button{text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}#fb_dialog_loader_spinner{animation:rotateSpinner 1.2s linear infinite;background-color:transparent;background-image:url(https://static.xx.fbcdn.net/rsrc.php/v3/yD/r/t-wz8gw1xG1.png);background-position:50% 50%;background-repeat:no-repeat;height:24px;width:24px}@keyframes rotateSpinner{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+.fb_iframe_widget{display:inline-block;position:relative}.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}.fb_iframe_widget iframe{position:absolute}.fb_iframe_widget_fluid_desktop,.fb_iframe_widget_fluid_desktop span,.fb_iframe_widget_fluid_desktop iframe{max-width:100%}.fb_iframe_widget_fluid_desktop iframe{min-width:220px;position:relative}.fb_iframe_widget_lift{z-index:1}.fb_iframe_widget_fluid{display:inline}.fb_iframe_widget_fluid span{width:100%}</style></head>
+<body class="post-template-default single single-post postid-2085784 single-format-standard single-author " style="">
+<div id="fb-root" class=" fb_reset"><div style="position: absolute; top: -10000px; width: 0px; height: 0px;"><div><iframe name="fb_xdm_frame_https" id="fb_xdm_frame_https" aria-hidden="true" title="Facebook Cross Domain Communication Frame" tabindex="-1" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" allow="encrypted-media" src="./Keeping an active desktop session _ Arnon Axelrod&#39;s Blog_files/xd_arbiter.html" style="border: none;"></iframe></div><div></div></div></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/he_IL/all.js#xfbml=1&appId=171021386433126";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+	
+
+<div id="top-bar" class="wrapper clearfix">
+        <a href="http://blogs.microsoft.co.il/" id="blogs-logo" class="ir">Israel Blogging Community</a>
+        <div id="user-options">
+                            
+            <a href="http://blogs.microsoft.co.il/arnona/wp-admin">Sign in</a>
+                      </div>
+</div>
+  <header>
+      
+		
+        <div id="header-banner" style="background-image: url(http://blogs.microsoft.co.il/arnona/wp-content/uploads/sites/1346/2015/01/cropped-04621.jpg)">
+            <div class="wrapper">
+                <h1 id="blog-title">
+                     
+                    <span class="sub-title">Arnon Axelrod's Blog</span>
+                </h1>
+                            </div>
+        </div>
+        <div id="header-nav" class="clearfix">
+            <div class="wrapper">
+                <div id="user-avatar">
+                    <img src="./Keeping an active desktop session _ Arnon Axelrod&#39;s Blog_files/d3548b43b3f07144c336ab8378da3ecd.jpeg" alt="">
+                </div>
+                <div id="header-nav-box">
+                    <a href="http://blogs.microsoft.co.il/arnona/2016/01/03/keeping-an-active-desktop-session/#" class="ir" id="m-nav">menu</a>
+                    <nav id="heder-nav-warpper">
+                        <a href="http://blogs.microsoft.co.il/arnona">Home page</a>
+
+                                        </nav>
+                    <div id="header-nav-icons">
+                                                                        <a href="https://www.linkedin.com/in/arnonaxelrod" target="_blank" class="ir icon-in">linkedin</a>
+                                                <a href="http://blogs.microsoft.co.il/arnona/rss2" target="_blank" class="ir icon-rss">RSS</a>
+                    </div>
+                </div>
+                <script>
+                    (function (window) {
+                        if (!document.addEventListener)
+                            return;
+
+                        var navBtn = document.getElementById("m-nav");
+                        var nav = document.getElementById("heder-nav-warpper");
+
+                        navBtn.addEventListener('click', function (e) {
+                            e.preventDefault();
+                            var display = window.getComputedStyle(nav, null).getPropertyValue("display");
+                            if (display === 'none')
+                                nav.style.display = 'block';
+                            else
+                                nav.style.display = 'none';
+
+                        }, false);
+
+                        window.addEventListener('resize', function () {
+                            nav.style.display = "";
+                        }, false);
+
+                    })(window);
+                </script>
+            </div>
+        </div>
+
+    </header>
+<!-- #masthead -->
+ <div id="main" role="main" class="clearfix">
+	<div id="primary_blog" class="wrapper clearfix">
+        <section id="blog_post_info">			
+			<script>
+jQuery(document).ready(function(){
+jQuery('.bp-add-comment').click(function(event){
+event.preventDefault();
+jQuery('#respond').show();
+});
+});
+</script>
+	<article id="post-2085784" class="bp clearfix post-2085784 post type-post status-publish format-standard hentry category-test-automation tag-remote-desktop tag-screehshot tag-uitestexception">
+		         
+			            <h2 class="bp-title">
+                <a href="http://blogs.microsoft.co.il/arnona/2016/01/03/keeping-an-active-desktop-session/">Keeping an active desktop session</a>
+            </h2>
+            <h3 class="bp-date">January 3, 2016</h3>
+            <div class="clearfix">
+            <div class="bp-thumb clearfix">
+                                                <div class="bp-social_i">
+                            <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blogs.microsoft.co.il/arnona/2016/01/03/keeping-an-active-desktop-session/" class="ir icon-fb">facebook</a>
+                            <a target="_blank" href="http://www.linkedin.com/shareArticle?mini=true&amp;url=http://blogs.microsoft.co.il/arnona/2016/01/03/keeping-an-active-desktop-session/&amp;title=Keeping%20an%20active%20desktop%20session&amp;summary=%3Cp%3EUPDATE:%20For%20some%20reason,%20the%20solution%20as%20it%20was%20before%20didn%E2%80%99t%20always%20work.%20I%20don%E2%80%99t%20understand%20the%20root%20cause,%20but%20the%20solution%20was%20simply%20to%20remove%20the%20%E2%80%9C-file%E2%80%9D%20at%20the%20start%20of%20the%20arguments%20of%20the%20Task%E2%80%99s%20action.%20I%20now%20fixed%20the%20instructions%20below%20accordingly.%20%C2%A0%20When%20doing%20any%20kind%20of%20UI%20automation,%20there%20are%20[%E2%80%A6]%3C/p%3E" class="ir icon-in">linkedin</a>
+                            <a target="_blank" href="https://twitter.com/share" class="tweet ir icon-twitter" data-lang="he">twitter</a>
+                            <a href="mailto:?subject=Keeping%20an%20active%20desktop%20session&amp;body=Check%20out%20this%20post%20http://blogs.microsoft.co.il/arnona/2016/01/03/keeping-an-active-desktop-session/" class="ir icon-email">email</a>
+                        </div>
+              </div>
+             </div>
+	
+				<div class="clearfix">
+			        <div class="tagsx">tags:   <a href="http://blogs.microsoft.co.il/arnona/tag/remote-desktop/" rel="tag">Remote Desktop</a>, <a href="http://blogs.microsoft.co.il/arnona/tag/screehshot/" rel="tag">Screehshot</a>, <a href="http://blogs.microsoft.co.il/arnona/tag/uitestexception/" rel="tag">UITestException</a></div>
+				    <div class="cmts"> 24 comments </div>
+			    </div>
+		
+						
+		<!-- .entry-header -->
+
+				<div class="contx entry-content clearfix">
+			<p><strong>UPDATE: </strong><em>For some reason, the solution as it was before didn’t always work. I don’t understand the root cause, but the solution was simply to remove the “-file” at the start of the arguments of the Task’s action. I now fixed the instructions below accordingly.</em></p>
+<p>&nbsp;</p>
+<p>When doing any kind of UI automation, there are several cases that a desktop session will be active. I’ll get to what it actually means in a second, but first I want to list some of the common problems that people encounter that are caused by not having an active desktop session:</p>
+<p>1. In Coded UI, you get the exception:</p>
+<blockquote><p>Microsoft.VisualStudio.TestTools.UITest.Extension.UITestException: Automation engine is unable to playback the test because it is not able to interact with the desktop.&nbsp; This could happen if the computer running the test is locked or its remote session window is minimized</p></blockquote>
+<p>2. Taking a screenshot in Internet Explorer using Selenium WebDriver creates a black image</p>
+<p>3. AutoIT or InputSimulator doesn’t work on a remote machine</p>
+<p>4. Taking a full screenshot (not through Selenium) creates a black image</p>
+<p>These problems are often left as a mystery for those who encounter them. So here I am to shed some light on them and suggest a solution!</p>
+<h4>What’s an active desktop session?</h4>
+<p>Normally when you turn on a regular Windows machine, you must first Log-in before you can do anything useful. When you do, whatever you see on your screen <b>is your active desktop</b>.</p>
+<p>If you then leave your computer for few minutes, your desktop would probably be locked and you’d have to enter your credentials again. Note however, that during that period of time you were still logged-in, even though you <b>didn’t have an active desktop</b>. After you unlock, every window that was opened before the computer was locked, is still open.</p>
+<p>If you then go to another computer, and open a Remote Desktop connection to your first computer, the real monitor on that computer also shows the “locked” screen, but now you can see all your open windows through the remote desktop window. In this case, <b>the Remote Desktop connection is your active desktop</b> session</p>
+<p>If you then close the Remote Desktop connection, even though you remain logged-in, the main monitor still shows the “locked” screen (at least in the recent versions of Window), and because no one is connected, <b>you now don’t have an active desktop session.</b> Of course that if you re-connect through Remote Desktop or unlock through the main monitor, you’ll still get your open windows.</p>
+<h4>But wait, it’s a VM! It doesn’t have a monitor…</h4>
+<p>The confusing thing here is that most often the machines that you’re using for running your automated tests in the build process (Test Agents), don’t actually have a monitor, or at least no one uses it on a regular basis. In most cases these machines are actually a Virtual Machine and sometimes you don’t even have access to the management console of the VM (e.g. vSphere in case of VMWare). However, <i>every</i> machine (physical or virtual) has a primary monitor, even if it’s not connected or you don’t look at it in the VM’s management console.</p>
+<h4>So how do I get to this state?</h4>
+<p>Usually Test Agents that are used for running UI automated tests are configured to log-in automatically and to interact with desktop. This means that after the machine (or VM) is started, it has an active desktop (on its main monitor) and everything is fine.</p>
+<p>Then, when you want to access this machine for any reason, you open a Remote Desktop connection to it. In this case you still have an active desktop (even though it’s a new one, instead of the original one)</p>
+<p>However, when you then disconnect your Remote Desktop connection, you’ve actually closed the active desktop and the processes that need to interact with desktop can’t do that… If you are able to look at the main monitor (or the VM’s console), you’d still see the “Locked” screen. This is when the problems mentioned above occur.</p>
+<h4>Solution</h4>
+<p>While searching for a solution to that problem, I discovered many little interesting things that I didn’t know before. One of them is that Windows Task Scheduler can trigger tasks not only based on timings, but it can also trigger tasks based on events! One of these events is that a remote desktop session has disconnected! (In fact, Task Scheduler allows you to register to any event that may be written to the Event Viewer!)</p>
+<p>In brief, the solution is composed of few pieces</p>
+<p>1. A Task Scheduler’s task that is triggered upon disconnecting form Remote Desktop</p>
+<p>2. The <a href="https://technet.microsoft.com/en-us/library/bb490800.aspx">query session</a> command</p>
+<p>3. The <a href="https://technet.microsoft.com/en-us/library/cc770988.aspx">TSCon</a> command</p>
+<p>4. A PowerShell script that combines the 2 commands</p>
+<h5>High-level explanation:</h5>
+<p>The scheduled task triggers the PowerShell script upon disconnecting from Remote Desktop. The script invokes the “query session” command to find the identifier of the relevant session, and then uses that identifier as an argument to the “TSCon” command which transfers the session to the console (i.e. main monitor)</p>
+<p>And here are the details:</p>
+<h5>Creating the Scheduled Task</h5>
+<p>First, Login using Remote Desktop to the machine that runs the Test Agent. I assume that you normally do so using the same credentials of the Test Agent process (otherwise you won’t see what the automated tests is doing…)</p>
+<p>Here we’re going to create the appropriate scheduled task that will be triggered when you disconnect from Remote Desktop. In the first stage, we’ll just write “Hi” to a text file just to see that it works. Later we’ll change it to run a PowerShell script that we’ll write later, that will return the desktop session to the “Console”.</p>
+<p>1. From the Start menu, open Task Scheduler</p>
+<p>2. Right click on the root (“Task Scheduler (Local)”) of the tree on the left pane, and select “Create Task…”</p>
+<p><a href="http://blogs.microsoft.co.il/arnona/wp-content/uploads/sites/1346/2016/01/image.png"><img style="border-width: 0px" title="image" src="./Keeping an active desktop session _ Arnon Axelrod&#39;s Blog_files/image_thumb.png" alt="image" width="244" height="223" border="0"></a></p>
+<p>3. In the General tab of the Create Task dialog:</p>
+<blockquote><p>a. Type the name for the task. E.g: “ReturnDesktopSessionToConsole”</p></blockquote>
+<blockquote><p>b. Select the “Run whether the user is logged on or not” radio button</p></blockquote>
+<blockquote><p>c. Check the “Run with highest privileges” checkbox</p></blockquote>
+<p><a href="http://blogs.microsoft.co.il/arnona/wp-content/uploads/sites/1346/2016/01/clip_image002.png"><img style="border-width: 0px" title="clip_image002" src="./Keeping an active desktop session _ Arnon Axelrod&#39;s Blog_files/clip_image002_thumb.png" alt="clip_image002" width="244" height="185" border="0"></a></p>
+<p>4. In the “Triggers” tab, click “New…”. In the “New Tigger” dialog:</p>
+<blockquote><p>a. In the “Begin the task:” drop down list, select “On disconnect from user session”)</p></blockquote>
+<blockquote><p>b. Select the “Specific user:” radio button (the user name that you’re currently logged-in with should appear. This should also be the same user that runs the Test Agent)</p></blockquote>
+<p><a href="http://blogs.microsoft.co.il/arnona/wp-content/uploads/sites/1346/2016/01/clip_image003.png"><img style="border-width: 0px" title="clip_image003" src="./Keeping an active desktop session _ Arnon Axelrod&#39;s Blog_files/clip_image003_thumb.png" alt="clip_image003" width="244" height="211" border="0"></a></p>
+<blockquote><p>c. Click OK to close the dialog</p></blockquote>
+<p>5. Move to the “Actions” tab and click “New…”. In the “Edit Action” dialog:</p>
+<blockquote><p>a. In the “Program/script” textbox type “<code>cmd.exe</code>”</p></blockquote>
+<blockquote><p>b. In the “Add arguments (optional):” textbox, type: “<code>/c echo Hi &gt;%userprofile%\desktop\output.txt</code>”</p></blockquote>
+<p><a href="http://blogs.microsoft.co.il/arnona/wp-content/uploads/sites/1346/2016/01/clip_image004.png"><img style="border-width: 0px" title="clip_image004" src="./Keeping an active desktop session _ Arnon Axelrod&#39;s Blog_files/clip_image004_thumb.png" alt="clip_image004" width="225" height="244" border="0"></a></p>
+<blockquote><p>c. Click “OK” to close the dialog</p></blockquote>
+<blockquote><p>Note: this is a temporary task that just creates a file called “output.txt” on the desktop with the content “Hi”. Later we’ll replace this with something more meaningful, but let’s first check that we’ve done it right.</p></blockquote>
+<p>6. Click “OK” to close the “Create Task” dialog. Enter your credentials if you’ve been asked.</p>
+<h5>Let’s check what we’ve done until now:</h5>
+<h6>Let’s first check that the Action was defined correctly:</h6>
+<p>Expand the “Task Scheduler (Local)” node in the tree and select its child “Task Scheduler Library”.</p>
+<p>At the upper pane of the window you should see a list of existing tasks (possibly only with the task you’ve just created). Find the “ReturnDesktopSessionToConsole” task, right click on it, and select “Run”, as shown in the following screenshot:</p>
+<p><a href="http://blogs.microsoft.co.il/arnona/wp-content/uploads/sites/1346/2016/01/clip_image005.png"><img style="border-width: 0px" title="clip_image005" src="./Keeping an active desktop session _ Arnon Axelrod&#39;s Blog_files/clip_image005_thumb.png" alt="clip_image005" width="244" height="146" border="0"></a></p>
+<p>Go to the desktop and check if the file “output.txt” exists. Open it and ensure that it contains the word “Hi”.</p>
+<p><b>Delete this file for further checks!</b></p>
+<p>If something went wrong, you should enable Task History and try again:</p>
+<p>In the “Actions” pane on the right, if there’s an item labeled “Enable All Tasks History” – click it. (After doing so it will be replaced with “Disable All Tasks History”)</p>
+<p><a href="http://blogs.microsoft.co.il/arnona/wp-content/uploads/sites/1346/2016/01/clip_image006.png"><img style="border-width: 0px" title="clip_image006" src="./Keeping an active desktop session _ Arnon Axelrod&#39;s Blog_files/clip_image006_thumb.png" alt="clip_image006" width="244" height="159" border="0"></a></p>
+<p>After running the task again, you should see some events in the “History” tab at the bottom of the window (when the relevant task is selected). Look at this events to see what the problem was.</p>
+<p>Note: you may need to press F5 to refresh the “status” of the task and/or the history.</p>
+<h6>Now, let’s check that the trigger is correct:</h6>
+<p>Make sure to delete the “output.txt” file from the desktop, and then close your Remote Desktop connection. Then connect again.</p>
+<p>Look for the “output.txt” and see that it was created again. If it hasn’t, look at the Task history to identify the problem.</p>
+<h5>Creating the PowerShell script</h5>
+<p>Now let’s replace the action that just writes “Hi” with what we really need</p>
+<p>1. Make sure that PowerShell execution policy allows you to run PowerShell scripts:</p>
+<blockquote><p>a. Create a new empty file called “test.ps1” on the desktop (you can use Notepad for that)</p></blockquote>
+<blockquote><p>b. Open an elevated command prompt window (Run as Administrator), and type:</p>
+<p><code>PowerShell %userprofile%\Desktop\ReturnDesktopSessionToConsole.ps1 </code></p></blockquote>
+<blockquote><p>If nothing happens, it means that you can run PS scripts. In this case, just to the next step.</p></blockquote>
+<blockquote><p>However, if you get a red error message stating that the file “cannot be loaded because running scripts is disabled on this system.” You should run the following command:</p></blockquote>
+<blockquote><p><code>PowerShell –command set-executionpolicy remotesigned </code></p></blockquote>
+<blockquote><p>2. Open “ReturnDesktopSessionToConsole.ps1” in notepad, and copy the following script:</p></blockquote>
+<div id="scid:C89E2BDB-ADD3-4f7a-9810-1B7EACF446C1:e4f16da8-44c4-4e61-abd2-aa60d28bb69a" class="wlWriterEditableSmartContent" style="float: none;margin: 0px;padding: 0px">
+<div><div id="highlighter_587916" class="syntaxhighlighter  powershell"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="powershell variable">$output</code> <code class="powershell plain">= query session &amp;amp;amp;lt;username&amp;amp;amp;gt; | findstr /I “ Disc “ </code></div><div class="line number2 index1 alt1"><code class="powershell comments"># The session id starts at the 38th character and is maximum 9 characters long</code></div><div class="line number3 index2 alt2"><code class="powershell variable">$sessionId</code> <code class="powershell plain">= </code><code class="powershell variable">$output</code><code class="powershell plain">.Substring(38, 9).Trim() </code></div><div class="line number4 index3 alt1"><code class="powershell plain">Tscon </code><code class="powershell variable">$sessionId</code> <code class="powershell plain">/dest:console </code></div><div class="line number5 index4 alt2">&nbsp;</div><div class="line number6 index5 alt1"><code class="powershell comments">#write the date and the current sessions so we can see the output when it ran and that it completed successfully </code></div><div class="line number7 index6 alt2"><code class="powershell plain">date </code></div><div class="line number8 index7 alt1"><code class="powershell plain">query session &amp;amp;amp;lt;username&amp;amp;amp;gt; </code></div><div class="line number9 index8 alt2"><code class="powershell plain">echo OK </code></div></div></td></tr></tbody></table></div></div>
+</div>
+<p><strong>Replace the 2 occurances of <i>&lt;username&gt;</i> with the actual username that you’re using on that machine. </strong>Save the file and close Notepad.</p>
+<p>Now, edit the scheduled task to run the new script instead of just writing “Hi”:</p>
+<p>1. Expand the “Task Scheduler (Local)” node in the tree and select its child “Task Scheduler Library”.</p>
+<p>2. At the upper pane of the window, find the “ReturnDesktopSessionToConsole” task, and right click on it to open its context menu</p>
+<p>3. Click “Properties”</p>
+<p>4. In the “ReturnDesktopSessionToConsole Properties (Local Computer)” dialog, select the “Action” tab</p>
+<p>5. Click “Edit…”</p>
+<p>6. Replace the value in the “Program/script:” text box to “<b>PowerShell</b>” (instead of “cmd.exe”)</p>
+<p>7. Replace the value in the “Add arguments (optional):” text box to “<code>%userprofile%\Desktop\ReturnDesktopSessionToConsole.ps1 &gt;%userprofile%\desktop\output.txt</code>” (note that the last part, after the “&gt;” remains the same as it was, because we want to redirect the output of the command to the output.txt file on the desktop, so that we’ll be able to investigate it if something went wrong).</p>
+<p><strong>Note: </strong><em>if this doesn’t work for you, try to add “-file ” or “-command ” at the beginning of the arguments string.</em></p>
+<p>8. Click “OK” to close the “Edit Action” dialog</p>
+<p>9. Click “OK” again to close the Task Properties dialog. Enter the credentials when asked.</p>
+<h3>Copy the solution to multiple machines</h3>
+<p>If you need to apply that solution to multiple machines, here’s a small tip that can help you:</p>
+<p>Given that you’re using the same user for all the machines, and you use the same paths, you can export the scheduled task that you created (right-click on the task and select “Export…”). This will create an XML file that contains all the details of the task. Then you can copy that file together with&nbsp;ReturnDesktopSessionToConsole.ps1, to the other machine, and import the task file to the Task Scheduler (right click on the “Task Scheduler Library” node in the navigation tree, and select “Import Task…”.</p>
+<p><b>That’s it! You should now try it!</b></p>
+<p>In case something didn’t work as expected, examine the “output.txt” file on the desktop, and/or the task history.</p>
+<p>Note that in case of success, “output.txt” should contain the date and time when the script ran, the active sessions of &lt;user&gt;, and “OK” as the last line.</p>
+<h4>Known Limitations</h4>
+<p>1. This “trick” doesn’t solve the problem if someone <b>minimizes</b> the Remote Desktop window. Make sure that you either leave the Remote Desktop window open (even if it’s in the background) or closing it completely.</p>
+<p>2. I didn’t tried it in all cloud providers, but on Azure I found that taking a screenshot or recording a video when there’s no Remote Desktop connection open, shows the screen as it was when the last Remote Desktop connected has been closed. (Even the clock in the Tray displays that time!!)</p>
+<p>Please let me know if it helped you or not, so I can improve this post as necessary!</p>
+<p>Thanks! See you next time J</p>
+			<iframe src="./Keeping an active desktop session _ Arnon Axelrod&#39;s Blog_files/like.html" scrolling="no" frameborder="0" style="border:none; overflow:hidden; height:80px;" allowtransparency="true"></iframe>
+
+							  <div class="clearfix entry-options">
+                        <a href="javascript:void(0)" class="bp-add-comment">Add comment</a>
+                        <div class="bp-social_i">
+                           <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blogs.microsoft.co.il/arnona/2016/01/03/keeping-an-active-desktop-session/" class="ir icon-fb">facebook</a>
+                            <a target="_blank" href="http://www.linkedin.com/shareArticle?mini=true&amp;url=http://blogs.microsoft.co.il/arnona/2016/01/03/keeping-an-active-desktop-session/&amp;title=Keeping%20an%20active%20desktop%20session&amp;summary=%3Cp%3EUPDATE:%20For%20some%20reason,%20the%20solution%20as%20it%20was%20before%20didn%E2%80%99t%20always%20work.%20I%20don%E2%80%99t%20understand%20the%20root%20cause,%20but%20the%20solution%20was%20simply%20to%20remove%20the%20%E2%80%9C-file%E2%80%9D%20at%20the%20start%20of%20the%20arguments%20of%20the%20Task%E2%80%99s%20action.%20I%20now%20fixed%20the%20instructions%20below%20accordingly.%20%C2%A0%20When%20doing%20any%20kind%20of%20UI%20automation,%20there%20are%20[%E2%80%A6]%3C/p%3E" class="ir icon-in">linkedin</a>
+                            <a target="_blank" href="https://twitter.com/share" class="tweet ir icon-twitter" data-lang="he">twitter</a>
+                            <a href="mailto:?subject=Keeping%20an%20active%20desktop%20session&amp;body=Check%20out%20this%20post%20http://blogs.microsoft.co.il/arnona/2016/01/03/keeping-an-active-desktop-session/" class="ir icon-email">email</a>
+                            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+                        </div>
+                    </div>
+
+				
+		</div><!-- .entry-content -->
+		
+
+        
+<div id="comments" class="comments-area">
+	<div id="respond" class="comment-respond">
+		<h3 id="reply-title" class="comment-reply-title">Leave a Reply <small><a rel="nofollow" id="cancel-comment-reply-link" href="http://blogs.microsoft.co.il/arnona/2016/01/03/keeping-an-active-desktop-session/#respond" style="display:none;">Cancel Reply</a></small></h3>			<form action="http://blogs.microsoft.co.il/arnona/wp-comments-post.php" method="post" id="commentform" class="comment-form">
+				<p class="comment-notes">Your email address will not be published.</p><p class="comment-form-comment"><label for="comment">Comment</label><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true"></textarea></p><p class="form-allowed-tags">You may use these <abbr title="HyperText Markup Language">HTML</abbr> tags and attributes:  <code>&lt;a href="" title=""&gt; &lt;abbr title=""&gt; &lt;acronym title=""&gt; &lt;b&gt; &lt;blockquote cite=""&gt; &lt;cite&gt; &lt;code&gt; &lt;del datetime=""&gt; &lt;em&gt; &lt;i&gt; &lt;q cite=""&gt; &lt;s&gt; &lt;strike&gt; &lt;strong&gt; </code></p><p class="comment-form-author"><label for="author">Name</label> <span class="required">*</span><input id="author" name="author" type="text" value="" size="30"></p>
+<p class="comment-form-email"><label for="email">Email</label> <span class="required">*</span><input id="email" name="email" type="text" value="" size="30"></p>
+<p class="comment-form-url"><label for="url">Website</label><input id="url" name="url" type="text" value="" size="30"></p>
+<p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Post Comment"> <input type="hidden" name="comment_post_ID" value="2085784" id="comment_post_ID">
+<input type="hidden" name="comment_parent" id="comment_parent" value="0">
+</p><p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="b763171544"></p><script type="text/javascript">var RecaptchaOptions = {theme : "blackglass"};</script><script type="text/javascript" src="./Keeping an active desktop session _ Arnon Axelrod&#39;s Blog_files/challenge"></script>
+
+	<noscript>
+  		<iframe src="http://www.google.com/recaptcha/api/noscript?k=6Ld4OuwSAAAAAC2pOGX1-HLYusMoy9UuR5_I91Eo" height="300" width="500" frameborder="0"></iframe><br/>
+  		<textarea name="recaptcha_challenge_field" rows="3" cols="40"></textarea>
+  		<input type="hidden" name="recaptcha_response_field" value="manual_challenge"/>
+	</noscript><!-- AVH First Defense Against Spam - WPMU DEV Version version 2.3.2  --><input type="hidden" id="_avh_first_defense_against_spam" name="_avh_first_defense_against_spam" value="fb31cb9d8c"><p style="display: none;"></p>			<input type="hidden" id="ak_js" name="ak_js" value="1574167384691"></form>
+			</div><!-- #respond -->
+	<div class="clearfix"></div>
+	
+			
+			 <h1 class="comments-title">24 comments</h1>
+
+		<ol class="commentlist">
+			    <li class="comment even thread-even depth-1" id="li-comment-2829206">
+       <div class="clearfix">
+        <div class="comment-avatar">
+            <img src="./Keeping an active desktop session _ Arnon Axelrod&#39;s Blog_files/6d968495b401600c4221dd0095c4de90.png" width="50" height="50" alt="" class="avatar avatar-50wp-user-avatar wp-user-avatar-50 alignnone photo avatar-default">        </div>
+        <div class="comment-post-body">
+            <span class="comment-author">tzurp</span><a class="comment-date" href="http://blogs.microsoft.co.il/arnona/2016/01/03/keeping-an-active-desktop-session/#comment-2829206" data-datetime="2016-09-07T10:49:32+00:00">September 7, 2016 ב 10:49</a>
+                
+			    <div class="comment-content comment">
+				    <p>It’s working like a charm! Thak you!</p>
+				                        <a rel="nofollow" class="comment-reply-link" href="http://blogs.microsoft.co.il/arnona/2016/01/03/keeping-an-active-desktop-session/?replytocom=2829206#respond" onclick="return addComment.moveForm( &quot;comment-2829206&quot;, &quot;2829206&quot;, &quot;respond&quot;, &quot;2085784&quot; )" aria-label="Reply to tzurp">Reply</a>			    </div><!-- .comment-content -->
+        </div>
+ 
+       </div>
+
+
+	</li><!-- #comment-## -->
+    <li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-2829207">
+       <div class="clearfix">
+        <div class="comment-avatar">
+            <img src="./Keeping an active desktop session _ Arnon Axelrod&#39;s Blog_files/a6aeea2e33703b566b84faef62ae5a19.png" width="50" height="50" alt="" class="avatar avatar-50wp-user-avatar wp-user-avatar-50 alignnone photo avatar-default">        </div>
+        <div class="comment-post-body">
+            <span class="comment-author">Dennis</span><a class="comment-date" href="http://blogs.microsoft.co.il/arnona/2016/01/03/keeping-an-active-desktop-session/#comment-2829207" data-datetime="2016-11-29T12:56:16+00:00">November 29, 2016 ב 12:56</a>
+                
+			    <div class="comment-content comment">
+				    <p>This information helps a lot… it might be the reason why this issue never happen on my local environment.</p>
+				                        <a rel="nofollow" class="comment-reply-link" href="http://blogs.microsoft.co.il/arnona/2016/01/03/keeping-an-active-desktop-session/?replytocom=2829207#respond" onclick="return addComment.moveForm( &quot;comment-2829207&quot;, &quot;2829207&quot;, &quot;respond&quot;, &quot;2085784&quot; )" aria-label="Reply to Dennis">Reply</a>			    </div><!-- .comment-content -->
+        </div>
+ 
+       </div>
+
+
+	</li><!-- #comment-## -->
+    <li class="comment even thread-even depth-1" id="li-comment-2829211">
+       <div class="clearfix">
+        <div class="comment-avatar">
+            <img src="./Keeping an active desktop session _ Arnon Axelrod&#39;s Blog_files/fc9af726b228a252ce6b3e1ae55c9320.png" width="50" height="50" alt="" class="avatar avatar-50wp-user-avatar wp-user-avatar-50 alignnone photo avatar-default">        </div>
+        <div class="comment-post-body">
+            <span class="comment-author">Kasyap</span><a class="comment-date" href="http://blogs.microsoft.co.il/arnona/2016/01/03/keeping-an-active-desktop-session/#comment-2829211" data-datetime="2017-02-06T07:31:59+00:00">February 6, 2017 ב 7:31</a>
+                
+			    <div class="comment-content comment">
+				    <p>This works! Only problem what I face now is with the display resolution. But screen resolution very low , so the tests are not able to access some of the UI controls. </p>
+<p>Can anyone help me to figure out how can I increase the screen resolution ?</p>
+				                        <a rel="nofollow" class="comment-reply-link" href="http://blogs.microsoft.co.il/arnona/2016/01/03/keeping-an-active-desktop-session/?replytocom=2829211#respond" onclick="return addComment.moveForm( &quot;comment-2829211&quot;, &quot;2829211&quot;, &quot;respond&quot;, &quot;2085784&quot; )" aria-label="Reply to Kasyap">Reply</a>			    </div><!-- .comment-content -->
+        </div>
+ 
+       </div>
+
+
+	<ol class="children">
+    <li class="comment byuser comment-author-arnona bypostauthor odd alt depth-2" id="li-comment-2829212">
+       <div class="clearfix">
+        <div class="comment-avatar">
+            <img src="./Keeping an active desktop session _ Arnon Axelrod&#39;s Blog_files/d3548b43b3f07144c336ab8378da3ecd(1).jpeg" width="50" height="50" alt="" class="avatar avatar-50wp-user-avatar wp-user-avatar-50 alignnone photo avatar-default">        </div>
+        <div class="comment-post-body">
+            <span class="comment-author">Arnon Axelrod</span><a class="comment-date" href="http://blogs.microsoft.co.il/arnona/2016/01/03/keeping-an-active-desktop-session/#comment-2829212" data-datetime="2017-02-23T23:22:58+00:00">February 23, 2017 ב 23:22</a>
+                
+			    <div class="comment-content comment">
+				    <p>@Kasyap – Have you tried using <a href="https://gallery.technet.microsoft.com/scriptcenter/2a631d72-206d-4036-a3f2-2e150f297515" rel="nofollow">Set-ScreenResolution</a> PowerShell command?</p>
+				                        <a rel="nofollow" class="comment-reply-link" href="http://blogs.microsoft.co.il/arnona/2016/01/03/keeping-an-active-desktop-session/?replytocom=2829212#respond" onclick="return addComment.moveForm( &quot;comment-2829212&quot;, &quot;2829212&quot;, &quot;respond&quot;, &quot;2085784&quot; )" aria-label="Reply to Arnon Axelrod">Reply</a>			    </div><!-- .comment-content -->
+        </div>
+ 
+       </div>
+
+
+	<ol class="children">
+    <li class="comment even depth-3" id="li-comment-2829216">
+       <div class="clearfix">
+        <div class="comment-avatar">
+            <img src="./Keeping an active desktop session _ Arnon Axelrod&#39;s Blog_files/fc9af726b228a252ce6b3e1ae55c9320.png" width="50" height="50" alt="" class="avatar avatar-50wp-user-avatar wp-user-avatar-50 alignnone photo avatar-default">        </div>
+        <div class="comment-post-body">
+            <span class="comment-author">Kasyap</span><a class="comment-date" href="http://blogs.microsoft.co.il/arnona/2016/01/03/keeping-an-active-desktop-session/#comment-2829216" data-datetime="2017-06-14T09:16:35+00:00">June 14, 2017 ב 9:16</a>
+                
+			    <div class="comment-content comment">
+				    <p>@Arnon Axelrod : I tired the poweshell script you said to set the resolution and also tried with QRes.exe.<br>
+Actually I am trying this in a VM. Will that be the issue?</p>
+				                        <a rel="nofollow" class="comment-reply-link" href="http://blogs.microsoft.co.il/arnona/2016/01/03/keeping-an-active-desktop-session/?replytocom=2829216#respond" onclick="return addComment.moveForm( &quot;comment-2829216&quot;, &quot;2829216&quot;, &quot;respond&quot;, &quot;2085784&quot; )" aria-label="Reply to Kasyap">Reply</a>			    </div><!-- .comment-content -->
+        </div>
+ 
+       </div>
+
+
+	<ol class="children">
+    <li class="comment byuser comment-author-arnona bypostauthor odd alt depth-4" id="li-comment-2829217">
+       <div class="clearfix">
+        <div class="comment-avatar">
+            <img src="./Keeping an active desktop session _ Arnon Axelrod&#39;s Blog_files/d3548b43b3f07144c336ab8378da3ecd(1).jpeg" width="50" height="50" alt="" class="avatar avatar-50wp-user-avatar wp-user-avatar-50 alignnone photo avatar-default">        </div>
+        <div class="comment-post-body">
+            <span class="comment-author">Arnon Axelrod</span><a class="comment-date" href="http://blogs.microsoft.co.il/arnona/2016/01/03/keeping-an-active-desktop-session/#comment-2829217" data-datetime="2017-06-26T08:54:08+00:00">June 26, 2017 ב 8:54</a>
+                
+			    <div class="comment-content comment">
+				    <p>That should work for VM too.<br>
+If you’re using VMWare, then in vSphere the Console view is acting like the “physical screen”. There you can see what’s displayed on the main screen, and if you change the resolution there, you’ll see it there also.</p>
+				                        <a rel="nofollow" class="comment-reply-link" href="http://blogs.microsoft.co.il/arnona/2016/01/03/keeping-an-active-desktop-session/?replytocom=2829217#respond" onclick="return addComment.moveForm( &quot;comment-2829217&quot;, &quot;2829217&quot;, &quot;respond&quot;, &quot;2085784&quot; )" aria-label="Reply to Arnon Axelrod">Reply</a>			    </div><!-- .comment-content -->
+        </div>
+ 
+       </div>
+
+
+	<ol class="children">
+    <li class="comment even depth-5" id="li-comment-2829224">
+       <div class="clearfix">
+        <div class="comment-avatar">
+            <img src="./Keeping an active desktop session _ Arnon Axelrod&#39;s Blog_files/fc9af726b228a252ce6b3e1ae55c9320.png" width="50" height="50" alt="" class="avatar avatar-50wp-user-avatar wp-user-avatar-50 alignnone photo avatar-default">        </div>
+        <div class="comment-post-body">
+            <span class="comment-author">Kasyap</span><a class="comment-date" href="http://blogs.microsoft.co.il/arnona/2016/01/03/keeping-an-active-desktop-session/#comment-2829224" data-datetime="2017-07-25T08:44:07+00:00">July 25, 2017 ב 8:44</a>
+                
+			    <div class="comment-content comment">
+				    <p>Yes it works now ! Resolution in vSphere  settings was the issue. Thanks a lot !</p>
+				                        			    </div><!-- .comment-content -->
+        </div>
+ 
+       </div>
+
+
+	</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+    <li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-2829213">
+       <div class="clearfix">
+        <div class="comment-avatar">
+            <img src="./Keeping an active desktop session _ Arnon Axelrod&#39;s Blog_files/e0a7612323d786ff1ea2c066a809f91c.png" width="50" height="50" alt="" class="avatar avatar-50wp-user-avatar wp-user-avatar-50 alignnone photo avatar-default">        </div>
+        <div class="comment-post-body">
+            <span class="comment-author">sanjay bisht</span><a class="comment-date" href="http://blogs.microsoft.co.il/arnona/2016/01/03/keeping-an-active-desktop-session/#comment-2829213" data-datetime="2017-03-09T07:04:21+00:00">March 9, 2017 ב 7:04</a>
+                
+			    <div class="comment-content comment">
+				    <p>On running the powershell command it is showing the correct output but it is not creating the output file on the desktop</p>
+				                        <a rel="nofollow" class="comment-reply-link" href="http://blogs.microsoft.co.il/arnona/2016/01/03/keeping-an-active-desktop-session/?replytocom=2829213#respond" onclick="return addComment.moveForm( &quot;comment-2829213&quot;, &quot;2829213&quot;, &quot;respond&quot;, &quot;2085784&quot; )" aria-label="Reply to sanjay bisht">Reply</a>			    </div><!-- .comment-content -->
+        </div>
+ 
+       </div>
+
+
+	</li><!-- #comment-## -->
+    <li class="comment even thread-even depth-1" id="li-comment-2829225">
+       <div class="clearfix">
+        <div class="comment-avatar">
+            <img src="./Keeping an active desktop session _ Arnon Axelrod&#39;s Blog_files/5affee253e8087574f274e4c58bf012a.png" width="50" height="50" alt="" class="avatar avatar-50wp-user-avatar wp-user-avatar-50 alignnone photo avatar-default">        </div>
+        <div class="comment-post-body">
+            <span class="comment-author">vsock</span><a class="comment-date" href="http://blogs.microsoft.co.il/arnona/2016/01/03/keeping-an-active-desktop-session/#comment-2829225" data-datetime="2017-08-06T11:42:57+00:00">August 6, 2017 ב 11:42</a>
+                
+			    <div class="comment-content comment">
+				    <p>I’ve been breaking my head for a week until I found this page. Many thanks the script has resolved the problems.</p>
+				                        <a rel="nofollow" class="comment-reply-link" href="http://blogs.microsoft.co.il/arnona/2016/01/03/keeping-an-active-desktop-session/?replytocom=2829225#respond" onclick="return addComment.moveForm( &quot;comment-2829225&quot;, &quot;2829225&quot;, &quot;respond&quot;, &quot;2085784&quot; )" aria-label="Reply to vsock">Reply</a>			    </div><!-- .comment-content -->
+        </div>
+ 
+       </div>
+
+
+	</li><!-- #comment-## -->
+    <li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-2829227">
+       <div class="clearfix">
+        <div class="comment-avatar">
+            <img src="./Keeping an active desktop session _ Arnon Axelrod&#39;s Blog_files/9a4a93c726ef18b2d59d0063a5e629f1.png" width="50" height="50" alt="" class="avatar avatar-50wp-user-avatar wp-user-avatar-50 alignnone photo avatar-default">        </div>
+        <div class="comment-post-body">
+            <span class="comment-author">Mario</span><a class="comment-date" href="http://blogs.microsoft.co.il/arnona/2016/01/03/keeping-an-active-desktop-session/#comment-2829227" data-datetime="2017-10-11T12:59:35+00:00">October 11, 2017 ב 12:59</a>
+                
+			    <div class="comment-content comment">
+				    <p>No .txt file is written on the desktop.</p>
+<p>However, if I exclude -file from “–file %userprofile%\Desktop\ReturnDesktopSessionToConsole.ps1 &gt;%userprofile%\desktop\output.txt”</p>
+<p>the .txt will appeat on the desktop. Is this approach fine?</p>
+				                        <a rel="nofollow" class="comment-reply-link" href="http://blogs.microsoft.co.il/arnona/2016/01/03/keeping-an-active-desktop-session/?replytocom=2829227#respond" onclick="return addComment.moveForm( &quot;comment-2829227&quot;, &quot;2829227&quot;, &quot;respond&quot;, &quot;2085784&quot; )" aria-label="Reply to Mario">Reply</a>			    </div><!-- .comment-content -->
+        </div>
+ 
+       </div>
+
+
+	<ol class="children">
+    <li class="comment byuser comment-author-arnona bypostauthor even depth-2" id="li-comment-2829237">
+       <div class="clearfix">
+        <div class="comment-avatar">
+            <img src="./Keeping an active desktop session _ Arnon Axelrod&#39;s Blog_files/d3548b43b3f07144c336ab8378da3ecd(1).jpeg" width="50" height="50" alt="" class="avatar avatar-50wp-user-avatar wp-user-avatar-50 alignnone photo avatar-default">        </div>
+        <div class="comment-post-body">
+            <span class="comment-author">Arnon Axelrod</span><a class="comment-date" href="http://blogs.microsoft.co.il/arnona/2016/01/03/keeping-an-active-desktop-session/#comment-2829237" data-datetime="2017-11-13T12:15:46+00:00">November 13, 2017 ב 12:15</a>
+                
+			    <div class="comment-content comment">
+				    <p>Did you look at the content of output.txt? I guess that you’ll see an error message there saying that ReturnDesktopSessionToConsole.ps1 is not recognized as the name of a cmdlet, function, script file, or operable program…<br>
+In other words, I don’t see how this could work. See <a href="https://docs.microsoft.com/en-us/powershell/scripting/core-powershell/console/powershell.exe-command-line-help?view=powershell-5.1" rel="nofollow">the PowerShell command line arguments.</a></p>
+				                        <a rel="nofollow" class="comment-reply-link" href="http://blogs.microsoft.co.il/arnona/2016/01/03/keeping-an-active-desktop-session/?replytocom=2829237#respond" onclick="return addComment.moveForm( &quot;comment-2829237&quot;, &quot;2829237&quot;, &quot;respond&quot;, &quot;2085784&quot; )" aria-label="Reply to Arnon Axelrod">Reply</a>			    </div><!-- .comment-content -->
+        </div>
+ 
+       </div>
+
+
+	</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+    <li class="comment odd alt thread-even depth-1" id="li-comment-2829228">
+       <div class="clearfix">
+        <div class="comment-avatar">
+            <img src="./Keeping an active desktop session _ Arnon Axelrod&#39;s Blog_files/01714518e7d3ce45c307365b7c39d470.jpeg" width="50" height="50" alt="" class="avatar avatar-50wp-user-avatar wp-user-avatar-50 alignnone photo avatar-default">        </div>
+        <div class="comment-post-body">
+            <span class="comment-author">Bruno Juchli</span><a class="comment-date" href="http://blogs.microsoft.co.il/arnona/2016/01/03/keeping-an-active-desktop-session/#comment-2829228" data-datetime="2017-10-12T15:01:04+00:00">October 12, 2017 ב 15:01</a>
+                
+			    <div class="comment-content comment">
+				    <p>You write that </p>
+<blockquote><p>Usually Test Agents that are used for running UI automated tests are configured to log-in automatically and to interact with desktop.</p></blockquote>
+<p>How can this be achieved? I already have auto-logon configured by Sysinternals Autologon utility, how about the “to interact with desktop” part?</p>
+				                        <a rel="nofollow" class="comment-reply-link" href="http://blogs.microsoft.co.il/arnona/2016/01/03/keeping-an-active-desktop-session/?replytocom=2829228#respond" onclick="return addComment.moveForm( &quot;comment-2829228&quot;, &quot;2829228&quot;, &quot;respond&quot;, &quot;2085784&quot; )" aria-label="Reply to Bruno Juchli">Reply</a>			    </div><!-- .comment-content -->
+        </div>
+ 
+       </div>
+
+
+	<ol class="children">
+    <li class="comment byuser comment-author-arnona bypostauthor even depth-2" id="li-comment-2829236">
+       <div class="clearfix">
+        <div class="comment-avatar">
+            <img src="./Keeping an active desktop session _ Arnon Axelrod&#39;s Blog_files/d3548b43b3f07144c336ab8378da3ecd(1).jpeg" width="50" height="50" alt="" class="avatar avatar-50wp-user-avatar wp-user-avatar-50 alignnone photo avatar-default">        </div>
+        <div class="comment-post-body">
+            <span class="comment-author">Arnon Axelrod</span><a class="comment-date" href="http://blogs.microsoft.co.il/arnona/2016/01/03/keeping-an-active-desktop-session/#comment-2829236" data-datetime="2017-11-13T10:56:54+00:00">November 13, 2017 ב 10:56</a>
+                
+			    <div class="comment-content comment">
+				    <p>I’m not very familiar with Sysinternal Autologon, but I guess that auto login also implies “interact with desktop”…</p>
+				                        <a rel="nofollow" class="comment-reply-link" href="http://blogs.microsoft.co.il/arnona/2016/01/03/keeping-an-active-desktop-session/?replytocom=2829236#respond" onclick="return addComment.moveForm( &quot;comment-2829236&quot;, &quot;2829236&quot;, &quot;respond&quot;, &quot;2085784&quot; )" aria-label="Reply to Arnon Axelrod">Reply</a>			    </div><!-- .comment-content -->
+        </div>
+ 
+       </div>
+
+
+	</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+    <li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-2829229">
+       <div class="clearfix">
+        <div class="comment-avatar">
+            <img src="./Keeping an active desktop session _ Arnon Axelrod&#39;s Blog_files/13b0f1d2d43f61984eaf1d1d72b8e7e2.png" width="50" height="50" alt="" class="avatar avatar-50wp-user-avatar wp-user-avatar-50 alignnone photo avatar-default">        </div>
+        <div class="comment-post-body">
+            <span class="comment-author"><a href="http://wright%20mongosan/" rel="external nofollow" class="url">kestasj</a></span><a class="comment-date" href="http://blogs.microsoft.co.il/arnona/2016/01/03/keeping-an-active-desktop-session/#comment-2829229" data-datetime="2017-10-18T19:28:10+00:00">October 18, 2017 ב 19:28</a>
+                
+			    <div class="comment-content comment">
+				    <p>Hi, for some reason my “DesktopOn.ps1” script was not executed from TaskScheduler. From PowerShell it looks OK I can see the TaskScheduler events which triggers the properTask, but “output.txt” was not created ?! k</p>
+				                        <a rel="nofollow" class="comment-reply-link" href="http://blogs.microsoft.co.il/arnona/2016/01/03/keeping-an-active-desktop-session/?replytocom=2829229#respond" onclick="return addComment.moveForm( &quot;comment-2829229&quot;, &quot;2829229&quot;, &quot;respond&quot;, &quot;2085784&quot; )" aria-label="Reply to kestasj">Reply</a>			    </div><!-- .comment-content -->
+        </div>
+ 
+       </div>
+
+
+	<ol class="children">
+    <li class="comment byuser comment-author-arnona bypostauthor even depth-2" id="li-comment-2829235">
+       <div class="clearfix">
+        <div class="comment-avatar">
+            <img src="./Keeping an active desktop session _ Arnon Axelrod&#39;s Blog_files/d3548b43b3f07144c336ab8378da3ecd(1).jpeg" width="50" height="50" alt="" class="avatar avatar-50wp-user-avatar wp-user-avatar-50 alignnone photo avatar-default">        </div>
+        <div class="comment-post-body">
+            <span class="comment-author">Arnon Axelrod</span><a class="comment-date" href="http://blogs.microsoft.co.il/arnona/2016/01/03/keeping-an-active-desktop-session/#comment-2829235" data-datetime="2017-11-13T10:51:47+00:00">November 13, 2017 ב 10:51</a>
+                
+			    <div class="comment-content comment">
+				    <p>How do you know that the event was triggered? from the history tab? Did you try specifying a full path of output.txt?</p>
+				                        <a rel="nofollow" class="comment-reply-link" href="http://blogs.microsoft.co.il/arnona/2016/01/03/keeping-an-active-desktop-session/?replytocom=2829235#respond" onclick="return addComment.moveForm( &quot;comment-2829235&quot;, &quot;2829235&quot;, &quot;respond&quot;, &quot;2085784&quot; )" aria-label="Reply to Arnon Axelrod">Reply</a>			    </div><!-- .comment-content -->
+        </div>
+ 
+       </div>
+
+
+	</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+    <li class="comment odd alt thread-even depth-1" id="li-comment-2829230">
+       <div class="clearfix">
+        <div class="comment-avatar">
+            <img src="./Keeping an active desktop session _ Arnon Axelrod&#39;s Blog_files/13b0f1d2d43f61984eaf1d1d72b8e7e2.png" width="50" height="50" alt="" class="avatar avatar-50wp-user-avatar wp-user-avatar-50 alignnone photo avatar-default">        </div>
+        <div class="comment-post-body">
+            <span class="comment-author">kestasj</span><a class="comment-date" href="http://blogs.microsoft.co.il/arnona/2016/01/03/keeping-an-active-desktop-session/#comment-2829230" data-datetime="2017-10-18T21:41:24+00:00">October 18, 2017 ב 21:41</a>
+                
+			    <div class="comment-content comment">
+				    <p>Unfortunately it’s no working with Wnodws-VM, k</p>
+				                        <a rel="nofollow" class="comment-reply-link" href="http://blogs.microsoft.co.il/arnona/2016/01/03/keeping-an-active-desktop-session/?replytocom=2829230#respond" onclick="return addComment.moveForm( &quot;comment-2829230&quot;, &quot;2829230&quot;, &quot;respond&quot;, &quot;2085784&quot; )" aria-label="Reply to kestasj">Reply</a>			    </div><!-- .comment-content -->
+        </div>
+ 
+       </div>
+
+
+	</li><!-- #comment-## -->
+    <li class="comment even thread-odd thread-alt depth-1" id="li-comment-2829231">
+       <div class="clearfix">
+        <div class="comment-avatar">
+            <img src="./Keeping an active desktop session _ Arnon Axelrod&#39;s Blog_files/abeeedfbd3b01b24a031a685fcbebc81.png" width="50" height="50" alt="" class="avatar avatar-50wp-user-avatar wp-user-avatar-50 alignnone photo avatar-default">        </div>
+        <div class="comment-post-body">
+            <span class="comment-author">Cleber</span><a class="comment-date" href="http://blogs.microsoft.co.il/arnona/2016/01/03/keeping-an-active-desktop-session/#comment-2829231" data-datetime="2017-10-27T21:46:08+00:00">October 27, 2017 ב 21:46</a>
+                
+			    <div class="comment-content comment">
+				    <p>Is there a way to keep multiple Windows accounts active at the same time?</p>
+				                        <a rel="nofollow" class="comment-reply-link" href="http://blogs.microsoft.co.il/arnona/2016/01/03/keeping-an-active-desktop-session/?replytocom=2829231#respond" onclick="return addComment.moveForm( &quot;comment-2829231&quot;, &quot;2829231&quot;, &quot;respond&quot;, &quot;2085784&quot; )" aria-label="Reply to Cleber">Reply</a>			    </div><!-- .comment-content -->
+        </div>
+ 
+       </div>
+
+
+	<ol class="children">
+    <li class="comment byuser comment-author-arnona bypostauthor odd alt depth-2" id="li-comment-2829234">
+       <div class="clearfix">
+        <div class="comment-avatar">
+            <img src="./Keeping an active desktop session _ Arnon Axelrod&#39;s Blog_files/d3548b43b3f07144c336ab8378da3ecd(1).jpeg" width="50" height="50" alt="" class="avatar avatar-50wp-user-avatar wp-user-avatar-50 alignnone photo avatar-default">        </div>
+        <div class="comment-post-body">
+            <span class="comment-author">Arnon Axelrod</span><a class="comment-date" href="http://blogs.microsoft.co.il/arnona/2016/01/03/keeping-an-active-desktop-session/#comment-2829234" data-datetime="2017-11-13T10:01:52+00:00">November 13, 2017 ב 10:01</a>
+                
+			    <div class="comment-content comment">
+				    <p>Hi Cleber,<br>
+Can you explain what are you trying to do and why? What exactly do you mean by active Windows Accounts? Do you mean multiple active desktops, multiple logged in users, something else?<br>
+All versions of Windows (except from “Home” AFAIR) support multiple logged-in users, but only one user can have an active desktop at any given time. Windows Server Remote Desktop Services allow multiple logged in users each to have an active desktop, but only one user can be auto logged in, therefore I don’t get what are you trying to achieve.<br>
+Best,<br>
+Arnon.</p>
+				                        <a rel="nofollow" class="comment-reply-link" href="http://blogs.microsoft.co.il/arnona/2016/01/03/keeping-an-active-desktop-session/?replytocom=2829234#respond" onclick="return addComment.moveForm( &quot;comment-2829234&quot;, &quot;2829234&quot;, &quot;respond&quot;, &quot;2085784&quot; )" aria-label="Reply to Arnon Axelrod">Reply</a>			    </div><!-- .comment-content -->
+        </div>
+ 
+       </div>
+
+
+	</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+    <li class="comment even thread-even depth-1" id="li-comment-2829232">
+       <div class="clearfix">
+        <div class="comment-avatar">
+            <img src="./Keeping an active desktop session _ Arnon Axelrod&#39;s Blog_files/71220945e59c1a6fe257aa449549ed27.png" width="50" height="50" alt="" class="avatar avatar-50wp-user-avatar wp-user-avatar-50 alignnone photo avatar-default">        </div>
+        <div class="comment-post-body">
+            <span class="comment-author">Shruthi</span><a class="comment-date" href="http://blogs.microsoft.co.il/arnona/2016/01/03/keeping-an-active-desktop-session/#comment-2829232" data-datetime="2017-11-10T17:09:25+00:00">November 10, 2017 ב 17:09</a>
+                
+			    <div class="comment-content comment">
+				    <p>Hi Arnon,</p>
+<p>This is a great article and solves my issue partially. We actually have a policy to display legal text upon login. Any idea how I can get around this so that the Test Agent can login and run the tests?</p>
+<p>Thanks</p>
+				                        <a rel="nofollow" class="comment-reply-link" href="http://blogs.microsoft.co.il/arnona/2016/01/03/keeping-an-active-desktop-session/?replytocom=2829232#respond" onclick="return addComment.moveForm( &quot;comment-2829232&quot;, &quot;2829232&quot;, &quot;respond&quot;, &quot;2085784&quot; )" aria-label="Reply to Shruthi">Reply</a>			    </div><!-- .comment-content -->
+        </div>
+ 
+       </div>
+
+
+	<ol class="children">
+    <li class="comment byuser comment-author-arnona bypostauthor odd alt depth-2" id="li-comment-2829233">
+       <div class="clearfix">
+        <div class="comment-avatar">
+            <img src="./Keeping an active desktop session _ Arnon Axelrod&#39;s Blog_files/d3548b43b3f07144c336ab8378da3ecd(1).jpeg" width="50" height="50" alt="" class="avatar avatar-50wp-user-avatar wp-user-avatar-50 alignnone photo avatar-default">        </div>
+        <div class="comment-post-body">
+            <span class="comment-author">Arnon Axelrod</span><a class="comment-date" href="http://blogs.microsoft.co.il/arnona/2016/01/03/keeping-an-active-desktop-session/#comment-2829233" data-datetime="2017-11-13T09:51:44+00:00">November 13, 2017 ב 9:51</a>
+                
+			    <div class="comment-content comment">
+				    <p>Hi,<br>
+If this text prevents the test agent from from logging in automatically, I suggest that you talk to your system administrator and explain the special need to remove this message just for that machine. I guess that they won’t immediately agree, but if you explain the need to your managers and convince them that it’s important I’m sure that a solution can be found.<br>
+HTH,<br>
+Arnon</p>
+				                        <a rel="nofollow" class="comment-reply-link" href="http://blogs.microsoft.co.il/arnona/2016/01/03/keeping-an-active-desktop-session/?replytocom=2829233#respond" onclick="return addComment.moveForm( &quot;comment-2829233&quot;, &quot;2829233&quot;, &quot;respond&quot;, &quot;2085784&quot; )" aria-label="Reply to Arnon Axelrod">Reply</a>			    </div><!-- .comment-content -->
+        </div>
+ 
+       </div>
+
+
+	</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+    <li class="comment even thread-odd thread-alt depth-1" id="li-comment-2829239">
+       <div class="clearfix">
+        <div class="comment-avatar">
+            <img src="./Keeping an active desktop session _ Arnon Axelrod&#39;s Blog_files/00ef62952ce043aab8993827d718fd9d.png" width="50" height="50" alt="" class="avatar avatar-50wp-user-avatar wp-user-avatar-50 alignnone photo avatar-default">        </div>
+        <div class="comment-post-body">
+            <span class="comment-author">warren</span><a class="comment-date" href="http://blogs.microsoft.co.il/arnona/2016/01/03/keeping-an-active-desktop-session/#comment-2829239" data-datetime="2017-11-20T07:23:05+00:00">November 20, 2017 ב 7:23</a>
+                
+			    <div class="comment-content comment">
+				    <p>If you’re logging in as Administrator on each machine (not within domain network), it automatically stores user as *MachineName*/Administrator.  I don’t see manual way to undo this.</p>
+<p>Attempting to import this to other machines fails since the MachineName part is always different.  How can I make this generic “Administrator” so script is accepted on import into new machine?</p>
+				                        <a rel="nofollow" class="comment-reply-link" href="http://blogs.microsoft.co.il/arnona/2016/01/03/keeping-an-active-desktop-session/?replytocom=2829239#respond" onclick="return addComment.moveForm( &quot;comment-2829239&quot;, &quot;2829239&quot;, &quot;respond&quot;, &quot;2085784&quot; )" aria-label="Reply to warren">Reply</a>			    </div><!-- .comment-content -->
+        </div>
+ 
+       </div>
+
+
+	</li><!-- #comment-## -->
+    <li class="comment odd alt thread-even depth-1" id="li-comment-2829240">
+       <div class="clearfix">
+        <div class="comment-avatar">
+            <img src="./Keeping an active desktop session _ Arnon Axelrod&#39;s Blog_files/194ae9ee216e40ed5aa6ccd3647ed0f7.png" width="50" height="50" alt="" class="avatar avatar-50wp-user-avatar wp-user-avatar-50 alignnone photo avatar-default">        </div>
+        <div class="comment-post-body">
+            <span class="comment-author">Milan Zeleznik</span><a class="comment-date" href="http://blogs.microsoft.co.il/arnona/2016/01/03/keeping-an-active-desktop-session/#comment-2829240" data-datetime="2018-03-06T13:35:06+00:00">March 6, 2018 ב 13:35</a>
+                
+			    <div class="comment-content comment">
+				    <p>Everything done by your instructions, but screenshot (with powershell) still creates a black image…<br>
+Any idea?</p>
+				                        <a rel="nofollow" class="comment-reply-link" href="http://blogs.microsoft.co.il/arnona/2016/01/03/keeping-an-active-desktop-session/?replytocom=2829240#respond" onclick="return addComment.moveForm( &quot;comment-2829240&quot;, &quot;2829240&quot;, &quot;respond&quot;, &quot;2085784&quot; )" aria-label="Reply to Milan Zeleznik">Reply</a>			    </div><!-- .comment-content -->
+        </div>
+ 
+       </div>
+
+
+	</li><!-- #comment-## -->
+    <li class="comment even thread-odd thread-alt depth-1" id="li-comment-2829241">
+       <div class="clearfix">
+        <div class="comment-avatar">
+            <img src="./Keeping an active desktop session _ Arnon Axelrod&#39;s Blog_files/8adcbe5a5a854610e357ecad0561a18f.png" width="50" height="50" alt="" class="avatar avatar-50wp-user-avatar wp-user-avatar-50 alignnone photo avatar-default">        </div>
+        <div class="comment-post-body">
+            <span class="comment-author">Nishant Shah</span><a class="comment-date" href="http://blogs.microsoft.co.il/arnona/2016/01/03/keeping-an-active-desktop-session/#comment-2829241" data-datetime="2018-03-28T11:37:56+00:00">March 28, 2018 ב 11:37</a>
+                
+			    <div class="comment-content comment">
+				    <p>Hi Arnon,<br>
+The output file is not getting created for me as well when I try to execute it from Task Scheduler.<br>
+However, when I try to execute the same thing via Command Prompt, everything works fine and get the output.txt file successfully with expected content.<br>
+Any idea why is this happening ?</p>
+				                        <a rel="nofollow" class="comment-reply-link" href="http://blogs.microsoft.co.il/arnona/2016/01/03/keeping-an-active-desktop-session/?replytocom=2829241#respond" onclick="return addComment.moveForm( &quot;comment-2829241&quot;, &quot;2829241&quot;, &quot;respond&quot;, &quot;2085784&quot; )" aria-label="Reply to Nishant Shah">Reply</a>			    </div><!-- .comment-content -->
+        </div>
+ 
+       </div>
+
+
+	<ol class="children">
+    <li class="comment odd alt depth-2" id="li-comment-2829242">
+       <div class="clearfix">
+        <div class="comment-avatar">
+            <img src="./Keeping an active desktop session _ Arnon Axelrod&#39;s Blog_files/8adcbe5a5a854610e357ecad0561a18f.png" width="50" height="50" alt="" class="avatar avatar-50wp-user-avatar wp-user-avatar-50 alignnone photo avatar-default">        </div>
+        <div class="comment-post-body">
+            <span class="comment-author">Nishant Shah</span><a class="comment-date" href="http://blogs.microsoft.co.il/arnona/2016/01/03/keeping-an-active-desktop-session/#comment-2829242" data-datetime="2018-03-28T11:45:54+00:00">March 28, 2018 ב 11:45</a>
+                
+			    <div class="comment-content comment">
+				    <p>Also, when I execute it from command prompt, I do get the session details correctly in the output.txt. But, above the session details, I get an error saying:-</p>
+<p>You cannot call a method on a null-valued expression.<br>
+At ReturnDesktopSessionToConsole.ps1:3 char:1<br>
++ $sessionId = $output.Substring(38, 9).Trim()<br>
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException<br>
+    + FullyQualifiedErrorId : InvokeMethodOnNull</p>
+				                        <a rel="nofollow" class="comment-reply-link" href="http://blogs.microsoft.co.il/arnona/2016/01/03/keeping-an-active-desktop-session/?replytocom=2829242#respond" onclick="return addComment.moveForm( &quot;comment-2829242&quot;, &quot;2829242&quot;, &quot;respond&quot;, &quot;2085784&quot; )" aria-label="Reply to Nishant Shah">Reply</a>			    </div><!-- .comment-content -->
+        </div>
+ 
+       </div>
+
+
+	</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+		</ol><!-- .commentlist -->
+
+		
+		
+	
+	
+
+</div><!-- #comments .comments-area -->
+	<!--<div class="fb-comments" data-href="http://guideme.co.il/comments" data-colorscheme="The color scheme used in the plugin" data-numposts="5" data-width="The pixel width of the plugin"></div>-->
+
+				
+	
+	</article><!-- #post -->
+				
+				
+						
+	
+
+</section>
+		
+			<div id="secondary" class="widget-area" role="complementary">
+			<aside id="search-2" class="widget widget_search"><form role="search" method="get" id="searchform" class="searchform" action="http://blogs.microsoft.co.il/arnona/">
+				<div>
+					<label class="screen-reader-text" for="s">Search for:</label>
+					<input type="text" value="" name="s" id="s">
+					<input type="submit" id="searchsubmit" value="Search">
+				</div>
+			</form></aside>		<aside id="recent-posts-2" class="widget widget_recent_entries">		<h3 class="widget-title">Recent Posts</h3>		<ul>
+											<li>
+					<a href="http://blogs.microsoft.co.il/arnona/2018/09/27/continuing-my-blog-on-medium-com/">Continuing my blog on Medium.com</a>
+									</li>
+											<li>
+					<a href="http://blogs.microsoft.co.il/arnona/2018/09/26/best-practices-for-choosing-locators-for-selenium/">Best Practices for Choosing Locators for Selenium</a>
+									</li>
+											<li>
+					<a href="http://blogs.microsoft.co.il/arnona/2018/07/10/my-book-complete-guide-to-test-automation-is-due-in-september/">My book "Complete Guide to Test Automation" is due in September</a>
+									</li>
+											<li>
+					<a href="http://blogs.microsoft.co.il/arnona/2017/03/06/selenium-in-depth-the-demos/">Selenium in Depth – the demos</a>
+									</li>
+											<li>
+					<a href="http://blogs.microsoft.co.il/arnona/2016/11/09/writing-maintainable-automated-test-and-infrastructure-with-live-video-recording/">Writing maintainable automated test and infrastructure – With live video recording!</a>
+									</li>
+					</ul>
+		</aside><aside id="recent-comments-2" class="widget widget_recent_comments"><h3 class="widget-title">Recent Comments</h3><ul id="recentcomments"><li class="recentcomments"><span class="comment-author-link">Nishant Shah</span> on <a href="http://blogs.microsoft.co.il/arnona/2016/01/03/keeping-an-active-desktop-session/#comment-2829242">Keeping an active desktop session</a></li><li class="recentcomments"><span class="comment-author-link">Nishant Shah</span> on <a href="http://blogs.microsoft.co.il/arnona/2016/01/03/keeping-an-active-desktop-session/#comment-2829241">Keeping an active desktop session</a></li><li class="recentcomments"><span class="comment-author-link">Milan Zeleznik</span> on <a href="http://blogs.microsoft.co.il/arnona/2016/01/03/keeping-an-active-desktop-session/#comment-2829240">Keeping an active desktop session</a></li><li class="recentcomments"><span class="comment-author-link">warren</span> on <a href="http://blogs.microsoft.co.il/arnona/2016/01/03/keeping-an-active-desktop-session/#comment-2829239">Keeping an active desktop session</a></li><li class="recentcomments"><span class="comment-author-link">Arnon Axelrod</span> on <a href="http://blogs.microsoft.co.il/arnona/2016/01/03/keeping-an-active-desktop-session/#comment-2829237">Keeping an active desktop session</a></li></ul></aside><aside id="archives-2" class="widget widget_archive"><h3 class="widget-title">Archives</h3>		<ul>
+			<li><a href="http://blogs.microsoft.co.il/arnona/2018/09/">September 2018</a></li>
+	<li><a href="http://blogs.microsoft.co.il/arnona/2018/07/">July 2018</a></li>
+	<li><a href="http://blogs.microsoft.co.il/arnona/2017/03/">March 2017</a></li>
+	<li><a href="http://blogs.microsoft.co.il/arnona/2016/11/">November 2016</a></li>
+	<li><a href="http://blogs.microsoft.co.il/arnona/2016/07/">July 2016</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2016/04/">April 2016</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2016/03/">March 2016</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2016/01/">January 2016</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2015/10/">October 2015</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2015/08/">August 2015</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2015/04/">April 2015</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2015/01/">January 2015</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2014/09/">September 2014</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2013/12/">December 2013</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2013/05/">May 2013</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2013/02/">February 2013</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2012/12/">December 2012</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2012/09/">September 2012</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2012/07/">July 2012</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2012/05/">May 2012</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2012/04/">April 2012</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2012/03/">March 2012</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2012/02/">February 2012</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2011/12/">December 2011</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2011/11/">November 2011</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2011/10/">October 2011</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2011/09/">September 2011</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2011/08/">August 2011</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2011/07/">July 2011</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2011/06/">June 2011</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2011/03/">March 2011</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2011/02/">February 2011</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2011/01/">January 2011</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2010/12/">December 2010</a></li>
+		<li><a class="a-txt" href="javascript:void(0)">Full Arcive</a></li></ul>
+		</aside><aside id="categories-2" class="widget widget_categories"><h3 class="widget-title">Categories</h3>		<ul>
+	<li class="cat-item cat-item-21027"><a href="http://blogs.microsoft.co.il/arnona/category/continuous-improvement/">Continuous Improvement</a>
+</li>
+	<li class="cat-item cat-item-21026"><a href="http://blogs.microsoft.co.il/arnona/category/test-automation/">Test Automation</a>
+</li>
+		</ul>
+</aside><aside id="meta-2" class="widget widget_meta"><h3 class="widget-title">Meta</h3>			<ul>
+			<li><a href="https://blogs.microsoft.co.il/arnona/wp-login.php?action=register">Register</a></li>			<li><a href="https://blogs.microsoft.co.il/arnona/wp-login.php">Log in</a></li>
+			<li><a href="http://blogs.microsoft.co.il/arnona/feed/">Entries <abbr title="Really Simple Syndication">RSS</abbr></a></li>
+			<li><a href="http://blogs.microsoft.co.il/arnona/comments/feed/">Comments <abbr title="Really Simple Syndication">RSS</abbr></a></li>
+			<li><a href="https://wordpress.org/" title="Powered by WordPress, state-of-the-art semantic personal publishing platform.">WordPress.org</a></li>			</ul>
+			</aside>			<aside class="widget mrg">
+		
+			<div class="moposts">
+			<h3 class="widget-title"> Additional Posts </h3>
+								  <a href="http://blogs.microsoft.co.il/arnona/2018/09/27/continuing-my-blog-on-medium-com/" class="latest_art">
+					<div class="la-date">September 27, 2018</div>
+					<h4>Continuing my blog on Medium.com</h4>
+		
+                    <p>An era has come to an end. It’s time to move on to a new and modern blogging website. My next blog posts will be published on&nbsp;https://medium.com/@arnonaxelrod Happy reading!</p>
+			      </a>
+								  <a href="http://blogs.microsoft.co.il/arnona/2018/09/26/best-practices-for-choosing-locators-for-selenium/" class="latest_art">
+					<div class="la-date">September 26, 2018</div>
+					<h4>Best Practices for Choosing Locators for Selenium</h4>
+		
+                    <p>A question that comes often, especially by folks that are new to Selenium, is what are the best practices to use when choosing a locator for an element. In other cases, people just have bad habits and don’t even think to ask this question, but they encounter instabilities or maintenance problems, without knowing that they […]</p>
+			      </a>
+								  <a href="http://blogs.microsoft.co.il/arnona/2018/07/10/my-book-complete-guide-to-test-automation-is-due-in-september/" class="latest_art">
+					<div class="la-date">July 10, 2018</div>
+					<h4>My book "Complete Guide to Test Automation" is due in September</h4>
+		
+                    <p>Update: The book is available at Amazon, or directly through Apress. According to the last time I’ve checked, Amazon had a better price a hard copy, but had no option for a soft copy, while through Apress you can order either a hard copy or a soft copy. I’m very proud to let you know […]</p>
+			      </a>
+								</div>
+				
+				</aside>
+		</div><!-- #secondary -->
+	</div>
+	</div>
+
+	<footer class="footer_main clearfix">
+	<section class="wrapper clearfix">
+		<article id="first_fl" class="footer_list">
+		<h3>משאבים לקהילת המפתחים</h3>
+			<div class="menu-footer1-container">
+				<ul id="menu-footer-menu-2">
+				<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://blogs.microsoft.co.il/msdn" title="MSDN בלוג" target="_blank">בלוג MSDN</a></li>
+				<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://www.microsoft.com/israel/msdn/pulse/" title="ניוזלטר  MSDN" target="_blank">ניוזלטר  MSDN</a></li>
+				<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="https://www.facebook.com/msdnisrael" title="MSDN בפייסבוק" target="_blank">בפייסבוק MSDN</a></li>
+				<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://www.youtube.com/channel/UCp6wuFkya3jOETs_nM7z3Fw?feature=watch" target="_blank">יוטיוב  MSDN</a></li>
+				<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://www.microsoftvirtualacademy.com/" target="_blank">האקדמיה הוירטואלית</a></li>
+				<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://msdn.microsoft.com/en-us/evalcenter/default" target="_blank">התנסות חינם</a></li>
+				<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://www.microsoft.com/israel/4steps/" target="_blank">אתר פיתוח אפליקציות</a></li>
+				</ul>
+			</div>
+		</article>
+			<article id="sec_fl" class="footer_list">
+		<h3>משאבים לקהילת IT</h3>
+				<ul id="menu-footer-menu-2">
+				<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://blogs.microsoft.co.il/technet" title="TechNet בלוג" target="_blank">בלוג TechNet </a></li>
+				<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://www.microsoft.com/israel/technetflash/Prev_vers/index.htm" target="_blank">ניוזלטר  TechNet </a></li>
+				<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="https://www.facebook.com/technetil" title="TechNet בפייסבוק" target="_blank">בפייסבוק TechNet</a></li>
+				<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://www.youtube.com/user/TechNetIsrael/videos" target="_blank">יוטיוב  TechNet</a></li>
+								<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://www.microsoftvirtualacademy.com/" target="_blank">האקדמיה הוירטואלית</a></li>
+				<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://technet.microsoft.com/en-us/evalcenter/default" target="_blank">התנסות חינם</a></li>
+				</ul>
+			</article>
+			<article id="thrd_fl" class="footer_list">
+		<h3>משאבים כללים </h3>
+					<ul id="menu-footer-menu-2">
+						<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://www.microsoft.com/he-il/default.aspx" target="_blank" title="אתר מיקרוסופט ישראל">אתר מיקרוסופט ישראל</a></li>
+						<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://www.facebook.com/microsoftisrael" target="_blank" title="מיקרוסופט ישראל בפייסבוק">מיקרוסופט ישראל בפייסבוק</a></li>
+						<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://social.msdn.microsoft.com/Forums/he-il/categories" target="_blank" title="&gt;אתר הפורומים">אתר הפורומים</a></li>
+						<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://www.microsoft.com/israel/communities/usergroups/default.aspx" target="_blank" title="&gt;קבוצות משתמשים">קבוצות משתמשים</a></li>
+						<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://www.microsoft.com/israel/traincert/" target="_blank" title="הדרכות והסמכות מיקרוסופט">הדרכות והסמכות מיקרוסופט</a></li>
+						<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="https://msevents.microsoft.com/CUI/default.aspx?culture=he-IL" target="_blank">אירועים </a></li>
+					
+					<!--
+					<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://blogs.microsoft.co.il/סימנים-מסחריים/" title=" סימנים מסחריים"> סימנים מסחריים</a></li>
+				<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://blogs.microsoft.co.il/תנאי-שימוש/" title="תנאי שימוש">תנאי שימוש</a></li>
+-->
+				</ul>	</article>
+		</section>
+		<section class="sfooter">
+                <div class="content">
+                    <div class="footer-bottom">                        
+                        <ul class="legal">
+                            <li><a href="http://choice.microsoft.com/">אודות הפרסומות שלנו</a></li>
+                            <li><a href="http://www.microsoft.com/About/Legal/EN/US/IntellectualProperty/Trademarks/EN-US.aspx">סימנים מסחריים</a></li>
+                            <li><a href="http://www.microsoft.com/en-us/legal/intellectualproperty/copyright/default.aspx">תנאי השימוש</a></li>
+                            <li><a href="http://go.microsoft.com/fwlink/?LinkId=248681">הצהרת פרטיות</a></li>
+                        </ul>
+                        <div class="footer-copyright">
+                            <a href="http://www.microsoft.com/">
+                                <img alt="Microsoft" src="./Keeping an active desktop session _ Arnon Axelrod&#39;s Blog_files/microsoft-logo-heb.png">
+                            </a><span>© 2014 Microsoft</span>
+                        </div>
+                    </div>
+                </div>
+</section>
+	</footer><!-- #colophon -->
+    <script>
+        (function (window) {
+            var rSide = document.getElementById("blog_post_info");
+            var lSide = document.getElementById("secondary");
+			
+			setTimeout(function(){
+				rSide = document.getElementById("blog_post_info");
+				lSide = document.getElementById("secondary");
+				if (lSide.offsetHeight > rSide.offsetHeight) {
+					rSide.style.minHeight = lSide.offsetHeight + "px";
+				}
+			},1000);
+
+            window.onresize = function () {
+                if (lSide.offsetHeight > rSide.offsetHeight) {
+                    rSide.style.minHeight = lSide.offsetHeight + "px";
+                }
+            }
+        })(window);
+
+
+    </script>
+	
+<!-- Do Not Remove - Turn Tracking Beacon Code - Do Not Remove -->
+<!-- Advertiser Name : microsoft -->
+<!-- Beacon Name : Microsoft_ blogs general -->
+<!-- START OF WEDCS TAG -->
+<script type="text/javascript">
+    var varSegmentation = 0;
+    var varClickTracking = 1;
+    var varCustomerTracking = 1;
+    var varAutoFirePV = 1;
+    var Route = "LE020";
+    document.write("<script type='text/javascript' src='" +
+    (window.location.protocol) + "//c.microsoft.com/ms.js'" + "'><\/script>");
+</script><script type="text/javascript" src="http://c.microsoft.com/ms.js" '=""></script>
+<noscript>
+    <img alt="" width="1" height="1" src="http://c.microsoft.com/trans_pixel.aspx" />
+</noscript>
+<!-- END OF WEDCS TAG -->
+
+
+
+
+
+<!-- If Beacon is placed on a Transaction or Lead Generation based page, please populate the turn_client_track_id with your order/confirmation ID -->
+<script type="text/javascript">
+  turn_client_track_id = "";
+</script>
+<script type="text/javascript" src="./Keeping an active desktop session _ Arnon Axelrod&#39;s Blog_files/beacon_call.js.download">
+</script><img height="1" width="1" border="0" src="./Keeping an active desktop session _ Arnon Axelrod&#39;s Blog_files/beacon">
+<noscript>
+  <img border="0" src="http://r.turn.com/r/beacon?b2=PGyOFcFmMNXjqLZWhsqf0IYBbGja1CD2b3Qxz0EXcZ4jZElP3T1utc_BawhZaoxwRafeYDFgKVEXkxLRf3dk_A&cid=">
+</noscript>
+<!-- End Turn Tracking Beacon Code Do Not Remove -->
+
+<script>
+(function() { // Redistats, track version 1.0
+	var global_id = 147;
+	var property_id = 1346;
+	var url = encodeURIComponent(window.location.href.split('#')[0]);
+	var referrer = encodeURIComponent(document.referrer);
+	var x = document.createElement('script'), s = document.getElementsByTagName('script')[0];
+	x.src = '//redistats.com/track.js?gid='+global_id+'&pid='+property_id+'&url='+url+'&referrer='+referrer;
+	s.parentNode.insertBefore(x, s);
+})();
+</script><script type="text/javascript" src="./Keeping an active desktop session _ Arnon Axelrod&#39;s Blog_files/shCore.js.download"></script>
+<script type="text/javascript" src="./Keeping an active desktop session _ Arnon Axelrod&#39;s Blog_files/shBrushPowerShell.js.download"></script>
+<script type="text/javascript">
+	(function(){
+		var corecss = document.createElement('link');
+		var themecss = document.createElement('link');
+		var corecssurl = "http://blogs.microsoft.co.il/arnona/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/styles/shCore.css?ver=3.0.9b";
+		if ( corecss.setAttribute ) {
+				corecss.setAttribute( "rel", "stylesheet" );
+				corecss.setAttribute( "type", "text/css" );
+				corecss.setAttribute( "href", corecssurl );
+		} else {
+				corecss.rel = "stylesheet";
+				corecss.href = corecssurl;
+		}
+		document.getElementsByTagName("head")[0].insertBefore( corecss, document.getElementById("syntaxhighlighteranchor") );
+		var themecssurl = "http://blogs.microsoft.co.il/arnona/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/styles/shThemeDefault.css?ver=3.0.9b";
+		if ( themecss.setAttribute ) {
+				themecss.setAttribute( "rel", "stylesheet" );
+				themecss.setAttribute( "type", "text/css" );
+				themecss.setAttribute( "href", themecssurl );
+		} else {
+				themecss.rel = "stylesheet";
+				themecss.href = themecssurl;
+		}
+		//document.getElementById("syntaxhighlighteranchor").appendChild(themecss);
+		document.getElementsByTagName("head")[0].insertBefore( themecss, document.getElementById("syntaxhighlighteranchor") );
+	})();
+	SyntaxHighlighter.config.strings.expandSource = '+ expand source';
+	SyntaxHighlighter.config.strings.help = '?';
+	SyntaxHighlighter.config.strings.alert = 'SyntaxHighlighter\n\n';
+	SyntaxHighlighter.config.strings.noBrush = 'Can\'t find brush for: ';
+	SyntaxHighlighter.config.strings.brushNotHtmlScript = 'Brush wasn\'t configured for html-script option: ';
+	SyntaxHighlighter.defaults['pad-line-numbers'] = false;
+	SyntaxHighlighter.defaults['toolbar'] = false;
+	SyntaxHighlighter.all();
+</script>
+<script type="text/javascript" src="./Keeping an active desktop session _ Arnon Axelrod&#39;s Blog_files/comment-reply.min.js.download"></script>
+<script type="text/javascript" src="./Keeping an active desktop session _ Arnon Axelrod&#39;s Blog_files/wp-embed.min.js.download"></script>
+<script async="async" type="text/javascript" src="./Keeping an active desktop session _ Arnon Axelrod&#39;s Blog_files/form.js.download"></script>
+
+<iframe scrolling="no" frameborder="0" allowtransparency="true" src="./Keeping an active desktop session _ Arnon Axelrod&#39;s Blog_files/widget_iframe.d942dbac55d395b6a752976f272a24f6.html" title="Twitter settings iframe" style="display: none;"></iframe></body></html>

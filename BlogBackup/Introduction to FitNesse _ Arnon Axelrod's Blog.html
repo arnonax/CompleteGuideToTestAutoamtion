@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<!-- saved from url=(0072)http://blogs.microsoft.co.il/arnona/2011/08/02/introduction-to-fitnesse/ -->
+<html lang="en-US"><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="initial-scale=1.0, width=device-width">
+<title>Introduction to FitNesse | Arnon Axelrod's Blog</title>
+<link rel="profile" href="http://gmpg.org/xfn/11">
+<link rel="pingback" href="http://blogs.microsoft.co.il/arnona/xmlrpc.php">
+
+
+<!--[if lt IE 9]>
+           <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+           <script>window.html5 || document.write('<script src="http://blogs.microsoft.co.il/arnona/wp-content/themes/MS_englishjs/vendor/html5shiv.js"><\/script>')</script>
+    <![endif]-->
+			 
+ <script src="./Introduction to FitNesse _ Arnon Axelrod&#39;s Blog_files/track.js.download"></script><script src="./Introduction to FitNesse _ Arnon Axelrod&#39;s Blog_files/all.js.download" async="" crossorigin="anonymous"></script><script id="twitter-wjs" src="./Introduction to FitNesse _ Arnon Axelrod&#39;s Blog_files/widgets.js.download"></script><script id="facebook-jssdk" src="./Introduction to FitNesse _ Arnon Axelrod&#39;s Blog_files/all.js(1).download"></script><script src="./Introduction to FitNesse _ Arnon Axelrod&#39;s Blog_files/jquery.min.js.download"></script>
+ <script src="./Introduction to FitNesse _ Arnon Axelrod&#39;s Blog_files/app.js.download"></script>
+<link rel="dns-prefetch" href="http://s.w.org/">
+<link rel="alternate" type="application/rss+xml" title="Arnon Axelrod&#39;s Blog » Feed" href="http://blogs.microsoft.co.il/arnona/feed/">
+<link rel="alternate" type="application/rss+xml" title="Arnon Axelrod&#39;s Blog » Comments Feed" href="http://blogs.microsoft.co.il/arnona/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="Arnon Axelrod&#39;s Blog » Introduction to FitNesse Comments Feed" href="http://blogs.microsoft.co.il/arnona/2011/08/02/introduction-to-fitnesse/feed/">
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/11\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/11\/svg\/","svgExt":".svg","source":{"concatemoji":"http:\/\/blogs.microsoft.co.il\/arnona\/wp-includes\/js\/wp-emoji-release.min.js?ver=5.0.2"}};
+			!function(a,b,c){function d(a,b){var c=String.fromCharCode;l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,a),0,0);var d=k.toDataURL();l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,b),0,0);var e=k.toDataURL();return d===e}function e(a){var b;if(!l||!l.fillText)return!1;switch(l.textBaseline="top",l.font="600 32px Arial",a){case"flag":return!(b=d([55356,56826,55356,56819],[55356,56826,8203,55356,56819]))&&(b=d([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]),!b);case"emoji":return b=d([55358,56760,9792,65039],[55358,56760,8203,9792,65039]),!b}return!1}function f(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var g,h,i,j,k=b.createElement("canvas"),l=k.getContext&&k.getContext("2d");for(j=Array("flag","emoji"),c.supports={everything:!0,everythingExceptFlag:!0},i=0;i<j.length;i++)c.supports[j[i]]=e(j[i]),c.supports.everything=c.supports.everything&&c.supports[j[i]],"flag"!==j[i]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[j[i]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(h=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",h,!1),a.addEventListener("load",h,!1)):(a.attachEvent("onload",h),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),g=c.source||{},g.concatemoji?f(g.concatemoji):g.wpemoji&&g.twemoji&&(f(g.twemoji),f(g.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script><script src="./Introduction to FitNesse _ Arnon Axelrod&#39;s Blog_files/wp-emoji-release.min.js.download" type="text/javascript" defer=""></script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel="stylesheet" id="wp-block-library-css" href="./Introduction to FitNesse _ Arnon Axelrod&#39;s Blog_files/style.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="microsoft-hebrew-normalize-css" href="./Introduction to FitNesse _ Arnon Axelrod&#39;s Blog_files/normalize.css" type="text/css" media="all">
+<link rel="stylesheet" id="MS_english-style-css" href="./Introduction to FitNesse _ Arnon Axelrod&#39;s Blog_files/style.css" type="text/css" media="all">
+<link rel="stylesheet" id="ms_global_search_css_style-css" href="./Introduction to FitNesse _ Arnon Axelrod&#39;s Blog_files/style(1).css" type="text/css" media="all">
+<link rel="https://api.w.org/" href="http://blogs.microsoft.co.il/arnona/wp-json/">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://blogs.microsoft.co.il/arnona/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://blogs.microsoft.co.il/arnona/wp-includes/wlwmanifest.xml"> 
+<link rel="prev" title="ATDD Explained" href="http://blogs.microsoft.co.il/arnona/2011/07/26/atdd-explained/">
+<link rel="next" title="Is Bug-Free Software Possible (or, Who Afraid of Change?)" href="http://blogs.microsoft.co.il/arnona/2011/08/11/is-bug-free-software-possible-or-who-afraid-of-change/">
+<meta name="generator" content="WordPress 5.0.2">
+<link rel="canonical" href="http://blogs.microsoft.co.il/arnona/2011/08/02/introduction-to-fitnesse/">
+<link rel="shortlink" href="http://blogs.microsoft.co.il/arnona/?p=879144">
+<link rel="alternate" type="application/json+oembed" href="http://blogs.microsoft.co.il/arnona/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fblogs.microsoft.co.il%2Farnona%2F2011%2F08%2F02%2Fintroduction-to-fitnesse%2F">
+<link rel="alternate" type="text/xml+oembed" href="http://blogs.microsoft.co.il/arnona/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fblogs.microsoft.co.il%2Farnona%2F2011%2F08%2F02%2Fintroduction-to-fitnesse%2F&amp;format=xml">
+
+<!-- ADD TO HEADER - START -->
+
+<!-- ADD TO HEADER - END -->
+		<style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style>
+		<style type="text/css" id="syntaxhighlighteranchor"></style>
+<meta data-pso-pv="1.2.1" data-pso-pt="singlePost" data-pso-th="91ad9b44edb2998a2b2273710387f6a2">
+<!--Wise pixel Microsoft Blogs-->
+<script language="JavaScript1.1" src="./Introduction to FitNesse _ Arnon Axelrod&#39;s Blog_files/js"></script><iframe src="./Introduction to FitNesse _ Arnon Axelrod&#39;s Blog_files/iframe.html" id="mm_sync_back_ground" style="visibility: hidden; display: none;"></iframe>
+
+<style type="text/css">.fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_reposition{overflow:hidden;position:relative}.fb_invisible{display:none}.fb_reset{background:none;border:0;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:"lucida grande", tahoma, verdana, arial, sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:right;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}@keyframes fb_transform{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}.fb_animate{animation:fb_transform .3s forwards}
+.fb_dialog{background:rgba(82, 82, 82, .7);position:absolute;top:-10000px;z-index:10001}.fb_dialog_advanced{border-radius:8px;padding:10px}.fb_dialog_content{background:#fff;color:#373737}.fb_dialog_close_icon{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;cursor:pointer;display:block;height:15px;position:absolute;left:18px;top:17px;width:15px}.fb_dialog_mobile .fb_dialog_close_icon{right:5px;left:auto;top:5px}.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}.fb_dialog_close_icon:hover{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent}.fb_dialog_close_icon:active{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent}.fb_dialog_iframe{line-height:0}.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #365899;color:#fff;font-size:14px;font-weight:bold;margin:0}.fb_dialog_content .dialog_title>span{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yd/r/Cou7n-nqK52.gif) no-repeat 5px 50%;float:right;padding:5px 26px 7px 0}body.fb_hidden{height:100%;right:0;margin:0;overflow:visible;position:absolute;top:-10000px;transform:none;width:100%}.fb_dialog.fb_dialog_mobile.loading{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/ya/r/3rhSv5V8j3o.gif) white no-repeat 50% 50%;min-height:100%;min-width:100%;overflow:hidden;position:absolute;top:0;z-index:10001}.fb_dialog.fb_dialog_mobile.loading.centered{background:none;height:auto;min-height:initial;min-width:initial;width:auto}.fb_dialog.fb_dialog_mobile.loading.centered #fb_dialog_loader_spinner{width:100%}.fb_dialog.fb_dialog_mobile.loading.centered .fb_dialog_content{background:none}.loading.centered #fb_dialog_loader_close{clear:both;color:#fff;display:block;font-size:18px;padding-top:20px}#fb-root #fb_dialog_ipad_overlay{background:rgba(0, 0, 0, .4);bottom:0;right:0;min-height:100%;position:absolute;left:0;top:0;width:100%;z-index:10000}#fb-root #fb_dialog_ipad_overlay.hidden{display:none}.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}.fb_dialog_mobile .fb_dialog_iframe{position:sticky;top:0}.fb_dialog_content .dialog_header{background:linear-gradient(from(#738aba), to(#2c4987));border-bottom:1px solid;border-color:#043b87;box-shadow:white 0 1px 1px -1px inset;color:#fff;font:bold 14px Helvetica, sans-serif;text-overflow:ellipsis;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0;vertical-align:middle;white-space:nowrap}.fb_dialog_content .dialog_header table{height:43px;width:100%}.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-right:5px;vertical-align:middle;width:60px}.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-left:5px;vertical-align:middle;width:60px}.fb_dialog_content .touchable_button{background:linear-gradient(from(#4267B2), to(#2a4887));background-clip:padding-box;border:1px solid #29487d;border-radius:3px;display:inline-block;line-height:18px;margin-top:3px;max-width:85px;padding:4px 12px;position:relative}.fb_dialog_content .dialog_header .touchable_button input{background:none;border:none;color:#fff;font:bold 12px Helvetica, sans-serif;margin:2px -12px;padding:2px 6px 3px 6px;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:bold;line-height:18px;text-align:center;vertical-align:middle}.fb_dialog_content .dialog_content{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/y9/r/jKEcVPZFk-2.gif) no-repeat 50% 50%;border:1px solid #4a4a4a;border-bottom:0;border-top:0;height:150px}.fb_dialog_content .dialog_footer{background:#f5f6f7;border:1px solid #4a4a4a;border-top-color:#ccc;height:40px}#fb_dialog_loader_close{float:right}.fb_dialog.fb_dialog_mobile .fb_dialog_close_button{text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}#fb_dialog_loader_spinner{animation:rotateSpinner 1.2s linear infinite;background-color:transparent;background-image:url(https://static.xx.fbcdn.net/rsrc.php/v3/yD/r/t-wz8gw1xG1.png);background-position:50% 50%;background-repeat:no-repeat;height:24px;width:24px}@keyframes rotateSpinner{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+.fb_iframe_widget{display:inline-block;position:relative}.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}.fb_iframe_widget iframe{position:absolute}.fb_iframe_widget_fluid_desktop,.fb_iframe_widget_fluid_desktop span,.fb_iframe_widget_fluid_desktop iframe{max-width:100%}.fb_iframe_widget_fluid_desktop iframe{min-width:220px;position:relative}.fb_iframe_widget_lift{z-index:1}.fb_iframe_widget_fluid{display:inline}.fb_iframe_widget_fluid span{width:100%}</style></head>
+<body class="post-template-default single single-post postid-879144 single-format-standard single-author " style="">
+<div id="fb-root" class=" fb_reset"><div style="position: absolute; top: -10000px; width: 0px; height: 0px;"><div><iframe name="fb_xdm_frame_https" id="fb_xdm_frame_https" aria-hidden="true" title="Facebook Cross Domain Communication Frame" tabindex="-1" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" allow="encrypted-media" src="./Introduction to FitNesse _ Arnon Axelrod&#39;s Blog_files/xd_arbiter.html" style="border: none;"></iframe></div><div></div></div></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/he_IL/all.js#xfbml=1&appId=171021386433126";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+	
+
+<div id="top-bar" class="wrapper clearfix">
+        <a href="http://blogs.microsoft.co.il/" id="blogs-logo" class="ir">Israel Blogging Community</a>
+        <div id="user-options">
+                            
+            <a href="http://blogs.microsoft.co.il/arnona/wp-admin">Sign in</a>
+                      </div>
+</div>
+  <header>
+      
+		
+        <div id="header-banner" style="background-image: url(http://blogs.microsoft.co.il/arnona/wp-content/uploads/sites/1346/2015/01/cropped-04621.jpg)">
+            <div class="wrapper">
+                <h1 id="blog-title">
+                     
+                    <span class="sub-title">Arnon Axelrod's Blog</span>
+                </h1>
+                            </div>
+        </div>
+        <div id="header-nav" class="clearfix">
+            <div class="wrapper">
+                <div id="user-avatar">
+                    <img src="./Introduction to FitNesse _ Arnon Axelrod&#39;s Blog_files/d3548b43b3f07144c336ab8378da3ecd.jpeg" alt="">
+                </div>
+                <div id="header-nav-box">
+                    <a href="http://blogs.microsoft.co.il/arnona/2011/08/02/introduction-to-fitnesse/#" class="ir" id="m-nav">menu</a>
+                    <nav id="heder-nav-warpper">
+                        <a href="http://blogs.microsoft.co.il/arnona">Home page</a>
+
+                                        </nav>
+                    <div id="header-nav-icons">
+                                                                        <a href="https://www.linkedin.com/in/arnonaxelrod" target="_blank" class="ir icon-in">linkedin</a>
+                                                <a href="http://blogs.microsoft.co.il/arnona/rss2" target="_blank" class="ir icon-rss">RSS</a>
+                    </div>
+                </div>
+                <script>
+                    (function (window) {
+                        if (!document.addEventListener)
+                            return;
+
+                        var navBtn = document.getElementById("m-nav");
+                        var nav = document.getElementById("heder-nav-warpper");
+
+                        navBtn.addEventListener('click', function (e) {
+                            e.preventDefault();
+                            var display = window.getComputedStyle(nav, null).getPropertyValue("display");
+                            if (display === 'none')
+                                nav.style.display = 'block';
+                            else
+                                nav.style.display = 'none';
+
+                        }, false);
+
+                        window.addEventListener('resize', function () {
+                            nav.style.display = "";
+                        }, false);
+
+                    })(window);
+                </script>
+            </div>
+        </div>
+
+    </header>
+<!-- #masthead -->
+ <div id="main" role="main" class="clearfix">
+	<div id="primary_blog" class="wrapper clearfix">
+        <section id="blog_post_info">			
+			<script>
+jQuery(document).ready(function(){
+jQuery('.bp-add-comment').click(function(event){
+event.preventDefault();
+jQuery('#respond').show();
+});
+});
+</script>
+	<article id="post-879144" class="bp clearfix post-879144 post type-post status-publish format-standard hentry">
+		         
+			            <h2 class="bp-title">
+                <a href="http://blogs.microsoft.co.il/arnona/2011/08/02/introduction-to-fitnesse/">Introduction to FitNesse</a>
+            </h2>
+            <h3 class="bp-date">August 2, 2011</h3>
+            <div class="clearfix">
+            <div class="bp-thumb clearfix">
+                                                <div class="bp-social_i">
+                            <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blogs.microsoft.co.il/arnona/2011/08/02/introduction-to-fitnesse/" class="ir icon-fb">facebook</a>
+                            <a target="_blank" href="http://www.linkedin.com/shareArticle?mini=true&amp;url=http://blogs.microsoft.co.il/arnona/2011/08/02/introduction-to-fitnesse/&amp;title=Introduction%20to%20FitNesse&amp;summary=%3Cp%3ENo,%20I%E2%80%99m%20not%20going%20to%20tell%20you%20that%20fitness%20is%20very%20important%20to%20your%20health.%20I%E2%80%99ll%20leave%20it%20that%20your%20doctor.%20What%20I%E2%80%99m%20going%20to%20tell%20you%20about%20today%20is%20a%20tool%20called%20FitNesse%20(note%20the%20final%20%E2%80%98e%E2%80%99%20which%20doesn%E2%80%99t%20exist%20in%20the%20word%20%E2%80%9Cfitness%E2%80%9D.%20I%20don%E2%80%99t%20know%20what%E2%80%99s%20the%20reason%20they%20added%20this%20%E2%80%98e%E2%80%99%20[%E2%80%A6]%3C/p%3E" class="ir icon-in">linkedin</a>
+                            <a target="_blank" href="https://twitter.com/share" class="tweet ir icon-twitter" data-lang="he">twitter</a>
+                            <a href="mailto:?subject=Introduction%20to%20FitNesse&amp;body=Check%20out%20this%20post%20http://blogs.microsoft.co.il/arnona/2011/08/02/introduction-to-fitnesse/" class="ir icon-email">email</a>
+                        </div>
+              </div>
+             </div>
+	
+				<div class="clearfix">
+			        <div class="tagsx"></div>
+				    <div class="cmts"> one comment </div>
+			    </div>
+		
+						
+		<!-- .entry-header -->
+
+				<div class="contx entry-content clearfix">
+			<p align="justify">No, I’m not going to tell you that fitness is very important to your health. I’ll leave it that your doctor. What I’m going to tell you about today is a tool called <b>FitNesse</b> (note the final ‘e’ which doesn’t exist in the word “fitness”. I don’t know what’s the reason they added this ‘e’ to the name, but it makes it somewhat easier to search for “FitNesse” in Google and get relevant results).</p>
+<p align="justify">Anyway, <a href="http://blogs.microsoft.co.il/blogs/arnona/archive/2011/07/26/atdd-explained.aspx">last time</a> I told you mostly everything you need to know about ATDD, but I also promised to tell you about FitNesse, which is the tool that will help you apply this methodology. </p>
+<h4>So what is FitNesse?</h4>
+<p>FitNesse is:</p>
+<p>1. Open source, free-of-charge tool</p>
+<p>2. Java-based, light-weight, standalone WIKI server</p>
+<p>3. Software development collaboration tool</p>
+<p>4. Testing framework (can execute C# code as well as Java)</p>
+<p>5. Aimed mainly for non-developers</p>
+<p>6. Sometime annoying, but currently the best available tool for the job…</p>
+<h5>Ah…now I understand… (In other words, now I’m <i>REALY</i> confused!)</h5>
+<p align="justify">Maybe an example would be more helpful. Recall the example from the previous post:</p>
+<p><i><font style="background-color: #cccccc">A Coke costs $2</font></i></p>
+<p><i><font style="background-color: #cccccc">A Sandwich costs $3</font></i></p>
+<p><i><font style="background-color: #cccccc">A Candy bar costs $4</font></i></p>
+<p><i><font style="background-color: #cccccc">The manager defines a campaign: Buy Sandwich and get Coke for $1</font></i></p>
+<p><i><font style="background-color: #cccccc">A customer buys the following items:</font></i></p>
+<p><i><font style="background-color: #cccccc">Sandwich</font></i></p>
+<p><i><font style="background-color: #cccccc">Coke</font></i></p>
+<p><i><font style="background-color: #cccccc">Candy bar</font></i></p>
+<p><font style="background-color: #cccccc"><i>The total price should be </i><strong><i>$8</i></strong></font></p>
+<p align="justify">(We assume that most of the application is already implemented, and now we want to add support for campaigns)</p>
+<p align="justify">Let’s see how this run-able scenario can be described using FitNesse:</p>
+<p><a href="http://blogs.microsoft.co.il/blogs/arnona/clip_image002_44A5FB8A.jpg"><img style="border-bottom: 0px; border-left: 0px; padding-left: 0px; padding-right: 0px; display: inline; border-top: 0px; border-right: 0px; padding-top: 0px" title="clip_image002" border="0" alt="clip_image002" src="./Introduction to FitNesse _ Arnon Axelrod&#39;s Blog_files/clip_image002_thumb_51702BDB.jpg" width="530" height="568"></a></p>
+<p align="justify">Clicking on the “Edit” button (on the left) opens up a big text-box which reveals the raw text I wrote in order to create this scenario. The text you would see is:</p>
+<pre class="code"><font style="background-color: #cccccc">The store manager should be able to define a campaign
+
+|Prices         |
+|Product  |Price|
+|Coke     |2    |
+|Sandwich |3    |
+|Candy bar|4    |
+
+|Campaigns        |
+|Buy     |Get |For|
+|Sandwich|Coke|1  |
+
+!|script|Point of sale|
+|Sell   |Sandwich     |
+|Sell   |Coke         |
+|Sell   |Candy bar    |
+|Check  |Total   |8   |</font></pre>
+<p align="justify">As you can see, it is pretty straight-forward to read and write such scenarios without being a programmer.</p>
+<h4>Running the scenario</h4>
+<p align="justify">If we’ll click the “Test” button on the left-hand side, we’ll see errors (marked in yellow), because FitNesse can’t find the appropriate classes and/or methods to execute this scenario. It would look like the following:</p>
+<p><a href="http://blogs.microsoft.co.il/blogs/arnona/clip_image004_21F19742.jpg"><img style="background-image: none; border-bottom: 0px; border-left: 0px; padding-left: 0px; padding-right: 0px; display: inline; border-top: 0px; border-right: 0px; padding-top: 0px" title="clip_image004" border="0" alt="clip_image004" src="./Introduction to FitNesse _ Arnon Axelrod&#39;s Blog_files/clip_image004_thumb_536CDF0A.jpg" width="543" height="609"></a></p>
+<p align="justify">In order to make the scenario run-able, we should write some pieces of code that act as adaptors between FitNesse and the production code we want to execute. These pieces of code are called “<strong>Fixtures</strong>” and are usually very simple to write.</p>
+<h3>Table types</h3>
+<p align="justify">The classes in the fixture should correspond to tables in the scenario. Any text that is not inside a table is only for documentation purposes and is not run-able.</p>
+<p align="justify">There are quite a few table types that FitNesse support, each with different semantics and rules. From all of these types, there are 2 that are most common and useful: <a href="http://www.fitnesse.org/FitNesse.UserGuide.SliM.DecisionTable">Decision Table</a> and <a href="http://www.fitnesse.org/FitNesse.UserGuide.SliM.ScriptTable">Script Table</a>. (In fact, FitNesse supports two <a href="http://www.fitnesse.org/FitNesse.UserGuide.TestSystems">Test Systems</a>, <a href="http://www.fitnesse.org/FitNesse.UserGuide.FitFramework">Fit</a> and <a href="http://www.fitnesse.org/FitNesse.UserGuide.SliM">Slim</a>, each support <a href="http://www.fitnesse.org/FitNesse.UserGuide.TestTableStyles">different table types</a>. Here I’m talking only about Slim).</p>
+<h4>Decision table</h4>
+<p align="justify">In our example, the first 2 tables (Prices and Campaigns) are decision tables. In a decision table, the table name corresponds to a class; each row corresponds to an instance of the class, and each column corresponds to a property. In addition, the class can have an optional <font face="Courier New">void Execute()</font> method that is called after all the values in the rows are assigned to their corresponding properties. The fixture of the Price table looks like this:</p>
+<pre class="code"><span style="color: blue"><font style="background-color: #cccccc">public class </font></span><font style="background-color: #cccccc"><span style="color: #2b91af">Prices
+</span>{
+    <span style="color: blue">public string </span>Product { <span style="color: blue">get</span>; <span style="color: blue">set</span>; }
+    <span style="color: blue">public decimal </span>Price { <span style="color: blue">get</span>; <span style="color: blue">set</span>; }
+
+    <span style="color: blue">public void </span>Execute()
+    {
+        </font><font style="background-color: #cccccc"><span style="color: green">// insert a row to the Prices table in the <br>database...
+    </span>}
+}</font></pre>
+<p align="justify">If you put a ‘?’ at the end of a column name, instead of setting the value of the corresponding property (by calling the <b>set</b> of the property), FitNesse compares the value in the cell with the value of the property (by calling the <b>get</b> of the property). If the values do not match, FitNesse marks the cell in red and the test (scenario) as failed.</p>
+<h4>Script table</h4>
+<p align="justify">The 3<sup>rd</sup> table in our example (“<b>Point of sale”</b>) is a script table. The preceding ‘!’ and the word “script” in the table header tells FitNesse that this is a script table. In a script table, each row corresponds to a method call. Arguments to the call can be supplied in additional columns (different rows in a script table can have different number of columns). </p>
+<p align="justify">The reserved word “Check” in the last row of our example tells FitNesse to compare the return value of the method call with the value in the last cell. If these values do not match, FitNesse marks this value in red and the test as failed.</p>
+<p>The code for the fixture for the “Point of sale” script table looks like this:</p>
+<p></p><pre class="code"><span style="color: blue"><font style="background-color: #cccccc">public class </font></span><font style="background-color: #cccccc"><span style="color: #2b91af">PointOfSale
+</span>{
+    <span style="color: blue">public void </span>Sell(<span style="color: blue">string </span>product)
+    {
+        </font><font style="background-color: #cccccc"><span style="color: green">// call the production code that performs the <br>selling of the product
+    </span>}
+
+    <span style="color: blue">public decimal </span>Total()
+    {
+        </font><font style="background-color: #cccccc"><span style="color: green">// call the production code that retrieves the <br></span></font><font style="background-color: #cccccc"><span style="color: green">current total of the current sale.
+        </span><span style="color: blue">return </span>0;
+    }
+}</font></pre>
+<p>  If you’re using FitNesse for working in <a href="http://blogs.microsoft.co.il/blogs/arnona/archive/2011/07/26/atdd-explained.aspx">ATDD</a> style, at this point you would run the test to see that it fails, like this:</p>
+<p><a href="http://blogs.microsoft.co.il/blogs/arnona/clip_image006_1730ED95.jpg"><img style="background-image: none; border-bottom: 0px; border-left: 0px; padding-left: 0px; padding-right: 0px; display: inline; border-top: 0px; border-right: 0px; padding-top: 0px" title="clip_image006" border="0" alt="clip_image006" src="./Introduction to FitNesse _ Arnon Axelrod&#39;s Blog_files/clip_image006_thumb_22E634C7.jpg" width="551" height="184"></a></p>
+<p><a href="http://blogs.microsoft.co.il/blogs/arnona/clip_image008_0E806F3C.jpg"><img style="background-image: none; border-bottom: 0px; border-left: 0px; padding-left: 0px; padding-right: 0px; display: inline; border-top: 0px; border-right: 0px; padding-top: 0px" title="clip_image008" border="0" alt="clip_image008" src="./Introduction to FitNesse _ Arnon Axelrod&#39;s Blog_files/clip_image008_thumb_7E8104AA.jpg" width="551" height="584"></a></p>
+<p align="justify">You can see that the scenario fails because the total of the sale was $9 and not $8, because we still didn’t implement the Campaign feature. Now it’s the time to implement this feature in our application. Once we’re done we should run the scenario again to verify it passes:</p>
+<h4><a href="http://blogs.microsoft.co.il/blogs/arnona/clip_image010_203CB76F.jpg"><img style="background-image: none; border-bottom: 0px; border-left: 0px; padding-left: 0px; padding-right: 0px; display: inline; border-top: 0px; border-right: 0px; padding-top: 0px" title="clip_image010" border="0" alt="clip_image010" src="./Introduction to FitNesse _ Arnon Axelrod&#39;s Blog_files/clip_image010_thumb_104D72AB.jpg" width="555" height="137"></a></h4>
+<h4><a href="http://blogs.microsoft.co.il/blogs/arnona/clip_image012_22B5C360.jpg"><img style="background-image: none; border-bottom: 0px; border-left: 0px; padding-left: 0px; padding-right: 0px; display: inline; border-top: 0px; border-right: 0px; padding-top: 0px" title="clip_image012" border="0" alt="clip_image012" src="./Introduction to FitNesse _ Arnon Axelrod&#39;s Blog_files/clip_image012_thumb_75FCE3B9.jpg" width="547" height="578"></a></h4>
+<h3>What’s more?</h3>
+<p align="justify">FitNesse has a pretty rich markup language which allows you to specify the graphical characteristics of the text, and also create hyperlinks between pages or to external sites. This is what makes FitNesse a kind of Wiki server.</p>
+<p align="justify">Beside of having other table types, FitNesse has a pretty rich markup language. For example you can specify the size, font, alignment, etc of text; create links between pages and links to external sites; include one page in another; define and use variables and more. </p>
+<p align="justify">In addition you can easily manage your scenarios in nested groups (much like file-system folders).</p>
+<h4>Getting started</h4>
+<p align="justify">At this post I only showed you an introduction so that you’ll get the idea of how it looks like to use FitNesse. In a future post I’ll explain how to get started to use this tool. For the mean-time you may download it from <a href="http://www.fitnesse.org/FrontPage.FitNesseDevelopment.DownLoad">here</a>, read the <a href="http://www.fitnesse.org/.FitNesse.UserGuide">user guide</a> and try it yourself. Or you can wait for my future post (I don’t promise it will be my next post).</p>
+<p>If you can’t wait, feel free to drop me a line and I’ll help you get started personally.</p>
+			<iframe src="./Introduction to FitNesse _ Arnon Axelrod&#39;s Blog_files/like.html" scrolling="no" frameborder="0" style="border:none; overflow:hidden; height:80px;" allowtransparency="true"></iframe>
+
+							  <div class="clearfix entry-options">
+                        <a href="javascript:void(0)" class="bp-add-comment">Add comment</a>
+                        <div class="bp-social_i">
+                           <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blogs.microsoft.co.il/arnona/2011/08/02/introduction-to-fitnesse/" class="ir icon-fb">facebook</a>
+                            <a target="_blank" href="http://www.linkedin.com/shareArticle?mini=true&amp;url=http://blogs.microsoft.co.il/arnona/2011/08/02/introduction-to-fitnesse/&amp;title=Introduction%20to%20FitNesse&amp;summary=%3Cp%3ENo,%20I%E2%80%99m%20not%20going%20to%20tell%20you%20that%20fitness%20is%20very%20important%20to%20your%20health.%20I%E2%80%99ll%20leave%20it%20that%20your%20doctor.%20What%20I%E2%80%99m%20going%20to%20tell%20you%20about%20today%20is%20a%20tool%20called%20FitNesse%20(note%20the%20final%20%E2%80%98e%E2%80%99%20which%20doesn%E2%80%99t%20exist%20in%20the%20word%20%E2%80%9Cfitness%E2%80%9D.%20I%20don%E2%80%99t%20know%20what%E2%80%99s%20the%20reason%20they%20added%20this%20%E2%80%98e%E2%80%99%20[%E2%80%A6]%3C/p%3E" class="ir icon-in">linkedin</a>
+                            <a target="_blank" href="https://twitter.com/share" class="tweet ir icon-twitter" data-lang="he">twitter</a>
+                            <a href="mailto:?subject=Introduction%20to%20FitNesse&amp;body=Check%20out%20this%20post%20http://blogs.microsoft.co.il/arnona/2011/08/02/introduction-to-fitnesse/" class="ir icon-email">email</a>
+                            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+                        </div>
+                    </div>
+
+				
+		</div><!-- .entry-content -->
+		
+
+        
+<div id="comments" class="comments-area">
+	<div id="respond" class="comment-respond">
+		<h3 id="reply-title" class="comment-reply-title">Leave a Reply <small><a rel="nofollow" id="cancel-comment-reply-link" href="http://blogs.microsoft.co.il/arnona/2011/08/02/introduction-to-fitnesse/#respond" style="display:none;">Cancel Reply</a></small></h3>			<form action="http://blogs.microsoft.co.il/arnona/wp-comments-post.php" method="post" id="commentform" class="comment-form">
+				<p class="comment-notes">Your email address will not be published.</p><p class="comment-form-comment"><label for="comment">Comment</label><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true"></textarea></p><p class="form-allowed-tags">You may use these <abbr title="HyperText Markup Language">HTML</abbr> tags and attributes:  <code>&lt;a href="" title=""&gt; &lt;abbr title=""&gt; &lt;acronym title=""&gt; &lt;b&gt; &lt;blockquote cite=""&gt; &lt;cite&gt; &lt;code&gt; &lt;del datetime=""&gt; &lt;em&gt; &lt;i&gt; &lt;q cite=""&gt; &lt;s&gt; &lt;strike&gt; &lt;strong&gt; </code></p><p class="comment-form-author"><label for="author">Name</label> <span class="required">*</span><input id="author" name="author" type="text" value="" size="30"></p>
+<p class="comment-form-email"><label for="email">Email</label> <span class="required">*</span><input id="email" name="email" type="text" value="" size="30"></p>
+<p class="comment-form-url"><label for="url">Website</label><input id="url" name="url" type="text" value="" size="30"></p>
+<p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Post Comment"> <input type="hidden" name="comment_post_ID" value="879144" id="comment_post_ID">
+<input type="hidden" name="comment_parent" id="comment_parent" value="0">
+</p><p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="a369c84228"></p><script type="text/javascript">var RecaptchaOptions = {theme : "blackglass"};</script><script type="text/javascript" src="./Introduction to FitNesse _ Arnon Axelrod&#39;s Blog_files/challenge"></script>
+
+	<noscript>
+  		<iframe src="http://www.google.com/recaptcha/api/noscript?k=6Ld4OuwSAAAAAC2pOGX1-HLYusMoy9UuR5_I91Eo" height="300" width="500" frameborder="0"></iframe><br/>
+  		<textarea name="recaptcha_challenge_field" rows="3" cols="40"></textarea>
+  		<input type="hidden" name="recaptcha_response_field" value="manual_challenge"/>
+	</noscript><!-- AVH First Defense Against Spam - WPMU DEV Version version 2.3.2  --><input type="hidden" id="_avh_first_defense_against_spam" name="_avh_first_defense_against_spam" value="47a111db71"><p style="display: none;"></p>			<input type="hidden" id="ak_js" name="ak_js" value="1574167591751"></form>
+			</div><!-- #respond -->
+	<div class="clearfix"></div>
+	
+			
+			 <h1 class="comments-title">one comment</h1>
+
+		<ol class="commentlist">
+			    <li class="comment byuser comment-author-Anonymous even thread-even depth-1" id="li-comment-1746586">
+       <div class="clearfix">
+        <div class="comment-avatar">
+            <img src="./Introduction to FitNesse _ Arnon Axelrod&#39;s Blog_files/ad516503a11cd5ca435acc9bb6523536.png" width="50" height="50" alt="" class="avatar avatar-50wp-user-avatar wp-user-avatar-50 alignnone photo avatar-default">        </div>
+        <div class="comment-post-body">
+            <span class="comment-author">Fabio</span><a class="comment-date" href="http://blogs.microsoft.co.il/arnona/2011/08/02/introduction-to-fitnesse/#comment-1746586" data-datetime="2013-02-13T12:52:49+00:00">February 13, 2013 ב 12:52</a>
+                
+			    <div class="comment-content comment">
+				    <p>Thank you for exposing the differences between Decision tables and Script tables.  I just got started today and your post got me over the ledge.  All other examples I saw were on Decision Tables, but of course no one explicitly mentioned it, and it drove me crazy that no one mentioned the fact that their methods were parameterless, like if that was the most normal thing in the world.  I can now test my methods with parameters! Thank you, again!</p>
+				                        <a rel="nofollow" class="comment-reply-link" href="http://blogs.microsoft.co.il/arnona/2011/08/02/introduction-to-fitnesse/?replytocom=1746586#respond" onclick="return addComment.moveForm( &quot;comment-1746586&quot;, &quot;1746586&quot;, &quot;respond&quot;, &quot;879144&quot; )" aria-label="Reply to Fabio">Reply</a>			    </div><!-- .comment-content -->
+        </div>
+ 
+       </div>
+
+
+	</li><!-- #comment-## -->
+		</ol><!-- .commentlist -->
+
+		
+		
+	
+	
+
+</div><!-- #comments .comments-area -->
+	<!--<div class="fb-comments" data-href="http://guideme.co.il/comments" data-colorscheme="The color scheme used in the plugin" data-numposts="5" data-width="The pixel width of the plugin"></div>-->
+
+				
+	
+	</article><!-- #post -->
+				
+				
+						
+	
+
+</section>
+		
+			<div id="secondary" class="widget-area" role="complementary">
+			<aside id="search-2" class="widget widget_search"><form role="search" method="get" id="searchform" class="searchform" action="http://blogs.microsoft.co.il/arnona/">
+				<div>
+					<label class="screen-reader-text" for="s">Search for:</label>
+					<input type="text" value="" name="s" id="s">
+					<input type="submit" id="searchsubmit" value="Search">
+				</div>
+			</form></aside>		<aside id="recent-posts-2" class="widget widget_recent_entries">		<h3 class="widget-title">Recent Posts</h3>		<ul>
+											<li>
+					<a href="http://blogs.microsoft.co.il/arnona/2018/09/27/continuing-my-blog-on-medium-com/">Continuing my blog on Medium.com</a>
+									</li>
+											<li>
+					<a href="http://blogs.microsoft.co.il/arnona/2018/09/26/best-practices-for-choosing-locators-for-selenium/">Best Practices for Choosing Locators for Selenium</a>
+									</li>
+											<li>
+					<a href="http://blogs.microsoft.co.il/arnona/2018/07/10/my-book-complete-guide-to-test-automation-is-due-in-september/">My book "Complete Guide to Test Automation" is due in September</a>
+									</li>
+											<li>
+					<a href="http://blogs.microsoft.co.il/arnona/2017/03/06/selenium-in-depth-the-demos/">Selenium in Depth – the demos</a>
+									</li>
+											<li>
+					<a href="http://blogs.microsoft.co.il/arnona/2016/11/09/writing-maintainable-automated-test-and-infrastructure-with-live-video-recording/">Writing maintainable automated test and infrastructure – With live video recording!</a>
+									</li>
+					</ul>
+		</aside><aside id="recent-comments-2" class="widget widget_recent_comments"><h3 class="widget-title">Recent Comments</h3><ul id="recentcomments"><li class="recentcomments"><span class="comment-author-link">Nishant Shah</span> on <a href="http://blogs.microsoft.co.il/arnona/2016/01/03/keeping-an-active-desktop-session/#comment-2829242">Keeping an active desktop session</a></li><li class="recentcomments"><span class="comment-author-link">Nishant Shah</span> on <a href="http://blogs.microsoft.co.il/arnona/2016/01/03/keeping-an-active-desktop-session/#comment-2829241">Keeping an active desktop session</a></li><li class="recentcomments"><span class="comment-author-link">Milan Zeleznik</span> on <a href="http://blogs.microsoft.co.il/arnona/2016/01/03/keeping-an-active-desktop-session/#comment-2829240">Keeping an active desktop session</a></li><li class="recentcomments"><span class="comment-author-link">warren</span> on <a href="http://blogs.microsoft.co.il/arnona/2016/01/03/keeping-an-active-desktop-session/#comment-2829239">Keeping an active desktop session</a></li><li class="recentcomments"><span class="comment-author-link">Arnon Axelrod</span> on <a href="http://blogs.microsoft.co.il/arnona/2016/01/03/keeping-an-active-desktop-session/#comment-2829237">Keeping an active desktop session</a></li></ul></aside><aside id="archives-2" class="widget widget_archive"><h3 class="widget-title">Archives</h3>		<ul>
+			<li><a href="http://blogs.microsoft.co.il/arnona/2018/09/">September 2018</a></li>
+	<li><a href="http://blogs.microsoft.co.il/arnona/2018/07/">July 2018</a></li>
+	<li><a href="http://blogs.microsoft.co.il/arnona/2017/03/">March 2017</a></li>
+	<li><a href="http://blogs.microsoft.co.il/arnona/2016/11/">November 2016</a></li>
+	<li><a href="http://blogs.microsoft.co.il/arnona/2016/07/">July 2016</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2016/04/">April 2016</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2016/03/">March 2016</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2016/01/">January 2016</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2015/10/">October 2015</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2015/08/">August 2015</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2015/04/">April 2015</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2015/01/">January 2015</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2014/09/">September 2014</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2013/12/">December 2013</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2013/05/">May 2013</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2013/02/">February 2013</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2012/12/">December 2012</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2012/09/">September 2012</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2012/07/">July 2012</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2012/05/">May 2012</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2012/04/">April 2012</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2012/03/">March 2012</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2012/02/">February 2012</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2011/12/">December 2011</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2011/11/">November 2011</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2011/10/">October 2011</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2011/09/">September 2011</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2011/08/">August 2011</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2011/07/">July 2011</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2011/06/">June 2011</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2011/03/">March 2011</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2011/02/">February 2011</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2011/01/">January 2011</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2010/12/">December 2010</a></li>
+		<li><a class="a-txt" href="javascript:void(0)">Full Arcive</a></li></ul>
+		</aside><aside id="categories-2" class="widget widget_categories"><h3 class="widget-title">Categories</h3>		<ul>
+	<li class="cat-item cat-item-21027"><a href="http://blogs.microsoft.co.il/arnona/category/continuous-improvement/">Continuous Improvement</a>
+</li>
+	<li class="cat-item cat-item-21026"><a href="http://blogs.microsoft.co.il/arnona/category/test-automation/">Test Automation</a>
+</li>
+		</ul>
+</aside><aside id="meta-2" class="widget widget_meta"><h3 class="widget-title">Meta</h3>			<ul>
+			<li><a href="https://blogs.microsoft.co.il/arnona/wp-login.php?action=register">Register</a></li>			<li><a href="https://blogs.microsoft.co.il/arnona/wp-login.php">Log in</a></li>
+			<li><a href="http://blogs.microsoft.co.il/arnona/feed/">Entries <abbr title="Really Simple Syndication">RSS</abbr></a></li>
+			<li><a href="http://blogs.microsoft.co.il/arnona/comments/feed/">Comments <abbr title="Really Simple Syndication">RSS</abbr></a></li>
+			<li><a href="https://wordpress.org/" title="Powered by WordPress, state-of-the-art semantic personal publishing platform.">WordPress.org</a></li>			</ul>
+			</aside>			<aside class="widget mrg">
+		
+			<div class="moposts">
+			<h3 class="widget-title"> Additional Posts </h3>
+								  <a href="http://blogs.microsoft.co.il/arnona/2018/09/27/continuing-my-blog-on-medium-com/" class="latest_art">
+					<div class="la-date">September 27, 2018</div>
+					<h4>Continuing my blog on Medium.com</h4>
+		
+                    <p>An era has come to an end. It’s time to move on to a new and modern blogging website. My next blog posts will be published on&nbsp;https://medium.com/@arnonaxelrod Happy reading!</p>
+			      </a>
+								  <a href="http://blogs.microsoft.co.il/arnona/2018/09/26/best-practices-for-choosing-locators-for-selenium/" class="latest_art">
+					<div class="la-date">September 26, 2018</div>
+					<h4>Best Practices for Choosing Locators for Selenium</h4>
+		
+                    <p>A question that comes often, especially by folks that are new to Selenium, is what are the best practices to use when choosing a locator for an element. In other cases, people just have bad habits and don’t even think to ask this question, but they encounter instabilities or maintenance problems, without knowing that they […]</p>
+			      </a>
+								  <a href="http://blogs.microsoft.co.il/arnona/2018/07/10/my-book-complete-guide-to-test-automation-is-due-in-september/" class="latest_art">
+					<div class="la-date">July 10, 2018</div>
+					<h4>My book "Complete Guide to Test Automation" is due in September</h4>
+		
+                    <p>Update: The book is available at Amazon, or directly through Apress. According to the last time I’ve checked, Amazon had a better price a hard copy, but had no option for a soft copy, while through Apress you can order either a hard copy or a soft copy. I’m very proud to let you know […]</p>
+			      </a>
+								</div>
+				
+				</aside>
+		</div><!-- #secondary -->
+	</div>
+	</div>
+
+	<footer class="footer_main clearfix">
+	<section class="wrapper clearfix">
+		<article id="first_fl" class="footer_list">
+		<h3>משאבים לקהילת המפתחים</h3>
+			<div class="menu-footer1-container">
+				<ul id="menu-footer-menu-2">
+				<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://blogs.microsoft.co.il/msdn" title="MSDN בלוג" target="_blank">בלוג MSDN</a></li>
+				<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://www.microsoft.com/israel/msdn/pulse/" title="ניוזלטר  MSDN" target="_blank">ניוזלטר  MSDN</a></li>
+				<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="https://www.facebook.com/msdnisrael" title="MSDN בפייסבוק" target="_blank">בפייסבוק MSDN</a></li>
+				<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://www.youtube.com/channel/UCp6wuFkya3jOETs_nM7z3Fw?feature=watch" target="_blank">יוטיוב  MSDN</a></li>
+				<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://www.microsoftvirtualacademy.com/" target="_blank">האקדמיה הוירטואלית</a></li>
+				<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://msdn.microsoft.com/en-us/evalcenter/default" target="_blank">התנסות חינם</a></li>
+				<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://www.microsoft.com/israel/4steps/" target="_blank">אתר פיתוח אפליקציות</a></li>
+				</ul>
+			</div>
+		</article>
+			<article id="sec_fl" class="footer_list">
+		<h3>משאבים לקהילת IT</h3>
+				<ul id="menu-footer-menu-2">
+				<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://blogs.microsoft.co.il/technet" title="TechNet בלוג" target="_blank">בלוג TechNet </a></li>
+				<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://www.microsoft.com/israel/technetflash/Prev_vers/index.htm" target="_blank">ניוזלטר  TechNet </a></li>
+				<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="https://www.facebook.com/technetil" title="TechNet בפייסבוק" target="_blank">בפייסבוק TechNet</a></li>
+				<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://www.youtube.com/user/TechNetIsrael/videos" target="_blank">יוטיוב  TechNet</a></li>
+								<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://www.microsoftvirtualacademy.com/" target="_blank">האקדמיה הוירטואלית</a></li>
+				<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://technet.microsoft.com/en-us/evalcenter/default" target="_blank">התנסות חינם</a></li>
+				</ul>
+			</article>
+			<article id="thrd_fl" class="footer_list">
+		<h3>משאבים כללים </h3>
+					<ul id="menu-footer-menu-2">
+						<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://www.microsoft.com/he-il/default.aspx" target="_blank" title="אתר מיקרוסופט ישראל">אתר מיקרוסופט ישראל</a></li>
+						<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://www.facebook.com/microsoftisrael" target="_blank" title="מיקרוסופט ישראל בפייסבוק">מיקרוסופט ישראל בפייסבוק</a></li>
+						<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://social.msdn.microsoft.com/Forums/he-il/categories" target="_blank" title="&gt;אתר הפורומים">אתר הפורומים</a></li>
+						<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://www.microsoft.com/israel/communities/usergroups/default.aspx" target="_blank" title="&gt;קבוצות משתמשים">קבוצות משתמשים</a></li>
+						<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://www.microsoft.com/israel/traincert/" target="_blank" title="הדרכות והסמכות מיקרוסופט">הדרכות והסמכות מיקרוסופט</a></li>
+						<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="https://msevents.microsoft.com/CUI/default.aspx?culture=he-IL" target="_blank">אירועים </a></li>
+					
+					<!--
+					<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://blogs.microsoft.co.il/סימנים-מסחריים/" title=" סימנים מסחריים"> סימנים מסחריים</a></li>
+				<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://blogs.microsoft.co.il/תנאי-שימוש/" title="תנאי שימוש">תנאי שימוש</a></li>
+-->
+				</ul>	</article>
+		</section>
+		<section class="sfooter">
+                <div class="content">
+                    <div class="footer-bottom">                        
+                        <ul class="legal">
+                            <li><a href="http://choice.microsoft.com/">אודות הפרסומות שלנו</a></li>
+                            <li><a href="http://www.microsoft.com/About/Legal/EN/US/IntellectualProperty/Trademarks/EN-US.aspx">סימנים מסחריים</a></li>
+                            <li><a href="http://www.microsoft.com/en-us/legal/intellectualproperty/copyright/default.aspx">תנאי השימוש</a></li>
+                            <li><a href="http://go.microsoft.com/fwlink/?LinkId=248681">הצהרת פרטיות</a></li>
+                        </ul>
+                        <div class="footer-copyright">
+                            <a href="http://www.microsoft.com/">
+                                <img alt="Microsoft" src="./Introduction to FitNesse _ Arnon Axelrod&#39;s Blog_files/microsoft-logo-heb.png">
+                            </a><span>© 2014 Microsoft</span>
+                        </div>
+                    </div>
+                </div>
+</section>
+	</footer><!-- #colophon -->
+    <script>
+        (function (window) {
+            var rSide = document.getElementById("blog_post_info");
+            var lSide = document.getElementById("secondary");
+			
+			setTimeout(function(){
+				rSide = document.getElementById("blog_post_info");
+				lSide = document.getElementById("secondary");
+				if (lSide.offsetHeight > rSide.offsetHeight) {
+					rSide.style.minHeight = lSide.offsetHeight + "px";
+				}
+			},1000);
+
+            window.onresize = function () {
+                if (lSide.offsetHeight > rSide.offsetHeight) {
+                    rSide.style.minHeight = lSide.offsetHeight + "px";
+                }
+            }
+        })(window);
+
+
+    </script>
+	
+<!-- Do Not Remove - Turn Tracking Beacon Code - Do Not Remove -->
+<!-- Advertiser Name : microsoft -->
+<!-- Beacon Name : Microsoft_ blogs general -->
+<!-- START OF WEDCS TAG -->
+<script type="text/javascript">
+    var varSegmentation = 0;
+    var varClickTracking = 1;
+    var varCustomerTracking = 1;
+    var varAutoFirePV = 1;
+    var Route = "LE020";
+    document.write("<script type='text/javascript' src='" +
+    (window.location.protocol) + "//c.microsoft.com/ms.js'" + "'><\/script>");
+</script><script type="text/javascript" src="http://c.microsoft.com/ms.js" '=""></script>
+<noscript>
+    <img alt="" width="1" height="1" src="http://c.microsoft.com/trans_pixel.aspx" />
+</noscript>
+<!-- END OF WEDCS TAG -->
+
+
+
+
+
+<!-- If Beacon is placed on a Transaction or Lead Generation based page, please populate the turn_client_track_id with your order/confirmation ID -->
+<script type="text/javascript">
+  turn_client_track_id = "";
+</script>
+<script type="text/javascript" src="./Introduction to FitNesse _ Arnon Axelrod&#39;s Blog_files/beacon_call.js.download">
+</script><img height="1" width="1" border="0" src="./Introduction to FitNesse _ Arnon Axelrod&#39;s Blog_files/beacon">
+<noscript>
+  <img border="0" src="http://r.turn.com/r/beacon?b2=PGyOFcFmMNXjqLZWhsqf0IYBbGja1CD2b3Qxz0EXcZ4jZElP3T1utc_BawhZaoxwRafeYDFgKVEXkxLRf3dk_A&cid=">
+</noscript>
+<!-- End Turn Tracking Beacon Code Do Not Remove -->
+
+<script>
+(function() { // Redistats, track version 1.0
+	var global_id = 147;
+	var property_id = 1346;
+	var url = encodeURIComponent(window.location.href.split('#')[0]);
+	var referrer = encodeURIComponent(document.referrer);
+	var x = document.createElement('script'), s = document.getElementsByTagName('script')[0];
+	x.src = '//redistats.com/track.js?gid='+global_id+'&pid='+property_id+'&url='+url+'&referrer='+referrer;
+	s.parentNode.insertBefore(x, s);
+})();
+</script><script type="text/javascript" src="./Introduction to FitNesse _ Arnon Axelrod&#39;s Blog_files/comment-reply.min.js.download"></script>
+<script type="text/javascript" src="./Introduction to FitNesse _ Arnon Axelrod&#39;s Blog_files/wp-embed.min.js.download"></script>
+<script async="async" type="text/javascript" src="./Introduction to FitNesse _ Arnon Axelrod&#39;s Blog_files/form.js.download"></script>
+
+<iframe scrolling="no" frameborder="0" allowtransparency="true" src="./Introduction to FitNesse _ Arnon Axelrod&#39;s Blog_files/widget_iframe.d942dbac55d395b6a752976f272a24f6.html" title="Twitter settings iframe" style="display: none;"></iframe></body></html>

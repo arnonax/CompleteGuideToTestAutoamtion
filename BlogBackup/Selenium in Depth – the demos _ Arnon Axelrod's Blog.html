@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<!-- saved from url=(0075)http://blogs.microsoft.co.il/arnona/2017/03/06/selenium-in-depth-the-demos/ -->
+<html lang="en-US"><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="initial-scale=1.0, width=device-width">
+<title>Selenium in Depth – the demos | Arnon Axelrod's Blog</title>
+<link rel="profile" href="http://gmpg.org/xfn/11">
+<link rel="pingback" href="http://blogs.microsoft.co.il/arnona/xmlrpc.php">
+
+
+<!--[if lt IE 9]>
+           <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+           <script>window.html5 || document.write('<script src="http://blogs.microsoft.co.il/arnona/wp-content/themes/MS_englishjs/vendor/html5shiv.js"><\/script>')</script>
+    <![endif]-->
+			 
+ <script src="./Selenium in Depth – the demos _ Arnon Axelrod&#39;s Blog_files/track.js.download"></script><script src="./Selenium in Depth – the demos _ Arnon Axelrod&#39;s Blog_files/all.js.download" async="" crossorigin="anonymous"></script><script id="twitter-wjs" src="./Selenium in Depth – the demos _ Arnon Axelrod&#39;s Blog_files/widgets.js.download"></script><script id="facebook-jssdk" src="./Selenium in Depth – the demos _ Arnon Axelrod&#39;s Blog_files/all.js(1).download"></script><script src="./Selenium in Depth – the demos _ Arnon Axelrod&#39;s Blog_files/jquery.min.js.download"></script>
+ <script src="./Selenium in Depth – the demos _ Arnon Axelrod&#39;s Blog_files/app.js.download"></script>
+<link rel="dns-prefetch" href="http://s.w.org/">
+<link rel="alternate" type="application/rss+xml" title="Arnon Axelrod&#39;s Blog » Feed" href="http://blogs.microsoft.co.il/arnona/feed/">
+<link rel="alternate" type="application/rss+xml" title="Arnon Axelrod&#39;s Blog » Comments Feed" href="http://blogs.microsoft.co.il/arnona/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="Arnon Axelrod&#39;s Blog » Selenium in Depth – the demos Comments Feed" href="http://blogs.microsoft.co.il/arnona/2017/03/06/selenium-in-depth-the-demos/feed/">
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/11\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/11\/svg\/","svgExt":".svg","source":{"concatemoji":"http:\/\/blogs.microsoft.co.il\/arnona\/wp-includes\/js\/wp-emoji-release.min.js?ver=5.0.2"}};
+			!function(a,b,c){function d(a,b){var c=String.fromCharCode;l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,a),0,0);var d=k.toDataURL();l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,b),0,0);var e=k.toDataURL();return d===e}function e(a){var b;if(!l||!l.fillText)return!1;switch(l.textBaseline="top",l.font="600 32px Arial",a){case"flag":return!(b=d([55356,56826,55356,56819],[55356,56826,8203,55356,56819]))&&(b=d([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]),!b);case"emoji":return b=d([55358,56760,9792,65039],[55358,56760,8203,9792,65039]),!b}return!1}function f(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var g,h,i,j,k=b.createElement("canvas"),l=k.getContext&&k.getContext("2d");for(j=Array("flag","emoji"),c.supports={everything:!0,everythingExceptFlag:!0},i=0;i<j.length;i++)c.supports[j[i]]=e(j[i]),c.supports.everything=c.supports.everything&&c.supports[j[i]],"flag"!==j[i]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[j[i]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(h=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",h,!1),a.addEventListener("load",h,!1)):(a.attachEvent("onload",h),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),g=c.source||{},g.concatemoji?f(g.concatemoji):g.wpemoji&&g.twemoji&&(f(g.twemoji),f(g.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script><script src="./Selenium in Depth – the demos _ Arnon Axelrod&#39;s Blog_files/wp-emoji-release.min.js.download" type="text/javascript" defer=""></script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel="stylesheet" id="wp-block-library-css" href="./Selenium in Depth – the demos _ Arnon Axelrod&#39;s Blog_files/style.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="microsoft-hebrew-normalize-css" href="./Selenium in Depth – the demos _ Arnon Axelrod&#39;s Blog_files/normalize.css" type="text/css" media="all">
+<link rel="stylesheet" id="MS_english-style-css" href="./Selenium in Depth – the demos _ Arnon Axelrod&#39;s Blog_files/style.css" type="text/css" media="all">
+<link rel="stylesheet" id="ms_global_search_css_style-css" href="./Selenium in Depth – the demos _ Arnon Axelrod&#39;s Blog_files/style(1).css" type="text/css" media="all">
+<link rel="https://api.w.org/" href="http://blogs.microsoft.co.il/arnona/wp-json/">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://blogs.microsoft.co.il/arnona/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://blogs.microsoft.co.il/arnona/wp-includes/wlwmanifest.xml"> 
+<link rel="prev" title="Writing maintainable automated test and infrastructure – With live video recording!" href="http://blogs.microsoft.co.il/arnona/2016/11/09/writing-maintainable-automated-test-and-infrastructure-with-live-video-recording/">
+<link rel="next" title="My book &quot;Complete Guide to Test Automation&quot; is due in September" href="http://blogs.microsoft.co.il/arnona/2018/07/10/my-book-complete-guide-to-test-automation-is-due-in-september/">
+<meta name="generator" content="WordPress 5.0.2">
+<link rel="canonical" href="http://blogs.microsoft.co.il/arnona/2017/03/06/selenium-in-depth-the-demos/">
+<link rel="shortlink" href="http://blogs.microsoft.co.il/arnona/?p=2085818">
+<link rel="alternate" type="application/json+oembed" href="http://blogs.microsoft.co.il/arnona/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fblogs.microsoft.co.il%2Farnona%2F2017%2F03%2F06%2Fselenium-in-depth-the-demos%2F">
+<link rel="alternate" type="text/xml+oembed" href="http://blogs.microsoft.co.il/arnona/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fblogs.microsoft.co.il%2Farnona%2F2017%2F03%2F06%2Fselenium-in-depth-the-demos%2F&amp;format=xml">
+
+<!-- ADD TO HEADER - START -->
+
+<!-- ADD TO HEADER - END -->
+		<style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style>
+		<style type="text/css" id="syntaxhighlighteranchor"></style>
+<meta data-pso-pv="1.2.1" data-pso-pt="singlePost" data-pso-th="91ad9b44edb2998a2b2273710387f6a2">
+<!--Wise pixel Microsoft Blogs-->
+<script language="JavaScript1.1" src="./Selenium in Depth – the demos _ Arnon Axelrod&#39;s Blog_files/js"></script><iframe src="./Selenium in Depth – the demos _ Arnon Axelrod&#39;s Blog_files/iframe.html" id="mm_sync_back_ground" style="visibility: hidden; display: none;"></iframe>
+
+<style type="text/css">.fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_reposition{overflow:hidden;position:relative}.fb_invisible{display:none}.fb_reset{background:none;border:0;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:"lucida grande", tahoma, verdana, arial, sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:right;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}@keyframes fb_transform{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}.fb_animate{animation:fb_transform .3s forwards}
+.fb_dialog{background:rgba(82, 82, 82, .7);position:absolute;top:-10000px;z-index:10001}.fb_dialog_advanced{border-radius:8px;padding:10px}.fb_dialog_content{background:#fff;color:#373737}.fb_dialog_close_icon{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;cursor:pointer;display:block;height:15px;position:absolute;left:18px;top:17px;width:15px}.fb_dialog_mobile .fb_dialog_close_icon{right:5px;left:auto;top:5px}.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}.fb_dialog_close_icon:hover{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent}.fb_dialog_close_icon:active{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent}.fb_dialog_iframe{line-height:0}.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #365899;color:#fff;font-size:14px;font-weight:bold;margin:0}.fb_dialog_content .dialog_title>span{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yd/r/Cou7n-nqK52.gif) no-repeat 5px 50%;float:right;padding:5px 26px 7px 0}body.fb_hidden{height:100%;right:0;margin:0;overflow:visible;position:absolute;top:-10000px;transform:none;width:100%}.fb_dialog.fb_dialog_mobile.loading{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/ya/r/3rhSv5V8j3o.gif) white no-repeat 50% 50%;min-height:100%;min-width:100%;overflow:hidden;position:absolute;top:0;z-index:10001}.fb_dialog.fb_dialog_mobile.loading.centered{background:none;height:auto;min-height:initial;min-width:initial;width:auto}.fb_dialog.fb_dialog_mobile.loading.centered #fb_dialog_loader_spinner{width:100%}.fb_dialog.fb_dialog_mobile.loading.centered .fb_dialog_content{background:none}.loading.centered #fb_dialog_loader_close{clear:both;color:#fff;display:block;font-size:18px;padding-top:20px}#fb-root #fb_dialog_ipad_overlay{background:rgba(0, 0, 0, .4);bottom:0;right:0;min-height:100%;position:absolute;left:0;top:0;width:100%;z-index:10000}#fb-root #fb_dialog_ipad_overlay.hidden{display:none}.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}.fb_dialog_mobile .fb_dialog_iframe{position:sticky;top:0}.fb_dialog_content .dialog_header{background:linear-gradient(from(#738aba), to(#2c4987));border-bottom:1px solid;border-color:#043b87;box-shadow:white 0 1px 1px -1px inset;color:#fff;font:bold 14px Helvetica, sans-serif;text-overflow:ellipsis;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0;vertical-align:middle;white-space:nowrap}.fb_dialog_content .dialog_header table{height:43px;width:100%}.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-right:5px;vertical-align:middle;width:60px}.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-left:5px;vertical-align:middle;width:60px}.fb_dialog_content .touchable_button{background:linear-gradient(from(#4267B2), to(#2a4887));background-clip:padding-box;border:1px solid #29487d;border-radius:3px;display:inline-block;line-height:18px;margin-top:3px;max-width:85px;padding:4px 12px;position:relative}.fb_dialog_content .dialog_header .touchable_button input{background:none;border:none;color:#fff;font:bold 12px Helvetica, sans-serif;margin:2px -12px;padding:2px 6px 3px 6px;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:bold;line-height:18px;text-align:center;vertical-align:middle}.fb_dialog_content .dialog_content{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/y9/r/jKEcVPZFk-2.gif) no-repeat 50% 50%;border:1px solid #4a4a4a;border-bottom:0;border-top:0;height:150px}.fb_dialog_content .dialog_footer{background:#f5f6f7;border:1px solid #4a4a4a;border-top-color:#ccc;height:40px}#fb_dialog_loader_close{float:right}.fb_dialog.fb_dialog_mobile .fb_dialog_close_button{text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}#fb_dialog_loader_spinner{animation:rotateSpinner 1.2s linear infinite;background-color:transparent;background-image:url(https://static.xx.fbcdn.net/rsrc.php/v3/yD/r/t-wz8gw1xG1.png);background-position:50% 50%;background-repeat:no-repeat;height:24px;width:24px}@keyframes rotateSpinner{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+.fb_iframe_widget{display:inline-block;position:relative}.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}.fb_iframe_widget iframe{position:absolute}.fb_iframe_widget_fluid_desktop,.fb_iframe_widget_fluid_desktop span,.fb_iframe_widget_fluid_desktop iframe{max-width:100%}.fb_iframe_widget_fluid_desktop iframe{min-width:220px;position:relative}.fb_iframe_widget_lift{z-index:1}.fb_iframe_widget_fluid{display:inline}.fb_iframe_widget_fluid span{width:100%}</style></head>
+<body class="post-template-default single single-post postid-2085818 single-format-standard single-author " style="">
+<div id="fb-root" class=" fb_reset"><div style="position: absolute; top: -10000px; width: 0px; height: 0px;"><div><iframe name="fb_xdm_frame_https" id="fb_xdm_frame_https" aria-hidden="true" title="Facebook Cross Domain Communication Frame" tabindex="-1" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" allow="encrypted-media" src="./Selenium in Depth – the demos _ Arnon Axelrod&#39;s Blog_files/xd_arbiter.html" style="border: none;"></iframe></div><div></div></div></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/he_IL/all.js#xfbml=1&appId=171021386433126";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+	
+
+<div id="top-bar" class="wrapper clearfix">
+        <a href="http://blogs.microsoft.co.il/" id="blogs-logo" class="ir">Israel Blogging Community</a>
+        <div id="user-options">
+                            
+            <a href="http://blogs.microsoft.co.il/arnona/wp-admin">Sign in</a>
+                      </div>
+</div>
+  <header>
+      
+		
+        <div id="header-banner" style="background-image: url(http://blogs.microsoft.co.il/arnona/wp-content/uploads/sites/1346/2015/01/cropped-04621.jpg)">
+            <div class="wrapper">
+                <h1 id="blog-title">
+                     
+                    <span class="sub-title">Arnon Axelrod's Blog</span>
+                </h1>
+                            </div>
+        </div>
+        <div id="header-nav" class="clearfix">
+            <div class="wrapper">
+                <div id="user-avatar">
+                    <img src="./Selenium in Depth – the demos _ Arnon Axelrod&#39;s Blog_files/d3548b43b3f07144c336ab8378da3ecd.jpeg" alt="">
+                </div>
+                <div id="header-nav-box">
+                    <a href="http://blogs.microsoft.co.il/arnona/2017/03/06/selenium-in-depth-the-demos/#" class="ir" id="m-nav">menu</a>
+                    <nav id="heder-nav-warpper">
+                        <a href="http://blogs.microsoft.co.il/arnona">Home page</a>
+
+                                        </nav>
+                    <div id="header-nav-icons">
+                                                                        <a href="https://www.linkedin.com/in/arnonaxelrod" target="_blank" class="ir icon-in">linkedin</a>
+                                                <a href="http://blogs.microsoft.co.il/arnona/rss2" target="_blank" class="ir icon-rss">RSS</a>
+                    </div>
+                </div>
+                <script>
+                    (function (window) {
+                        if (!document.addEventListener)
+                            return;
+
+                        var navBtn = document.getElementById("m-nav");
+                        var nav = document.getElementById("heder-nav-warpper");
+
+                        navBtn.addEventListener('click', function (e) {
+                            e.preventDefault();
+                            var display = window.getComputedStyle(nav, null).getPropertyValue("display");
+                            if (display === 'none')
+                                nav.style.display = 'block';
+                            else
+                                nav.style.display = 'none';
+
+                        }, false);
+
+                        window.addEventListener('resize', function () {
+                            nav.style.display = "";
+                        }, false);
+
+                    })(window);
+                </script>
+            </div>
+        </div>
+
+    </header>
+<!-- #masthead -->
+ <div id="main" role="main" class="clearfix">
+	<div id="primary_blog" class="wrapper clearfix">
+        <section id="blog_post_info">			
+			<script>
+jQuery(document).ready(function(){
+jQuery('.bp-add-comment').click(function(event){
+event.preventDefault();
+jQuery('#respond').show();
+});
+});
+</script>
+	<article id="post-2085818" class="bp clearfix post-2085818 post type-post status-publish format-standard hentry">
+		         
+			            <h2 class="bp-title">
+                <a href="http://blogs.microsoft.co.il/arnona/2017/03/06/selenium-in-depth-the-demos/">Selenium in Depth – the demos</a>
+            </h2>
+            <h3 class="bp-date">March 6, 2017</h3>
+            <div class="clearfix">
+            <div class="bp-thumb clearfix">
+                                                <div class="bp-social_i">
+                            <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blogs.microsoft.co.il/arnona/2017/03/06/selenium-in-depth-the-demos/" class="ir icon-fb">facebook</a>
+                            <a target="_blank" href="http://www.linkedin.com/shareArticle?mini=true&amp;url=http://blogs.microsoft.co.il/arnona/2017/03/06/selenium-in-depth-the-demos/&amp;title=Selenium%20in%20Depth%20%E2%80%93%20the%20demos&amp;summary=%3Cp%3ELast%20month%20I%20gave%20a%20talk%20on%20the%20Israel%20Test%20Automation%20Meetup%C2%A0titled%20%E2%80%9CSelenium%20in%20Depth%E2%80%9D.%C2%A0In%20this%20talk%20I%20showed%20highly%20simplified%20examples%20that%20demonstrate%20how%20Selenium%20behaves%20in%C2%A0certain%20conditions,%20mostly%20related%20to%20the%20html%20and%20JavaScript%20on%20the%20page.%20Now%20I%20decided%20to%20share%20the%20demos%20and%20you%20can%20find%20it%20here.%20Each%20demo%20is%20[%E2%80%A6]%3C/p%3E" class="ir icon-in">linkedin</a>
+                            <a target="_blank" href="https://twitter.com/share" class="tweet ir icon-twitter" data-lang="he">twitter</a>
+                            <a href="mailto:?subject=Selenium%20in%20Depth%20%E2%80%93%20the%20demos&amp;body=Check%20out%20this%20post%20http://blogs.microsoft.co.il/arnona/2017/03/06/selenium-in-depth-the-demos/" class="ir icon-email">email</a>
+                        </div>
+              </div>
+             </div>
+	
+				<div class="clearfix">
+			        <div class="tagsx"></div>
+				    <div class="cmts"> 6 comments </div>
+			    </div>
+		
+						
+		<!-- .entry-header -->
+
+				<div class="contx entry-content clearfix">
+			<p>Last month I gave a talk on the <a href="https://www.meetup.com/Israel-Test-Automation-Meetup/">Israel Test Automation Meetup</a>&nbsp;titled “Selenium in Depth”.&nbsp;In this talk I showed highly simplified examples that demonstrate how Selenium behaves in&nbsp;certain conditions, mostly related to the html and JavaScript on the page.</p>
+<p>Now I decided to share the demos and you can find it <a href="https://1drv.ms/u/s!AhFoDDfbTqO4kRaV7tt1w3UD6cHS">here</a>.</p>
+<p>Each demo is contained in a Test Case method. Most of them use a specific super-simple HTML file that is part of the project too. Note that not all tests pass, and this is by design!</p>
+<p>Here’s a short description of the test cases:</p>
+<ol>
+<li><strong>IsItABugInSelenium</strong> – If you just open the file&nbsp;<strong>IsItABugInSelenium.html</strong> in the browser, it loads fine. If you run the test, you’ll get a general <strong>WebDriverException</strong> error that many people think of as an internal Selenium problem. However, if you’ll try to click the button on the page manually, you’ll see that the entire browser tab hangs, regardless of Selenium. Open the html file in a text editor and see why…</li>
+<li><strong>DoWeReallyNeedWait</strong> – Open the file&nbsp;<strong>SlowButton.html</strong> in the browser and click on the button. You’ll see that the input box is updated only 3 whole seconds afterward.&nbsp;Note that the test does not use any sort of waiting (no Thread.Sleep, no <strong>WebDriverWait</strong>, no <strong>ImplicitlyWait</strong>, etc.) between the press of the button and the verification of value in the input box, but if you run the test, you’d probably be surprised to see that it passes! Again, look inside the html file to see what it does.</li>
+<li><strong>WhatsTheDifference</strong> – If you open the file&nbsp;<strong>SlowButton.<em>1</em>.html</strong> in the browser, you’d see that it behaves very similarly to the page in the previous example. However, this test (which is identical to the previous one, except of the html file), fails.&nbsp;The difference is that this file uses the JavaScript function <strong>window.setTimeout</strong> which sets a timer to the specified period and executes the callback when it’s due, rather than&nbsp;doing a tight-loop like the previous example. This has the effect of freeing the main thread which also causes the <strong>Click</strong> method to return before the callback that updates the value of the input element is invoked. Note that this behavior is very similar to what happens on an AJAX call. This is a more common scenario that require the test to wait.</li>
+<li><strong>WillThisHelp</strong> – This example is identical to the previous one, except of that line that was added at the beginning of the test:<br>
+<strong>_driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(10));</strong><br>
+This should solve the problem, isn’t it? Well, if you run the test you’ll see that it doesn’t. The reason that it doesn’t is that <strong>ImplicitlyWait</strong>&nbsp;only affects finding elements (i.e. the methods&nbsp;<strong>IWebDriver.FindElement</strong> and&nbsp;<strong>IWebDriver.FindElements</strong>), but the test fails because&nbsp;<strong>GetAttribute</strong><strong>(“value”)</strong>&nbsp;doesn’t wait for the value to change. If you think about it for a moment, it makes sense because Selenium can’t know when the value is actually ready…</li>
+<li><strong>ExplicitWait</strong> – This example shows how to actually solve the problem of the previous test by using an explicit wait (using the&nbsp;<strong>WebDriverWait</strong> class).</li>
+<li><strong>WaitAndIgnoreExceptions</strong> – This example shows two things regarding&nbsp;<strong>WebDriverWait</strong>. The first is that it can be used to perform any operation regardless of Selenium. In this example we wait for a file to be created. The second this is the&nbsp;<strong>IgnoreExceptionTypes</strong> method. To see this test in action, before running the test, open Notepad, type “Hello” and save it as C:\temp\test.txt, but leave Notepad open. Then run the test and notice that it’s running doing nothing. Only when you click Save in Notepad the test completes. Explanation: first the test deletes the file to ensure that it doesn’t exist; then it uses the&nbsp;<strong>WebDriverWait</strong> to read the content of the file. While the file does not exist, the lambda passed to&nbsp;the&nbsp;<strong>WebDriverWait</strong>&nbsp;is called but throws <strong>FileNotFoundException.&nbsp;</strong>But because we specified that type of exception in the&nbsp;<strong>IgnoreExceptionTypes</strong>,&nbsp;<strong>WebDriverWait</strong> continues to invoke the lambda continuously until you re-create the file through Notepad.&nbsp;<strong>WebDriverWait&nbsp;</strong>keeps invoking the delegate that you pass to it until it doesn’t throw an exception and returns something that is not&nbsp;<strong>null</strong> or&nbsp;<strong>false</strong>.</li>
+<li><strong>ObviousNoSuchElementException</strong> – This example starts the discussion on the various Selenium exceptions, specifically&nbsp;<strong>NoSuchElementException</strong> and&nbsp;<strong>StaleElementReferenceException</strong>. It shows that obvious fact that if an element does not exist, a&nbsp;<strong>NoSuchElementException</strong> is thrown. Pay attention that this exception is thrown from the&nbsp;<strong>FindElement</strong> method and not from the&nbsp;<strong>Click</strong> method<strong>&nbsp;</strong>(this is still quite obvious…)</li>
+<li><strong>WhenImplicitlyWaitHelps</strong> – In this example we finally see when&nbsp;<strong>ImplicitlyWait</strong> really helps (unlike in the&nbsp;<strong>WillThisHelp</strong> test). The point to notice here that clicking the button sets a timer that&nbsp;<em>creates a new element</em> when it’s due, and that we don’t have any explicit wait before we use&nbsp;<strong>FindElement </strong>to find the new element.&nbsp;You can try to comment out the first line, which uses the&nbsp;<strong>ImplicitlyWait</strong> and see that without it the test fails.</li>
+<li><strong>StaleReferenceElementDemo</strong> – Many automation developers hate, or afraid from this exception, because they don’t fully understand what it means. Here’s a very simple example that cause it: the button in&nbsp;<strong>RemoveElement.html</strong>&nbsp;<em>removes&nbsp;</em>the input element from the DOM. In the test, we find the input element&nbsp;before we click the button, so&nbsp;<strong>FindElement</strong> succeeds. However, after clicking the button, the input element disappears and therefore any method or property that we invoke on the&nbsp;<strong>input</strong> element will consequently fail with&nbsp;<strong>StaleElementReferenceException</strong>.<br>
+One important thing to note:&nbsp;<strong>StaleElementReferenceException</strong>&nbsp;is never thrown from invoking methods on the&nbsp;<strong>IWebDriver</strong> (e.g. <strong>IWebDriver.</strong><strong>FindElement</strong>), only from methods on&nbsp;<strong>IWebElement</strong> (though&nbsp;<strong>IWebElement.FindElement</strong>&nbsp;<em>may<strong>&nbsp;</strong></em>throw it).<br>
+Other cases that this exception can occur is when you try to use an element that you found on one page after you already navigated to another page; or when you found an element on one iframe or window, but used&nbsp;<strong>SwitchTo</strong> to switch to another iframe or window. This is because an iframe is essentially another page.</li>
+<li><strong>UnjustifiedStaleElement</strong> – here’s another example of when&nbsp;<strong>StaleElementReferenceException&nbsp;</strong>might occur, even though it’s less obvious. If you open the file&nbsp;<strong>SeemlessStaleElement.html</strong> in the browser and open the developer tools (F12), you’ll see that the DOM remains exactly the same when you click the button (though you may notice that the Input element blinks when click the button). So how come this test fails on&nbsp;<strong>StaleElementReferenceException</strong>? If you’ll look at the JavaScript code on the page, you’ll see that when you click the button, it essentially removes and re-creates the input element (this is why you see it blink in the Developer tools). Even though that the element is identical before and after the click, it’s actually not the same one! This is why we get the&nbsp;<strong>StaleElementReferenceException</strong>. Note that some JavaScript frameworks do such things implicitly, and this can be very confusing. In this case you’ll probably won’t be able to avoid using try/catch to handling this case and retry <em>Finding the element</em> first and then repeat the failed operation. But my advise is that you first make sure that this is indeed the case you see, and if you do, catch the&nbsp;<strong>StaleElementReferenceException</strong> specifically and in the smallest try block. Otherwise you’d may hide other problems that you didn’t intend to.</li>
+<li><strong>WhatHappensWhenFindElementsFindsNothing&nbsp;</strong>–&nbsp;Before running this test, try to answer this question: what happens when&nbsp;<strong>FindElements</strong> (note the&nbsp;plural form!) finds no matching element?
+<ol>
+<li>Throws&nbsp;<strong>NoSuchElementException</strong></li>
+<li>Returns&nbsp;<strong>null</strong></li>
+<li>Returns an empty list (<strong>IReadOnlyCollection&lt;IWebElement&gt;</strong>)</li>
+</ol>
+<p>If you’d run the test, you’ll see that the correct answer is&nbsp;<strong>3</strong></p></li>
+<li><strong>FindElementsAndExplicitlyWait</strong> – Now, what do you think would happen if you’re using&nbsp;<strong>FindElements</strong>&nbsp;after you used&nbsp;<strong>ImplicitlyWait?</strong> There are 2 cases to consider: the first is what happens if <em>there are&nbsp;some matching elements</em> when the method is called?
+<ol>
+<li>It returns <em>immediately</em> with the elements that it found</li>
+<li>It waits the duration specified in the&nbsp;<strong>ImplicitlyWait </strong>anyway,&nbsp;in order to allow for additional elements to be added during this period (e.g. if a list is loaded asynchronously)</li>
+</ol>
+<p>The second case is when there are&nbsp;<em>no</em> matching elements when the method is called?</p>
+<ol>
+<li>The method will <em>immediately</em> throw&nbsp;<strong>NoSuchElementException</strong></li>
+<li>The method will <em>immediately</em> return an empty list</li>
+<li>The method will wait until at least one matching element is found and then return (even if the specified during did not elapsed). If it doesn’t happen, it will wait for the entire duration and then will throw&nbsp;<strong>NoSuchElementException</strong> when the duration elapses.</li>
+<li>The method will wait until at least one matching element is found and then return (even if the specified during did not elapsed). If it doesn’t happen, it will wait for the entire duration and then return an empty list.</li>
+<li>The method will&nbsp;<em>anyway</em> wait for the specified duration and only then return with whatever elements it found, or an empty list if no element was found.</li>
+</ol>
+<p>The answers to this tricky questions are 1 and 4 (even though in my opinion it should have been 1 and 2, because if the page loads the elements in a list asynchronously, then finding one element doesn’t mean that the entire list was loaded. Instead, I’d prefer to use an explicit wait with some external indication that will tell me if the list was completely loaded or not. But they won’t change it now even if they’ll think I’m right, as it will break backward compatibility…)</p></li>
+<li><strong>WasTheButtonReallyClicked</strong> – To understand what’s going on with this demo, open the page&nbsp;<strong>Calculate.html&nbsp;</strong>in the browser, and also look at its source. As you can see, after you type two numbers in the X and Y fields and&nbsp;<em>press Tab</em> to move the focus away from the Y field, it invokes the&nbsp;<strong>displayExpression</strong> function which displays the corresponding expression. Only when click the&nbsp;“Calculate” button, it should also write the result. But if you try this out you’ll see that apparently clicking the “Calculate” button does nothing. This is true also when you run the test using Selenium.<br>
+The reason is that I (intentionally) put a typo in the string&nbsp;<strong>calcualationResult</strong> in line 22 of&nbsp;<strong>Calculate.html</strong>, which causes an exception in JavaScript. But even though there’s an exception in JavaScript, Selenium doesn’t reflect it to us and the <strong>Click&nbsp;</strong>method&nbsp;returns successfully. If this bug is easily reproducible like in this case, then it’s easy to diagnose, but sometimes buggy JavaScript code may throw exception only occasionally. In these cases, people (including myself in the past) often blame Selenium for occasionally missing to actually perform the&nbsp;click operation. But the truth is that in all cases (at least those I encountered and investigated after I knew this little fact), the blame is not in Selenium, nor in your test code, but rather it’s a bug in the web page’s JavaScript!</li>
+</ol>
+<p>The other C# source file,&nbsp;<strong>InvestigateFailures.cs,</strong> continues the narrative of the failing&nbsp;<strong>Calculate</strong> page, and shows some techniques that help investigate failures:</p>
+<ol>
+<li><strong>TakeScreenshot</strong> – shows how to take a screenshot</li>
+<li><strong>TakeDocumentSource</strong> – shows how to save the HTML source. Note that different browsers&nbsp;behave slightly different in this method, but at least Chrome returns&nbsp;an HTML that reflects the&nbsp;<em>current state</em> of the DOM (and the actual page&nbsp;<em>source)</em>. This is very useful to investigate&nbsp;<strong>NoSuchElementException</strong> and&nbsp;<strong>StaleElementReferenceException</strong> as you can later open the file in Notepad (or even the browser!) and see if the element exists or not. Note that if you open the file in the browser, in some cases it will show correctly, but in other cases it won’t, as it depends on additional files (css, javascript, etc.) in order to render correctly. But even if it doesn’t appear correctly, you can still locate the elements in most cases.</li>
+<li><strong>LogEvents</strong> – this shows the use of the&nbsp;<strong>EventFiringWebDriver</strong> to automatically write every click to the log. You can of course use this class to write all other supported events to the log too. Unfortunately, some events, e.g.&nbsp;<strong>ElementValueChanging</strong> does not provide all the important information like the previous and new values. In fact, I submitted a <a href="https://github.com/SeleniumHQ/selenium/pull/1697">pull request </a>to fix this, but unfortunately I didn’t get any response yet…</li>
+<li><strong>ReadBrowserLogs</strong> – this example shows how to use the&nbsp;<strong>IWebDriver.Manage().Logs</strong> property to retrieve the browser’s log. This is really where JavaScript exceptions are written to. So if you read this log and add it to your test results, then you’ll be able to show the developer exactly what was the problem in case of a JavaScript exception!</li>
+</ol>
+<p>The last test class,&nbsp;<strong>ExecuteJavaScript</strong><strong>.cs</strong> shows the&nbsp;<strong>ExecuteJavaScript</strong>&nbsp;extension method and some interesting usages of it, including returning a value from JavaScript, passing arguments to it, including arguments of type&nbsp;<strong>IWebElement</strong>, and performing asynchronous JavaScript operations. Note that in the last case, <strong>ExecuteAsyncScript</strong> allows you execute an asynchronous JavaScript operation but it always waits until it finishes, therefore the method itself is synchronous! This is a bit confusing indeed. If you really want to start some asynchronous JavaScript operation, and only later wait for its result, you should use the regular&nbsp;<strong>ExecuteJavaScript</strong> method and built it in such a ways that will raise some flag when it completes, then later in the test code, call <strong>ExecuteJavaScript</strong> again inside a&nbsp;<strong>WebDriverWait</strong> (or some other loop), to check whether the flag was raised or not.</p>
+<p>Let me know if you’ve learned a think or two from this article, or if you have any other comment!</p>
+<p>&nbsp;</p>
+			<iframe src="./Selenium in Depth – the demos _ Arnon Axelrod&#39;s Blog_files/like.html" scrolling="no" frameborder="0" style="border:none; overflow:hidden; height:80px;" allowtransparency="true"></iframe>
+
+							  <div class="clearfix entry-options">
+                        <a href="javascript:void(0)" class="bp-add-comment">Add comment</a>
+                        <div class="bp-social_i">
+                           <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blogs.microsoft.co.il/arnona/2017/03/06/selenium-in-depth-the-demos/" class="ir icon-fb">facebook</a>
+                            <a target="_blank" href="http://www.linkedin.com/shareArticle?mini=true&amp;url=http://blogs.microsoft.co.il/arnona/2017/03/06/selenium-in-depth-the-demos/&amp;title=Selenium%20in%20Depth%20%E2%80%93%20the%20demos&amp;summary=%3Cp%3ELast%20month%20I%20gave%20a%20talk%20on%20the%20Israel%20Test%20Automation%20Meetup%C2%A0titled%20%E2%80%9CSelenium%20in%20Depth%E2%80%9D.%C2%A0In%20this%20talk%20I%20showed%20highly%20simplified%20examples%20that%20demonstrate%20how%20Selenium%20behaves%20in%C2%A0certain%20conditions,%20mostly%20related%20to%20the%20html%20and%20JavaScript%20on%20the%20page.%20Now%20I%20decided%20to%20share%20the%20demos%20and%20you%20can%20find%20it%20here.%20Each%20demo%20is%20[%E2%80%A6]%3C/p%3E" class="ir icon-in">linkedin</a>
+                            <a target="_blank" href="https://twitter.com/share" class="tweet ir icon-twitter" data-lang="he">twitter</a>
+                            <a href="mailto:?subject=Selenium%20in%20Depth%20%E2%80%93%20the%20demos&amp;body=Check%20out%20this%20post%20http://blogs.microsoft.co.il/arnona/2017/03/06/selenium-in-depth-the-demos/" class="ir icon-email">email</a>
+                            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+                        </div>
+                    </div>
+
+				
+		</div><!-- .entry-content -->
+		
+
+        
+<div id="comments" class="comments-area">
+	<div id="respond" class="comment-respond">
+		<h3 id="reply-title" class="comment-reply-title">Leave a Reply <small><a rel="nofollow" id="cancel-comment-reply-link" href="http://blogs.microsoft.co.il/arnona/2017/03/06/selenium-in-depth-the-demos/#respond" style="display:none;">Cancel Reply</a></small></h3>			<form action="http://blogs.microsoft.co.il/arnona/wp-comments-post.php" method="post" id="commentform" class="comment-form">
+				<p class="comment-notes">Your email address will not be published.</p><p class="comment-form-comment"><label for="comment">Comment</label><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true"></textarea></p><p class="form-allowed-tags">You may use these <abbr title="HyperText Markup Language">HTML</abbr> tags and attributes:  <code>&lt;a href="" title=""&gt; &lt;abbr title=""&gt; &lt;acronym title=""&gt; &lt;b&gt; &lt;blockquote cite=""&gt; &lt;cite&gt; &lt;code&gt; &lt;del datetime=""&gt; &lt;em&gt; &lt;i&gt; &lt;q cite=""&gt; &lt;s&gt; &lt;strike&gt; &lt;strong&gt; </code></p><p class="comment-form-author"><label for="author">Name</label> <span class="required">*</span><input id="author" name="author" type="text" value="" size="30"></p>
+<p class="comment-form-email"><label for="email">Email</label> <span class="required">*</span><input id="email" name="email" type="text" value="" size="30"></p>
+<p class="comment-form-url"><label for="url">Website</label><input id="url" name="url" type="text" value="" size="30"></p>
+<p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Post Comment"> <input type="hidden" name="comment_post_ID" value="2085818" id="comment_post_ID">
+<input type="hidden" name="comment_parent" id="comment_parent" value="0">
+</p><p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="e6e9458dad"></p><script type="text/javascript">var RecaptchaOptions = {theme : "blackglass"};</script><script type="text/javascript" src="./Selenium in Depth – the demos _ Arnon Axelrod&#39;s Blog_files/challenge"></script>
+
+	<noscript>
+  		<iframe src="http://www.google.com/recaptcha/api/noscript?k=6Ld4OuwSAAAAAC2pOGX1-HLYusMoy9UuR5_I91Eo" height="300" width="500" frameborder="0"></iframe><br/>
+  		<textarea name="recaptcha_challenge_field" rows="3" cols="40"></textarea>
+  		<input type="hidden" name="recaptcha_response_field" value="manual_challenge"/>
+	</noscript><!-- AVH First Defense Against Spam - WPMU DEV Version version 2.3.2  --><input type="hidden" id="_avh_first_defense_against_spam" name="_avh_first_defense_against_spam" value="8239683686"><p style="display: none;"></p>			<input type="hidden" id="ak_js" name="ak_js" value="1574167351275"></form>
+			</div><!-- #respond -->
+	<div class="clearfix"></div>
+	
+			
+			 <h1 class="comments-title">6 comments</h1>
+
+		<ol class="commentlist">
+			    <li class="comment even thread-even depth-1" id="li-comment-2829218">
+       <div class="clearfix">
+        <div class="comment-avatar">
+            <img src="./Selenium in Depth – the demos _ Arnon Axelrod&#39;s Blog_files/6ed7c9bff55793876b7ee95ce3dd0277.png" width="50" height="50" alt="" class="avatar avatar-50wp-user-avatar wp-user-avatar-50 alignnone photo avatar-default">        </div>
+        <div class="comment-post-body">
+            <span class="comment-author">Reut</span><a class="comment-date" href="http://blogs.microsoft.co.il/arnona/2017/03/06/selenium-in-depth-the-demos/#comment-2829218" data-datetime="2017-07-05T09:44:21+00:00">July 5, 2017 ב 9:44</a>
+                
+			    <div class="comment-content comment">
+				    <p>Hi Arnon, great post!<br>
+Is the use in POM necessarily the use with the static class PageFactory? What is more common- to use with FindsBy attribute (and PageFactory) OR to find the elements with wait.Until?  Also, with the use of FindsBy how can we control the timeout, is it the default timeout of FindElement?<br>
+Last question is about the design of my project: where should I locate all the assertions in the WebPage- in the WebPage itself or in separate (enormous) class?</p>
+				                        <a rel="nofollow" class="comment-reply-link" href="http://blogs.microsoft.co.il/arnona/2017/03/06/selenium-in-depth-the-demos/?replytocom=2829218#respond" onclick="return addComment.moveForm( &quot;comment-2829218&quot;, &quot;2829218&quot;, &quot;respond&quot;, &quot;2085818&quot; )" aria-label="Reply to Reut">Reply</a>			    </div><!-- .comment-content -->
+        </div>
+ 
+       </div>
+
+
+	<ol class="children">
+    <li class="comment byuser comment-author-arnona bypostauthor odd alt depth-2" id="li-comment-2829220">
+       <div class="clearfix">
+        <div class="comment-avatar">
+            <img src="./Selenium in Depth – the demos _ Arnon Axelrod&#39;s Blog_files/d3548b43b3f07144c336ab8378da3ecd(1).jpeg" width="50" height="50" alt="" class="avatar avatar-50wp-user-avatar wp-user-avatar-50 alignnone photo avatar-default">        </div>
+        <div class="comment-post-body">
+            <span class="comment-author">Arnon Axelrod</span><a class="comment-date" href="http://blogs.microsoft.co.il/arnona/2017/03/06/selenium-in-depth-the-demos/#comment-2829220" data-datetime="2017-07-12T09:17:06+00:00">July 12, 2017 ב 9:17</a>
+                
+			    <div class="comment-content comment">
+				    <p>Hi Reut!</p>
+<p>Thanks for your questions. I’ll answer them one by one:</p>
+<p>1. <b>Is the use in POM necessarily the use with the static class PageFactory?</b><br>
+POM (which is an abbreviation for Page Object Model) is primarily a design pattern. That means that it’s not directly related to any specific technology (i.e. Selenium), and that you can implement it in different ways. The concept of a POM is that each page, and also <b>logical areas within a page</b>, should have their own class, which encapsulates the technical details of how to locate and interact with the elements (that is, in private members), and exposes (using public methods), the <i>operations</i> that the user can do with them.<br>
+the <b>PageFactory</b> class helps implement this pattern in simple way using attributes (in .Net) /annotations (in Java).<br>
+Personally, I usually prefer to implement the pattern without the PageFactory class, maybe out of habit, but also I found it somewhat limiting. In particular, I often need an element only in a single (public or private) method, so I prefer to define it as a local variable and not as a field.</p>
+<p>2. <b>What is more common- to use with FindsBy attribute (and PageFactory) OR to find the elements with wait.Until?</b><br>
+I don’t think that the question “what is more common” is relevant. You should do what works best for you! As I mentioned above, I personally don’t tend to use the PageFactory class, but I know many that do. Note also that IWebDriver.FindElement does not necessarily means that you have to use Wait.Until – as I describe in this post, in many cases it’s completely unnecessary. </p>
+<p>3. <b>Also, with the use of FindsBy how can we control the timeout, is it the default timeout of FindElement?</b><br>
+First, as described in the post, <b>FindElement</b> does not has a default timeout by itself, as it behaves synchronously. The same goes for <b>FindsBy</b>. I haven’t tried it, by I believe that if you’re using <b>ImplicitWait</b> then it will affect the <b>FindsBy</b> decorated members as well.<br>
+If you don’t want to use <b>ImplicitWait</b> (as it’s too global…), then you can use one of the overloads of <b>PageFactory.InitMembers<b></b> that accept an </b><b>IElementLocator</b> argument, and pass to it an instance of <b>RetryingElementLocator</b>. In the constructor of this class you can specify the timeout and also the polling interval.</p>
+<p>4. <b>Last question is about the design of my project: where should I locate all the assertions in the WebPage- in the WebPage itself or in separate (enormous) class?</b><br>
+In my opinion, no class should be enormous, and therefore putting all the assertions in one big class it’s not a good idea. Some people put assertion methods in the page object themselves, but in my opinion this is not a very good idea either.<br>
+In my point of view, the responsibility for validating the expected results is the responsibility of the test methods themselves, and not the responsibility of the page objects. Moreover, validations (asserts) should normally be very simple (usually compare an actual value to some expected one), and should not contain sophisticated logic. If this is the case, then usually each test has different validations (asserts), and therefore there’s no point in re-using the assertions.<br>
+What I <i>do</i> put in the page objects, are getters for values that the user sees. I then use these getters in the asserts (inside the test method) to compare their values with the expected ones.</p>
+<p>I suggest that you’ll take a look at my previous post: <b>“Writing maintainable automated test and infrastructure – With live video recording!”</b> and watch the video, to learn more about the best practices that I promote.</p>
+<p>Please reply back if you have further questions!</p>
+				                        <a rel="nofollow" class="comment-reply-link" href="http://blogs.microsoft.co.il/arnona/2017/03/06/selenium-in-depth-the-demos/?replytocom=2829220#respond" onclick="return addComment.moveForm( &quot;comment-2829220&quot;, &quot;2829220&quot;, &quot;respond&quot;, &quot;2085818&quot; )" aria-label="Reply to Arnon Axelrod">Reply</a>			    </div><!-- .comment-content -->
+        </div>
+ 
+       </div>
+
+
+	<ol class="children">
+    <li class="comment even depth-3" id="li-comment-2829221">
+       <div class="clearfix">
+        <div class="comment-avatar">
+            <img src="./Selenium in Depth – the demos _ Arnon Axelrod&#39;s Blog_files/6ed7c9bff55793876b7ee95ce3dd0277.png" width="50" height="50" alt="" class="avatar avatar-50wp-user-avatar wp-user-avatar-50 alignnone photo avatar-default">        </div>
+        <div class="comment-post-body">
+            <span class="comment-author">Reut</span><a class="comment-date" href="http://blogs.microsoft.co.il/arnona/2017/03/06/selenium-in-depth-the-demos/#comment-2829221" data-datetime="2017-07-12T09:37:36+00:00">July 12, 2017 ב 9:37</a>
+                
+			    <div class="comment-content comment">
+				    <p>Thanks, Arnon your answer is very clear! <img draggable="false" class="emoji" alt="🙂" src="./Selenium in Depth – the demos _ Arnon Axelrod&#39;s Blog_files/1f642.svg"><br>
+I also think the assertions are the responsibility of the test methods but if I have to repeat the same assertions in few tests?</p>
+				                        <a rel="nofollow" class="comment-reply-link" href="http://blogs.microsoft.co.il/arnona/2017/03/06/selenium-in-depth-the-demos/?replytocom=2829221#respond" onclick="return addComment.moveForm( &quot;comment-2829221&quot;, &quot;2829221&quot;, &quot;respond&quot;, &quot;2085818&quot; )" aria-label="Reply to Reut">Reply</a>			    </div><!-- .comment-content -->
+        </div>
+ 
+       </div>
+
+
+	<ol class="children">
+    <li class="comment byuser comment-author-arnona bypostauthor odd alt depth-4" id="li-comment-2829222">
+       <div class="clearfix">
+        <div class="comment-avatar">
+            <img src="./Selenium in Depth – the demos _ Arnon Axelrod&#39;s Blog_files/d3548b43b3f07144c336ab8378da3ecd(1).jpeg" width="50" height="50" alt="" class="avatar avatar-50wp-user-avatar wp-user-avatar-50 alignnone photo avatar-default">        </div>
+        <div class="comment-post-body">
+            <span class="comment-author">Arnon Axelrod</span><a class="comment-date" href="http://blogs.microsoft.co.il/arnona/2017/03/06/selenium-in-depth-the-demos/#comment-2829222" data-datetime="2017-07-13T09:35:18+00:00">July 13, 2017 ב 9:35</a>
+                
+			    <div class="comment-content comment">
+				    <p>There’s no one right answer to that… I’d probably prefer to put shared assertions in the test class or a base test class, but you may put them in the page objects or other helper classes too if it makes more sense to you.<br>
+But the first question that must be asked is whether these assertions really have to be verified in multiple tests? Usually it indicates one of the following issues:<br>
+1. Multiple tests are essentially the same, and may be refactored to a data-driven, or parameterized test.<br>
+2. Each test verify too many things, and does not have a clear purpose.<br>
+3. You have code duplication: after a certain operation, you always want to verify that it completed successfully so you end up with multiple places where you call a method that performs the operation, followed by a call to the assertion. In this case, the assertion should be done <i>inside</i> the method that performs the operation in the first place. Note that a general programming best practice is the a method call either succeeds or it throws an exception. I.e., you should not call another method to verify that the previous one succeeds. In cases where a method only begins an operation and does not wait for it to complete and therefore can’t know whether it succeeded or not, the name of the method should reflect it, e.g. BeginDoSomething(). In this cases the method only promises that it should succeed <i>beginning</i> the operation, and not that the operation as a whole completed successfully.</p>
+<p>HTH,<br>
+Arnon.</p>
+				                        <a rel="nofollow" class="comment-reply-link" href="http://blogs.microsoft.co.il/arnona/2017/03/06/selenium-in-depth-the-demos/?replytocom=2829222#respond" onclick="return addComment.moveForm( &quot;comment-2829222&quot;, &quot;2829222&quot;, &quot;respond&quot;, &quot;2085818&quot; )" aria-label="Reply to Arnon Axelrod">Reply</a>			    </div><!-- .comment-content -->
+        </div>
+ 
+       </div>
+
+
+	</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+    <li class="comment even thread-odd thread-alt depth-1" id="li-comment-2829223">
+       <div class="clearfix">
+        <div class="comment-avatar">
+            <img src="./Selenium in Depth – the demos _ Arnon Axelrod&#39;s Blog_files/e5c9b0de0f9fa42971280de5dc5341b9.png" width="50" height="50" alt="" class="avatar avatar-50wp-user-avatar wp-user-avatar-50 alignnone photo avatar-default">        </div>
+        <div class="comment-post-body">
+            <span class="comment-author">Lir</span><a class="comment-date" href="http://blogs.microsoft.co.il/arnona/2017/03/06/selenium-in-depth-the-demos/#comment-2829223" data-datetime="2017-07-17T10:40:38+00:00">July 17, 2017 ב 10:40</a>
+                
+			    <div class="comment-content comment">
+				    <p>Hi, like your post . I have a class that my page objects use for finding the elements, let’s call it ElementFinder. Should I locate that class as a member of each Page Object or should it be a static class and each page object will use its methods for finding its element on the page? i.e. ElementFinder.FindByName(“myName”). What is the best design? Another thought is to call that class PageBase and eacg page object will inherit from it. Please help me to find the best design. Thanks.</p>
+				                        <a rel="nofollow" class="comment-reply-link" href="http://blogs.microsoft.co.il/arnona/2017/03/06/selenium-in-depth-the-demos/?replytocom=2829223#respond" onclick="return addComment.moveForm( &quot;comment-2829223&quot;, &quot;2829223&quot;, &quot;respond&quot;, &quot;2085818&quot; )" aria-label="Reply to Lir">Reply</a>			    </div><!-- .comment-content -->
+        </div>
+ 
+       </div>
+
+
+	<ol class="children">
+    <li class="comment byuser comment-author-arnona bypostauthor odd alt depth-2" id="li-comment-2829226">
+       <div class="clearfix">
+        <div class="comment-avatar">
+            <img src="./Selenium in Depth – the demos _ Arnon Axelrod&#39;s Blog_files/d3548b43b3f07144c336ab8378da3ecd(1).jpeg" width="50" height="50" alt="" class="avatar avatar-50wp-user-avatar wp-user-avatar-50 alignnone photo avatar-default">        </div>
+        <div class="comment-post-body">
+            <span class="comment-author">Arnon Axelrod</span><a class="comment-date" href="http://blogs.microsoft.co.il/arnona/2017/03/06/selenium-in-depth-the-demos/#comment-2829226" data-datetime="2017-08-10T17:51:15+00:00">August 10, 2017 ב 17:51</a>
+                
+			    <div class="comment-content comment">
+				    <p>The question is why do you want to wrap the native FindElement of Selenium and not use it directly? Beware that your wrapper not limit the options, especially to find an element within another element (and not just in the entire page).<br>
+If you do have a good reason to wrap it, here are my guidelines for where to put it:<br>
+1. If this method depends on state of sort (i.e. some field or property), then it shouldn’t be static. Otherwise you should probably make it static. If I’m allowed to guess, then I bet that this method uses an IWebDriver field, so it shouldn’t be made static (also the IWebDriver field should not be static…)<br>
+2. Avoid duplication. If you need the same methods in many classes, then it should probably be either in a base class or in another class that the classes that use it accept in their constructors. If you need *similar* methods, but not identical ones, you should extract the common code to a shared place and keep the differences where they belong. For example, if some page objects represent the entire page and some represent only portions of it, then probably you’d want the class that represents the entire page to have such a FindByName method that operates on the IWebDriver, while the classes that represent portions of the page need a similar method but that operates on the IWebElement of that portion. In that case, you can create one method that uses an ISearchContext field, and put it in the base class. Because both IWebDriver and IWebElement derive from ISearchContext, it will work for both.</p>
+<p>BTW, have you took a look at my TestAutomationEssentials.Selenium project? It also have a wrapper for FindElement (called WaitForElement) among some other good stuff :-). You can find its sources in GitHub (<a href="https://github.com/arnonax/TestEssentials" rel="nofollow">https://github.com/arnonax/TestEssentials</a>) or simply search for the TestAutomationEssentials NuGet package from within Visual Studio.</p>
+<p>HTH,<br>
+Arnon.</p>
+				                        <a rel="nofollow" class="comment-reply-link" href="http://blogs.microsoft.co.il/arnona/2017/03/06/selenium-in-depth-the-demos/?replytocom=2829226#respond" onclick="return addComment.moveForm( &quot;comment-2829226&quot;, &quot;2829226&quot;, &quot;respond&quot;, &quot;2085818&quot; )" aria-label="Reply to Arnon Axelrod">Reply</a>			    </div><!-- .comment-content -->
+        </div>
+ 
+       </div>
+
+
+	</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+		</ol><!-- .commentlist -->
+
+		
+		
+	
+	
+
+</div><!-- #comments .comments-area -->
+	<!--<div class="fb-comments" data-href="http://guideme.co.il/comments" data-colorscheme="The color scheme used in the plugin" data-numposts="5" data-width="The pixel width of the plugin"></div>-->
+
+				
+	
+	</article><!-- #post -->
+				
+				
+						
+	
+
+</section>
+		
+			<div id="secondary" class="widget-area" role="complementary">
+			<aside id="search-2" class="widget widget_search"><form role="search" method="get" id="searchform" class="searchform" action="http://blogs.microsoft.co.il/arnona/">
+				<div>
+					<label class="screen-reader-text" for="s">Search for:</label>
+					<input type="text" value="" name="s" id="s">
+					<input type="submit" id="searchsubmit" value="Search">
+				</div>
+			</form></aside>		<aside id="recent-posts-2" class="widget widget_recent_entries">		<h3 class="widget-title">Recent Posts</h3>		<ul>
+											<li>
+					<a href="http://blogs.microsoft.co.il/arnona/2018/09/27/continuing-my-blog-on-medium-com/">Continuing my blog on Medium.com</a>
+									</li>
+											<li>
+					<a href="http://blogs.microsoft.co.il/arnona/2018/09/26/best-practices-for-choosing-locators-for-selenium/">Best Practices for Choosing Locators for Selenium</a>
+									</li>
+											<li>
+					<a href="http://blogs.microsoft.co.il/arnona/2018/07/10/my-book-complete-guide-to-test-automation-is-due-in-september/">My book "Complete Guide to Test Automation" is due in September</a>
+									</li>
+											<li>
+					<a href="http://blogs.microsoft.co.il/arnona/2017/03/06/selenium-in-depth-the-demos/">Selenium in Depth – the demos</a>
+									</li>
+											<li>
+					<a href="http://blogs.microsoft.co.il/arnona/2016/11/09/writing-maintainable-automated-test-and-infrastructure-with-live-video-recording/">Writing maintainable automated test and infrastructure – With live video recording!</a>
+									</li>
+					</ul>
+		</aside><aside id="recent-comments-2" class="widget widget_recent_comments"><h3 class="widget-title">Recent Comments</h3><ul id="recentcomments"><li class="recentcomments"><span class="comment-author-link">Nishant Shah</span> on <a href="http://blogs.microsoft.co.il/arnona/2016/01/03/keeping-an-active-desktop-session/#comment-2829242">Keeping an active desktop session</a></li><li class="recentcomments"><span class="comment-author-link">Nishant Shah</span> on <a href="http://blogs.microsoft.co.il/arnona/2016/01/03/keeping-an-active-desktop-session/#comment-2829241">Keeping an active desktop session</a></li><li class="recentcomments"><span class="comment-author-link">Milan Zeleznik</span> on <a href="http://blogs.microsoft.co.il/arnona/2016/01/03/keeping-an-active-desktop-session/#comment-2829240">Keeping an active desktop session</a></li><li class="recentcomments"><span class="comment-author-link">warren</span> on <a href="http://blogs.microsoft.co.il/arnona/2016/01/03/keeping-an-active-desktop-session/#comment-2829239">Keeping an active desktop session</a></li><li class="recentcomments"><span class="comment-author-link">Arnon Axelrod</span> on <a href="http://blogs.microsoft.co.il/arnona/2016/01/03/keeping-an-active-desktop-session/#comment-2829237">Keeping an active desktop session</a></li></ul></aside><aside id="archives-2" class="widget widget_archive"><h3 class="widget-title">Archives</h3>		<ul>
+			<li><a href="http://blogs.microsoft.co.il/arnona/2018/09/">September 2018</a></li>
+	<li><a href="http://blogs.microsoft.co.il/arnona/2018/07/">July 2018</a></li>
+	<li><a href="http://blogs.microsoft.co.il/arnona/2017/03/">March 2017</a></li>
+	<li><a href="http://blogs.microsoft.co.il/arnona/2016/11/">November 2016</a></li>
+	<li><a href="http://blogs.microsoft.co.il/arnona/2016/07/">July 2016</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2016/04/">April 2016</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2016/03/">March 2016</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2016/01/">January 2016</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2015/10/">October 2015</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2015/08/">August 2015</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2015/04/">April 2015</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2015/01/">January 2015</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2014/09/">September 2014</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2013/12/">December 2013</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2013/05/">May 2013</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2013/02/">February 2013</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2012/12/">December 2012</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2012/09/">September 2012</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2012/07/">July 2012</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2012/05/">May 2012</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2012/04/">April 2012</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2012/03/">March 2012</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2012/02/">February 2012</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2011/12/">December 2011</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2011/11/">November 2011</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2011/10/">October 2011</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2011/09/">September 2011</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2011/08/">August 2011</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2011/07/">July 2011</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2011/06/">June 2011</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2011/03/">March 2011</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2011/02/">February 2011</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2011/01/">January 2011</a></li>
+	<li style="display: none;"><a href="http://blogs.microsoft.co.il/arnona/2010/12/">December 2010</a></li>
+		<li><a class="a-txt" href="javascript:void(0)">Full Arcive</a></li></ul>
+		</aside><aside id="categories-2" class="widget widget_categories"><h3 class="widget-title">Categories</h3>		<ul>
+	<li class="cat-item cat-item-21027"><a href="http://blogs.microsoft.co.il/arnona/category/continuous-improvement/">Continuous Improvement</a>
+</li>
+	<li class="cat-item cat-item-21026"><a href="http://blogs.microsoft.co.il/arnona/category/test-automation/">Test Automation</a>
+</li>
+		</ul>
+</aside><aside id="meta-2" class="widget widget_meta"><h3 class="widget-title">Meta</h3>			<ul>
+			<li><a href="https://blogs.microsoft.co.il/arnona/wp-login.php?action=register">Register</a></li>			<li><a href="https://blogs.microsoft.co.il/arnona/wp-login.php">Log in</a></li>
+			<li><a href="http://blogs.microsoft.co.il/arnona/feed/">Entries <abbr title="Really Simple Syndication">RSS</abbr></a></li>
+			<li><a href="http://blogs.microsoft.co.il/arnona/comments/feed/">Comments <abbr title="Really Simple Syndication">RSS</abbr></a></li>
+			<li><a href="https://wordpress.org/" title="Powered by WordPress, state-of-the-art semantic personal publishing platform.">WordPress.org</a></li>			</ul>
+			</aside>			<aside class="widget mrg">
+		
+			<div class="moposts">
+			<h3 class="widget-title"> Additional Posts </h3>
+								  <a href="http://blogs.microsoft.co.il/arnona/2018/09/27/continuing-my-blog-on-medium-com/" class="latest_art">
+					<div class="la-date">September 27, 2018</div>
+					<h4>Continuing my blog on Medium.com</h4>
+		
+                    <p>An era has come to an end. It’s time to move on to a new and modern blogging website. My next blog posts will be published on&nbsp;https://medium.com/@arnonaxelrod Happy reading!</p>
+			      </a>
+								  <a href="http://blogs.microsoft.co.il/arnona/2018/09/26/best-practices-for-choosing-locators-for-selenium/" class="latest_art">
+					<div class="la-date">September 26, 2018</div>
+					<h4>Best Practices for Choosing Locators for Selenium</h4>
+		
+                    <p>A question that comes often, especially by folks that are new to Selenium, is what are the best practices to use when choosing a locator for an element. In other cases, people just have bad habits and don’t even think to ask this question, but they encounter instabilities or maintenance problems, without knowing that they […]</p>
+			      </a>
+								  <a href="http://blogs.microsoft.co.il/arnona/2018/07/10/my-book-complete-guide-to-test-automation-is-due-in-september/" class="latest_art">
+					<div class="la-date">July 10, 2018</div>
+					<h4>My book "Complete Guide to Test Automation" is due in September</h4>
+		
+                    <p>Update: The book is available at Amazon, or directly through Apress. According to the last time I’ve checked, Amazon had a better price a hard copy, but had no option for a soft copy, while through Apress you can order either a hard copy or a soft copy. I’m very proud to let you know […]</p>
+			      </a>
+								</div>
+				
+				</aside>
+		</div><!-- #secondary -->
+	</div>
+	</div>
+
+	<footer class="footer_main clearfix">
+	<section class="wrapper clearfix">
+		<article id="first_fl" class="footer_list">
+		<h3>משאבים לקהילת המפתחים</h3>
+			<div class="menu-footer1-container">
+				<ul id="menu-footer-menu-2">
+				<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://blogs.microsoft.co.il/msdn" title="MSDN בלוג" target="_blank">בלוג MSDN</a></li>
+				<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://www.microsoft.com/israel/msdn/pulse/" title="ניוזלטר  MSDN" target="_blank">ניוזלטר  MSDN</a></li>
+				<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="https://www.facebook.com/msdnisrael" title="MSDN בפייסבוק" target="_blank">בפייסבוק MSDN</a></li>
+				<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://www.youtube.com/channel/UCp6wuFkya3jOETs_nM7z3Fw?feature=watch" target="_blank">יוטיוב  MSDN</a></li>
+				<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://www.microsoftvirtualacademy.com/" target="_blank">האקדמיה הוירטואלית</a></li>
+				<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://msdn.microsoft.com/en-us/evalcenter/default" target="_blank">התנסות חינם</a></li>
+				<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://www.microsoft.com/israel/4steps/" target="_blank">אתר פיתוח אפליקציות</a></li>
+				</ul>
+			</div>
+		</article>
+			<article id="sec_fl" class="footer_list">
+		<h3>משאבים לקהילת IT</h3>
+				<ul id="menu-footer-menu-2">
+				<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://blogs.microsoft.co.il/technet" title="TechNet בלוג" target="_blank">בלוג TechNet </a></li>
+				<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://www.microsoft.com/israel/technetflash/Prev_vers/index.htm" target="_blank">ניוזלטר  TechNet </a></li>
+				<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="https://www.facebook.com/technetil" title="TechNet בפייסבוק" target="_blank">בפייסבוק TechNet</a></li>
+				<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://www.youtube.com/user/TechNetIsrael/videos" target="_blank">יוטיוב  TechNet</a></li>
+								<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://www.microsoftvirtualacademy.com/" target="_blank">האקדמיה הוירטואלית</a></li>
+				<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://technet.microsoft.com/en-us/evalcenter/default" target="_blank">התנסות חינם</a></li>
+				</ul>
+			</article>
+			<article id="thrd_fl" class="footer_list">
+		<h3>משאבים כללים </h3>
+					<ul id="menu-footer-menu-2">
+						<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://www.microsoft.com/he-il/default.aspx" target="_blank" title="אתר מיקרוסופט ישראל">אתר מיקרוסופט ישראל</a></li>
+						<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://www.facebook.com/microsoftisrael" target="_blank" title="מיקרוסופט ישראל בפייסבוק">מיקרוסופט ישראל בפייסבוק</a></li>
+						<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://social.msdn.microsoft.com/Forums/he-il/categories" target="_blank" title="&gt;אתר הפורומים">אתר הפורומים</a></li>
+						<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://www.microsoft.com/israel/communities/usergroups/default.aspx" target="_blank" title="&gt;קבוצות משתמשים">קבוצות משתמשים</a></li>
+						<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://www.microsoft.com/israel/traincert/" target="_blank" title="הדרכות והסמכות מיקרוסופט">הדרכות והסמכות מיקרוסופט</a></li>
+						<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="https://msevents.microsoft.com/CUI/default.aspx?culture=he-IL" target="_blank">אירועים </a></li>
+					
+					<!--
+					<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://blogs.microsoft.co.il/סימנים-מסחריים/" title=" סימנים מסחריים"> סימנים מסחריים</a></li>
+				<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://blogs.microsoft.co.il/תנאי-שימוש/" title="תנאי שימוש">תנאי שימוש</a></li>
+-->
+				</ul>	</article>
+		</section>
+		<section class="sfooter">
+                <div class="content">
+                    <div class="footer-bottom">                        
+                        <ul class="legal">
+                            <li><a href="http://choice.microsoft.com/">אודות הפרסומות שלנו</a></li>
+                            <li><a href="http://www.microsoft.com/About/Legal/EN/US/IntellectualProperty/Trademarks/EN-US.aspx">סימנים מסחריים</a></li>
+                            <li><a href="http://www.microsoft.com/en-us/legal/intellectualproperty/copyright/default.aspx">תנאי השימוש</a></li>
+                            <li><a href="http://go.microsoft.com/fwlink/?LinkId=248681">הצהרת פרטיות</a></li>
+                        </ul>
+                        <div class="footer-copyright">
+                            <a href="http://www.microsoft.com/">
+                                <img alt="Microsoft" src="./Selenium in Depth – the demos _ Arnon Axelrod&#39;s Blog_files/microsoft-logo-heb.png">
+                            </a><span>© 2014 Microsoft</span>
+                        </div>
+                    </div>
+                </div>
+</section>
+	</footer><!-- #colophon -->
+    <script>
+        (function (window) {
+            var rSide = document.getElementById("blog_post_info");
+            var lSide = document.getElementById("secondary");
+			
+			setTimeout(function(){
+				rSide = document.getElementById("blog_post_info");
+				lSide = document.getElementById("secondary");
+				if (lSide.offsetHeight > rSide.offsetHeight) {
+					rSide.style.minHeight = lSide.offsetHeight + "px";
+				}
+			},1000);
+
+            window.onresize = function () {
+                if (lSide.offsetHeight > rSide.offsetHeight) {
+                    rSide.style.minHeight = lSide.offsetHeight + "px";
+                }
+            }
+        })(window);
+
+
+    </script>
+	
+<!-- Do Not Remove - Turn Tracking Beacon Code - Do Not Remove -->
+<!-- Advertiser Name : microsoft -->
+<!-- Beacon Name : Microsoft_ blogs general -->
+<!-- START OF WEDCS TAG -->
+<script type="text/javascript">
+    var varSegmentation = 0;
+    var varClickTracking = 1;
+    var varCustomerTracking = 1;
+    var varAutoFirePV = 1;
+    var Route = "LE020";
+    document.write("<script type='text/javascript' src='" +
+    (window.location.protocol) + "//c.microsoft.com/ms.js'" + "'><\/script>");
+</script><script type="text/javascript" src="http://c.microsoft.com/ms.js" '=""></script>
+<noscript>
+    <img alt="" width="1" height="1" src="http://c.microsoft.com/trans_pixel.aspx" />
+</noscript>
+<!-- END OF WEDCS TAG -->
+
+
+
+
+
+<!-- If Beacon is placed on a Transaction or Lead Generation based page, please populate the turn_client_track_id with your order/confirmation ID -->
+<script type="text/javascript">
+  turn_client_track_id = "";
+</script>
+<script type="text/javascript" src="./Selenium in Depth – the demos _ Arnon Axelrod&#39;s Blog_files/beacon_call.js.download">
+</script><img height="1" width="1" border="0" src="./Selenium in Depth – the demos _ Arnon Axelrod&#39;s Blog_files/beacon">
+<noscript>
+  <img border="0" src="http://r.turn.com/r/beacon?b2=PGyOFcFmMNXjqLZWhsqf0IYBbGja1CD2b3Qxz0EXcZ4jZElP3T1utc_BawhZaoxwRafeYDFgKVEXkxLRf3dk_A&cid=">
+</noscript>
+<!-- End Turn Tracking Beacon Code Do Not Remove -->
+
+<script>
+(function() { // Redistats, track version 1.0
+	var global_id = 147;
+	var property_id = 1346;
+	var url = encodeURIComponent(window.location.href.split('#')[0]);
+	var referrer = encodeURIComponent(document.referrer);
+	var x = document.createElement('script'), s = document.getElementsByTagName('script')[0];
+	x.src = '//redistats.com/track.js?gid='+global_id+'&pid='+property_id+'&url='+url+'&referrer='+referrer;
+	s.parentNode.insertBefore(x, s);
+})();
+</script><script type="text/javascript" src="./Selenium in Depth – the demos _ Arnon Axelrod&#39;s Blog_files/comment-reply.min.js.download"></script>
+<script type="text/javascript" src="./Selenium in Depth – the demos _ Arnon Axelrod&#39;s Blog_files/wp-embed.min.js.download"></script>
+<script async="async" type="text/javascript" src="./Selenium in Depth – the demos _ Arnon Axelrod&#39;s Blog_files/form.js.download"></script>
+
+<iframe scrolling="no" frameborder="0" allowtransparency="true" src="./Selenium in Depth – the demos _ Arnon Axelrod&#39;s Blog_files/widget_iframe.d942dbac55d395b6a752976f272a24f6.html" title="Twitter settings iframe" style="display: none;"></iframe></body></html>
